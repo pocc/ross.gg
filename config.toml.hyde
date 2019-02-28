@@ -20,13 +20,7 @@ postNavigation = true
 # Disable comments for any individual post by adding "comments: false" in its frontmatter
 disqusShortname = "Your disqus shortname"
 
-# Setting a value will load highlight.js and enable syntax highlighting using the style selected.
-# See https://github.com/isagalaev/highlight.js/tree/master/src/styles for available styles
-# A preview of above styles can be viewed at https://highlightjs.org/static/demo/
-hjsStyle = "default"
-
 # Number of blog posts in each pagination page
-paginatedsections = ["posts"]
 paginate = 6
 
 [permalinks]
@@ -56,9 +50,6 @@ post = "/blog/:year-:month-:day-:title/"
 [params]
   # If false, all contents of posts will appear on the front page and in pagination
   truncate = true
-
-  # cover image on front page
-  cover = "images/lorem_ipsum_background.jpg"
 
   # Author's name (appears in meta tags and under posts)
   author = "Ross Jacobs"
