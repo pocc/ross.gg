@@ -1,5 +1,11 @@
-# About
-<Amazing picture>
+---
+title: "About"
+description: "About me"
+author: "Ross Jacobs"
+date: "2019-02-28" 
+draft: false
+show_reading_time: false
+---
 
 ## General
 Ross Jacobs (pocc) is a networking and programming enthusiast. He earned his
