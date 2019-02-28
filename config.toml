@@ -1,0 +1,30 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Ross Jacobs"
+theme = "hyde-hyde"
+
+postNavigation = true
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "posts"
+    post = "<span class='alert'>New!</span>"
+    url = "/posts/"
+    weight = -120
+#  [[menu.main]]
+#    identifier = "portfolio"
+#    name = "portfolio"
+#    url = "/portfolio/"
+#    weight = -110
+  [[menu.main]]
+    identifier = "about"
+    name = "about"
+    url = "/about/"
+    weight = -100
+
+[params.social]
+    github = "pocc"
+    linkedin = "rossbjacobs"
+    email = "rj@swit.sh" 
+
