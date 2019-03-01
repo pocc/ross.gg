@@ -1,2 +1,3 @@
 _gen/
-themes/
+.idea/
+.DS_Store

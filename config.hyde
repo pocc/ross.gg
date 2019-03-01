@@ -8,7 +8,8 @@ subtitle = "Subtitle appears under website title"
 #theme = "Hugo-Octopress"
 #theme = "gohugo-theme-ananke"
 #theme = "hugo-coder"
-theme = "hugo-theme-casper"
+#theme = "hugo-theme-casper"
+theme = "hugo-casper-two"
 
 #disablePathToLower = False
 copyright = "Copyright © 2019, all rights reserved."

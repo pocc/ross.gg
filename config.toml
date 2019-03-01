@@ -1,6 +1,6 @@
 baseURL = "/"
 title = "Ross Jacobs"
-subtitle = "Subtitle appears under website title"
+subtitle = "Subtitle (If you see this, this is an ERROR!)"
 
 # Current theme (multiple here to test their looks)
 #theme = "hyde-hyde"
@@ -11,7 +11,7 @@ subtitle = "Subtitle appears under website title"
 theme = "hugo-theme-casper"
 
 #disablePathToLower = False
-copyright = "Copyright © 2019, Ross Jacobs; all rights reserved."
+copyright = "Copyright © 2019, all rights reserved."
 languageCode = "en"
 DefaultContentLanguage = "en"
 postNavigation = true
@@ -29,14 +29,14 @@ hjsStyle = "default"
 paginatedsections = ["posts"]
 paginate = 6
 
-[permalinks]
-# Configures post URLs
-post = "/blog/:year-:month-:day-:title/"
+# Adhere to post format below
+canonifyurls = true
 
 [menu]
   [[menu.main]]
     identifier = "posts"
     name = "posts"
+    # Will render on some layouts
     pre = "<i class='fas fa-newspaper'></i>"
     post = "<span class='alert'>New!</span>"
     url = "/posts/"
@@ -49,65 +49,33 @@ post = "/blog/:year-:month-:day-:title/"
   [[menu.main]]
     identifier = "about"
     name = "about"
-    pre = "<i class='fas fa-user-circle'></i>"
+    # Will render on some layouts
+	pre = "<i class='fas fa-newspaper'></i>"
     url = "/about/"
     weight = -100
 
 [params]
-  # If false, all contents of posts will appear on the front page and in pagination
-  truncate = true
-
-  # cover image on front page
+  description = "Writes Software"
+  # metadescription = "Used as 'description' meta tag for both home and index pages. If not set, 'description' will be used instead"
   cover = "images/lorem_ipsum_background.jpg"
-
-  # Author's name (appears in meta tags and under posts)
+  logo = "images/rj.jpg"
   author = "Ross Jacobs"
-
-  # This text appears in site header under website title
-  subtitle = "Herder of 1s and 0s"
-
-  # Search engine URL
-  searchEngineURL = "https://www.google.com/search"
-
-  # Text of the "Continue Reading" label. Supports markdown and inline HTML.
-  # For example, &rarr; == right arrow.
-  #continueReadingText = "Would you like to know more? &rarr;"
-
-  # Google analytics code - remove if you do not have/want Google Analytics - needs JavaScript
-  #googleAnalytics = "UA-XXXXX-X"
-
-  # Optional piwik tracking
-  #[params.analytics.piwik]
-  #  URL = "https://stats.example.com"
-  #  ID = "42"
-
-  # Switch to true to enable RSS icon link
-  #rss = true
-
-  # Set to true to use a text label for RSS instead of an icon
-  # This is overwritten by the "rss" setting
-  #textrss = false
-
-  # Website's default description
-  description = "Herder of 1s and 0s"
-
-  # Populate with your search keywords - these will appear in meta tags
-  # defaultKeywords = ["keyword1" , "keyword2" , "keyword3" , "keyword4"]
-
-  # Set to true to hide ReadingTime on posts
-  disableReadingTime = false
-
-  # Set to true to disable downloading of remote Google fonts
-  #disableGoogleFonts = false
-
-  # Remove or set to false to use local fonts
-  #remoteFonts = false
-
-  # Remove or set to false to use FontAwesome CDN, otherwise, the theme uses ForkAwesome local fonts.
-  # fontAwesome = false
-
-[params.social]
-    github = "pocc"
-    linkedin = "rossbjacobs"
-    email = "rj@swit.sh" 
-
+  authorlocation = "San Francisco, United States"
+  authorwebsite = "https://swit.sh"
+  authorbio= "my bio"
+  # Optional RSS-Link, if not provided it defaults to the standard index.xml
+  # RSSLink = "http://feeds.feedburner.com/..."
+  githubName = "pocc"
+  linkedinName = "rossbjacobs"
+  email = "rj@swit.sh"
+  # twitterName = ""
+  # facebookName = ""
+  # codepenName = ""
+  # stackoverflowId = ""
+  # keybaseName = ""
+  # flickrName = ""
+  # instagramName = ""
+  # pinterestName = ""
+  # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
+  hideHUGOSupport = false
+  
