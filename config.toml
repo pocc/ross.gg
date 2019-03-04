@@ -12,7 +12,6 @@ subtitle = "Subtitle appears under website title"
 theme = "hugo-casper-two"
 
 #disablePathToLower = False
-copyright = "Copyright © 2019, all rights reserved."
 languageCode = "en-US"
 DefaultContentLanguage = "en"
 postNavigation = true
@@ -28,7 +27,7 @@ hjsStyle = "default"
 
 # Number of blog posts in each pagination page
 paginatedsections = ["post"]
-paginate = 4
+paginate = 6
 
 [menu]
   [[menu.main]]
@@ -44,7 +43,7 @@ paginate = 4
     weight = 0
   [[menu.main]]
     identifier = "post"
-    name = "post"
+    name = "posts"
     pre = "<i class='fas fa-newspaper'></i>"
     post = "<span class='alert'>New!</span>"
     url = "/post/"
@@ -61,6 +60,11 @@ paginate = 4
 [params]
   # If false, all contents of posts will appear on the front page and in pagination
   truncate = true
+   
+  # Org data
+  orgName = "Ross Jacobs © 2019, all rights reserved"
+  orgWebsite = "https://swit.sh"
+  orgDescription = "Me, myself, and I"
 
   # Author's name (appears in meta tags and under posts)
   author = "Ross Jacobs"
@@ -68,6 +72,7 @@ paginate = 4
   authorLocation = "San Francisco, US" 
   authorWebsite = "https://swit.sh"
   authorDescription = "Herder of 1s and 0s"
+  copyright = "© 2019 Ross Jacobs, all rights reserved."
 
   # cover image on front page
   cover = "http://q8iphone.me/wp-content/uploads/file-name-digital-background-5bd288a46a19b.png"
@@ -82,6 +87,12 @@ paginate = 4
 
   #casper or caspertwo
   singleViewStyle = "casper"
+
+  #twitterName = ""
+  #fbName = ""
+  githubName = "pocc"
+  linkedinName = "rossbjacobs"
+  emailName = "rj@swit.sh"
 
   # Text of the "Continue Reading" label. Supports markdown and inline HTML.
   # For example, &rarr; == right arrow.
@@ -119,6 +130,9 @@ paginate = 4
 
   # Remove or set to false to use FontAwesome CDN, otherwise, the theme uses ForkAwesome local fonts.
   # fontAwesome = false
+
+  # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
+  showSupport = true
 
 [params.social]
     github = "pocc"
