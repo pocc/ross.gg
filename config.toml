@@ -28,7 +28,7 @@ hjsStyle = "default"
 
 # Number of blog posts in each pagination page
 paginatedsections = ["post"]
-paginate = 6
+paginate = 4
 
 [menu]
   [[menu.main]]
