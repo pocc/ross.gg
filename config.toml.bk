@@ -12,7 +12,7 @@ subtitle = "Subtitle appears under website title"
 theme = "hugo-casper-two"
 
 #disablePathToLower = False
-copyright = "Copyright © 2019, all rights reserved."
+copyright = "Copyright © 2019, Ross Jacobs; all rights reserved."
 languageCode = "en-US"
 DefaultContentLanguage = "en"
 postNavigation = true
@@ -27,8 +27,12 @@ disqusShortname = "Your disqus shortname"
 hjsStyle = "default"
 
 # Number of blog posts in each pagination page
-paginatedsections = ["post"]
+paginatedsections = ["posts"]
 paginate = 6
+
+[permalinks]
+# Configures post URLs
+post = "/blog/:year-:month-:day-:title/"
 
 [menu]
   [[menu.main]]
@@ -43,11 +47,11 @@ paginate = 6
     url = "/about/"
     weight = 0
   [[menu.main]]
-    identifier = "post"
-    name = "post"
+    identifier = "posts"
+    name = "posts"
     pre = "<i class='fas fa-newspaper'></i>"
     post = "<span class='alert'>New!</span>"
-    url = "/post/"
+    url = "/posts/"
     weight = -10
 #  [[menu.main]]
 #    identifier = "portfolio"
@@ -55,23 +59,16 @@ paginate = 6
 #    url = "/portfolio/"
 #    weight = -110
 
-[permalinks]
-  post = "/post/:slug/"
-
 [params]
   # If false, all contents of posts will appear on the front page and in pagination
   truncate = true
 
+  # cover image on front page
+  cover = "images/lorem_ipsum_background.jpg"
+  logo = "images/rj.png"
+
   # Author's name (appears in meta tags and under posts)
   author = "Ross Jacobs"
-  authorAvatar = "favicon.ico"
-  authorLocation = "San Francisco, US" 
-  authorWebsite = "https://swit.sh"
-  authorDescription = "Herder of 1s and 0s"
-
-  # cover image on front page
-  cover = "http://q8iphone.me/wp-content/uploads/file-name-digital-background-5bd288a46a19b.png"
-  logo = "favicon.ico"
 
   # This text appears in site header under website title
   title = "Ross Jacobs"
@@ -79,9 +76,6 @@ paginate = 6
 
   # Search engine URL
   searchEngineURL = "https://www.google.com/search"
-
-  #casper or caspertwo
-  singleViewStyle = "casper"
 
   # Text of the "Continue Reading" label. Supports markdown and inline HTML.
   # For example, &rarr; == right arrow.

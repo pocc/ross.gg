@@ -1,2 +1,11 @@
+# IDE
+.idea/
+
+# Macos
+.DS_Store
+
+# Generated 
 _gen/
+
+# Other git repos
 themes/
