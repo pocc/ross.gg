@@ -75,12 +75,13 @@ paginate = 6
   copyright = "© 2019 Ross Jacobs, all rights reserved."
 
   # cover image on front page
-  cover = "http://q8iphone.me/wp-content/uploads/file-name-digital-background-5bd288a46a19b.png"
+  #(source) cover = "http://q8iphone.me/wp-content/uploads/file-name-digital-background-5bd288a46a19b.png"
+  cover = "https://dl.dropboxusercontent.com/s/wyk6n1bvrd02dpa/cover_image.webp"
   logo = "favicon.ico"
 
   # This text appears in site header under website title
   title = "Ross Jacobs"
-  subtitle = "Herder of 1s and 0s"
+  subtitle = "Writes Software"
 
   # Search engine URL
   searchEngineURL = "https://www.google.com/search"
@@ -114,7 +115,7 @@ paginate = 6
   #textrss = false
 
   # Website's default description
-  description = "Herder of 1s and 0s"
+  description = "Ross Jacobs' blog"
 
   # Populate with your search keywords - these will appear in meta tags
   # defaultKeywords = ["keyword1" , "keyword2" , "keyword3" , "keyword4"]
