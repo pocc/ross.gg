@@ -1,10 +1,9 @@
 ---
-title: "Portfolio"
+title: "Projects"
 description: "Things I am proud of" 
 date: 2019-03-01T17:17:03Z
 author: Ross Jacobs
 draft: false
-singleViewStyle: "casper"
 ---
 ## Merlink - Meraki VPN Client
 This is a GUI client that will connect you on Windows, Macos, and

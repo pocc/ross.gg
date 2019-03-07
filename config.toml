@@ -24,30 +24,29 @@ paginatedsections = ["post"]
 paginate = 6
 
 [menu]
-  # Use CLI svg instead
-  #[[menu.main]]
-  #  identifier = "home"
-  #  name = "home"
-  #  url = "/home"
-  #  weight = 10
-  [[menu.main]]
-    identifier = "about"
-    name = "about"
-    pre = "<i class='fas fa-user-circle'></i>"
-    url = "/about/"
-    weight = 0
-  [[menu.main]]
-    identifier = "portfolio"
-    name = "portfolio"
-    url = "/portfolio/"
-    weight = -5
   [[menu.main]]
     identifier = "post"
     name = "blog"
     pre = "<i class='fas fa-newspaper'></i>"
     post = "<span class='alert'>New!</span>"
     url = "/post/"
-    weight = -10
+    weight = 100
+  [[menu.main]]
+    identifier = "about"
+    name = "about"
+    pre = "<i class='fas fa-user-circle'></i>"
+    url = "/about/"
+    weight = 50
+  [[menu.main]]
+    identifier = "projects"
+    name = "projects"
+    url = "/projects/"
+    weight = 40
+  [[menu.main]]
+    identifier = "open_source"
+    name = "open source"
+    url = "/open_source/"
+    weight = 20
 
 [permalinks]
   post = "/post/:slug/"
