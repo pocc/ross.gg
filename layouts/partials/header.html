@@ -6,8 +6,22 @@
     </div>
 
     <nav class="site-nav">
-      <div class="site-nav-left"><ul class="nav" role="menu">
-        {{ $currentNode := . }}
+      <div class="site-nav-left">
+		  <ul class="nav" role="menu">
+			  <li class="cli-image"><a href="/home">
+		  <svg width="24px" height="24px" viewBox="0 0 550 450" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<g id="Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+			<g id="Icon" fill="#FFFFFF">
+				<polygon id="Shape" fill-rule="nonzero" points="300 400 300 450 550 450 550 400.485437">
+					<animate attributeName="visibility"
+					 values="visible"/>
+				</polygon>
+				<polygon id="Path" points="57.2477969 0 0 53.0630859 185.50251 225 0 396.936914 57.2477969 450 300 225"></polygon>
+				</g>
+			</g>
+		  </svg></a>
+		  </li>
+	    {{ $currentNode := . }}
         {{with .Site.Menus.main}}
         {{ range sort . "Weight" "desc"}}
             <li class="{{if or ($currentNode.IsMenuCurrent "main" .) ($currentNode.HasMenuCurrent "main" .)}}nav-current{{end}}" role="menuitem">

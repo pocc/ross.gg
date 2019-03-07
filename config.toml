@@ -3,12 +3,6 @@ title = "Ross Jacobs"
 subtitle = "Subtitle appears under website title"
 
 # Current theme (multiple here to test their looks)
-#theme = "hyde-hyde"
-#theme = "bilberry-hugo-theme"
-#theme = "Hugo-Octopress"
-#theme = "gohugo-theme-ananke"
-#theme = "hugo-coder"
-#theme = "hugo-theme-casper"
 theme = "hugo-casper-two"
 
 #disablePathToLower = False
@@ -30,11 +24,12 @@ paginatedsections = ["post"]
 paginate = 6
 
 [menu]
-  [[menu.main]]
-    identifier = "home"
-    name = "home"
-    url = "/"
-    weight = 10
+  # Use CLI svg instead
+  #[[menu.main]]
+  #  identifier = "home"
+  #  name = "home"
+  #  url = "/home"
+  #  weight = 10
   [[menu.main]]
     identifier = "about"
     name = "about"
@@ -42,17 +37,17 @@ paginate = 6
     url = "/about/"
     weight = 0
   [[menu.main]]
+    identifier = "portfolio"
+    name = "portfolio"
+    url = "/portfolio/"
+    weight = -5
+  [[menu.main]]
     identifier = "post"
-    name = "posts"
+    name = "blog"
     pre = "<i class='fas fa-newspaper'></i>"
     post = "<span class='alert'>New!</span>"
     url = "/post/"
     weight = -10
-#  [[menu.main]]
-#    identifier = "portfolio"
-#    name = "portfolio"
-#    url = "/portfolio/"
-#    weight = -110
 
 [permalinks]
   post = "/post/:slug/"
