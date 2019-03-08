@@ -24,13 +24,14 @@ paginatedsections = ["post"]
 paginate = 6
 
 [menu]
-  [[menu.main]]
-    identifier = "post"
-    name = "blog"
-    pre = "<i class='fas fa-newspaper'></i>"
-    post = "<span class='alert'>New!</span>"
-    url = "/post/"
-    weight = 100
+  # Commenting out while >_ svg links to /
+  #[[menu.main]]
+  #  identifier = "post"
+  #  name = "blog"
+  #  pre = "<i class='fas fa-newspaper'></i>"
+  #  post = "<span class='alert'>New!</span>"
+  #  url = "/post/"
+  #  weight = 100
   [[menu.main]]
     identifier = "about"
     name = "about"
@@ -75,7 +76,7 @@ paginate = 6
 
   # This text appears in site header under website title
   title = "Ross Jacobs"
-  subtitle = "Writes Software"
+  subtitle = "Builds Programs"
 
   # Search engine URL
   searchEngineURL = "https://www.google.com/search"
