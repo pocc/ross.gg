@@ -68,7 +68,7 @@ paginate = 6
   authorAvatar = "favicon.ico"
   authorLocation = "San Francisco, US" 
   authorWebsite = "https://swit.sh"
-  authorDescription = "Shepherd of 1s and 0s"
+  authorDescription = "Herder of 1s and 0s"
   copyright = "© 2019 Ross Jacobs, all rights reserved."
 
   # cover image on front page
