@@ -1,6 +1,8 @@
 baseURL = "/"
 title = "Ross Jacobs"
 subtitle = "Subtitle appears under website title"
+buildDrafts = true
+enableGitInfo = true
 
 # Current theme (multiple here to test their looks)
 theme = "hugo-casper-two"
@@ -66,7 +68,7 @@ paginate = 6
   authorAvatar = "favicon.ico"
   authorLocation = "San Francisco, US" 
   authorWebsite = "https://swit.sh"
-  authorDescription = "Herder of 1s and 0s"
+  authorDescription = "Shepherd of 1s and 0s"
   copyright = "© 2019 Ross Jacobs, all rights reserved."
 
   # cover image on front page
@@ -76,7 +78,7 @@ paginate = 6
 
   # This text appears in site header under website title
   title = "Ross Jacobs"
-  subtitle = "Builds Programs"
+  subtitle = "Herder of 1s and 0s"
 
   # Search engine URL
   searchEngineURL = "https://www.google.com/search"
@@ -129,9 +131,4 @@ paginate = 6
 
   # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
   showSupport = true
-
-[params.social]
-    github = "pocc"
-    linkedin = "rossbjacobs"
-    email = "rj@swit.sh" 
 
