@@ -1,14 +1,13 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
+draft: true
 author: Ross Jacobs
-desc: "Regular post"
+desc: "Julia post"
 keywords: draft
 tags: 
   - draft
 image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
-
-draft: true
 ---
 
 # A simply scrumptious title
@@ -42,11 +41,23 @@ _One sentence that summarizes the article._
 
 ### Prewriting
 
-**Audience**
+#### Article Ideas
 
-Who is your audience?
+1. How does Julia compare in terms of performance to other languages?
+2. How does Julia work under the hood? Compared to Python?
+3. How do more advanced concepts work? What can you do in Julia that you
+   can't in other languages?
+4. What are the major Julia libraries in 2019 (with examples)? 
+5. Hitchhiker's Guide to Julia
+6. Python vs Julia feature comparison (i.e. SymPy, Numpy, etc.)
 
-**Deliverable**
+#### Audience: Julia users
+
+Julia users are largely Python (and occasionally R) users. Articles should use
+metaphors from those languages. Many Julia users are learning it for the first
+time, so articles that make basic usage easier will be good. 
+
+#### Deliverable
 
 What is the ONE thing your audince gain from reading this?
 

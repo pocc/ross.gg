@@ -1,14 +1,13 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
+draft: true
 author: Ross Jacobs
 desc: "Regular post"
 keywords: draft
 tags: 
   - draft
 image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
-
-draft: true
 ---
 
 # A simply scrumptious title

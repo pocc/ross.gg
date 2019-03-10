@@ -1,14 +1,13 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
+draft: true
 author: Ross Jacobs
 desc: "Regular post"
 keywords: draft
 tags: 
   - draft
 image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
-
-draft: true
 ---
 
 # A simply scrumptious title
@@ -42,15 +41,19 @@ _One sentence that summarizes the article._
 
 ### Prewriting
 
-**Audience**
+#### Potential Articles
 
-Who is your audience?
+- What will I need to change in my life in response to global warming?
 
-**Deliverable**
+#### Audience
+
+General. Assume intelligent people who will skeptical will be reading.
+
+#### Deliverable
 
 What is the ONE thing your audince gain from reading this?
 
-**Niche**
+#### Niche
 
 What makes this unique compared to existing articles? 
 
@@ -66,8 +69,9 @@ What makes this unique compared to existing articles?
 **Extended**
 * [ ] Keywords: Front Matter, Title, Desc, Post: (top, end), Images: (alt, title)
 * [ ] 3-4 external links
-* [ ] 1-2 sources
+* [ ] As many sources as possible
 * [ ] 2-4 internal links
+* [ ] Have dad read over it
 * [ ] Lint!
 
 ### Prepublish

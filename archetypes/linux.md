@@ -1,14 +1,13 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
+draft: true
 author: Ross Jacobs
-desc: "Regular post"
+desc: "Linux post"
 keywords: draft
 tags: 
   - draft
 image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
-
-draft: true
 ---
 
 # A simply scrumptious title
@@ -44,7 +43,7 @@ _One sentence that summarizes the article._
 
 **Audience**
 
-Who is your audience?
+Assume that Linux Wizards are reading and that every explanation n
 
 **Deliverable**
 
@@ -68,6 +67,7 @@ What makes this unique compared to existing articles?
 * [ ] 3-4 external links
 * [ ] 1-2 sources
 * [ ] 2-4 internal links
+* [ ] Have a linux person read over the article for accuracy
 * [ ] Lint!
 
 ### Prepublish

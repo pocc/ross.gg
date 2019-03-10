@@ -1,3 +1,10 @@
+# Hugo config.toml that controls variables for this website.
+# For more info, see https://gohugo.io/getting-started/configuration/
+# 
+# Defaults:
+#   Max chars per code line: 95
+#
+
 baseURL = "/"
 title = "Ross Jacobs"
 subtitle = "Subtitle appears under website title"
