@@ -4,7 +4,7 @@ date: 2019-03-04T16:20:52Z
 author: Ross Jacobs
 desc: "Make a Julia Binary using PackageCompiler"
 keywords: binary
-tags: 
+tags:
   - draft1
 image: "https://dl.dropboxusercontent.com/s/i7hlnqfd5lek700/julia_purple_exe.webp"
 
@@ -12,6 +12,7 @@ draft: true
 ---
 
 # Making a Julia Binary
+
 _Compile your Julia project with PackageCompiler for portability and speed._
 
 Julia is a JIT language; however, sometimes it might be nice to have an
@@ -21,12 +22,12 @@ article will go over both.
 
 ## Initial Setup
 
-1. [Install Julia 1.1.0](https://julialang.org/downloads/) if not installed
+1. [Install Julia 1.1.0](https://julialang.org/downloads/) if absent
 2. Install PackageCompiler and Deps
 
 ```julia
 # ArgParse is required for PackageCompiler
-julia -e 'using Pkg; 
+julia -e 'using Pkg;
 		  Pkg.add("ArgParse");
 		  Pkg.add("PackageCompiler")'
 ```
@@ -40,7 +41,7 @@ system. We are going to save time by using an alias.
 _Use your shell of choice below_
 
 #### bash
-   
+
 ```bash
 $ juliac_path='julia -e println(normpath(Base.find_package(\
 	"PackageCompiler"),"..", "..")'
@@ -49,11 +50,11 @@ $ source ~/.bashrc
 ```
 
 #### powershell
-	
+
 ```powershell
 PS> $juliac_dir = julia -e 'println(normpath(Base.find_package(`
 		\"PackageCompiler\"),\"..\",\"..\"))'
-PS> Set-Alias julia "${juliac_dir}juliac.jl" 
+PS> Set-Alias julia "${juliac_dir}juliac.jl"
 ```
 
 ## Hello World!
@@ -61,7 +62,7 @@ PS> Set-Alias julia "${juliac_dir}juliac.jl"
 ### Code
 
 No introduction is complete without a Hello World. In this example, we'll
-compile a Julia version. 
+compile a Julia version.
 
 ```
 # hello_world.jl
@@ -70,7 +71,7 @@ function AwesomeFuntion()
   println("Hello World!")
 end
 
-# Required PackageCompiler boilerplate 
+# Required PackageCompiler boilerplate
 Base.@ccallable function julia_main(ARGS::Vector{String})::Cint
     AwesomeFunction()
     return 0
@@ -80,15 +81,15 @@ end
 ### Compiling
 
 We will use `juliac hello_world.jl -tavern hello_world` to generate the
-executable. I will cover options here briefly for sake of completeness
-(use `juliac -h` for full details).
+executable. I will cover options here briefly for sake of completeness (use
+`juliac -h` for full details).
 
-- __-t__ Remove temp build files 
-- __-a__ Automatically build required dependencies
-- __-v__ Verbose
-- __-e__ Make executable
-- __-r__ Implies -O3 -g0 [Max (-O)ptimize and debu(-g) at the lowest level]
-- __-n__ Output file name
+- **-t** Remove temp build files
+- **-a** Automatically build required dependencies
+- **-v** Verbose
+- **-e** Make executable
+- **-r** Implies -O3 -g0 [Max (-O)ptimize and debu(-g) at the lowest level]
+- **-n** Output file name
 
 Time to compile will be several minutes, so go grab a ☕!
 
@@ -111,8 +112,9 @@ To end result shoud be approximately 26MB, regardless of system.
 
 ## Conclusion
 
-In this article, we constructed a Julia binary In my [second article](/tbd) on the
-topic, I explore how to encapsulate Julia's Calculus library into a CLI utility.
+In this article, we constructed a Julia binary In my [second article](/tbd) on
+the topic, I explore how to encapsulate Julia's Calculus library into a CLI
+utility.
 
 ## See Also
 
@@ -121,8 +123,7 @@ topic, I explore how to encapsulate Julia's Calculus library into a CLI utility.
 - [PackageCompiler](https://github.com/JuliaLang/PackageCompiler.jl)
 - Other, similar articles
 
-### 
-
+###
 
 <img
   src="http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg"
@@ -157,28 +158,30 @@ What is the ONE thing your audince gain from reading this?
 
 **Niche**
 
-What makes this unique compared to existing articles? 
+What makes this unique compared to existing articles?
 
 ### Checklist
 
 ** Basic**
-* [ ] Intro: How WILL they get the deliverable?
-* [ ] 300-600 words
-* [ ] Images: Cover image, Reengage image/table
-* [ ] Conclusion: How DID they get the deliverable?
-* [ ] Questions/Exercises/Call To Action
+
+- [ ] Intro: How WILL they get the deliverable?
+- [ ] 300-600 words
+- [ ] Images: Cover image, Reengage image/table
+- [ ] Conclusion: How DID they get the deliverable?
+- [ ] Questions/Exercises/Call To Action
 
 **Extended**
-* [ ] Keywords: Front Matter, Title, Desc, Post: (top, end), Images: (alt, title)
-* [ ] 3-4 external links
-* [ ] 1-2 sources
-* [ ] 2-4 internal links
-* [ ] Lint!
+
+- [ ] Keywords: Front Matter, Title, Desc, Post: (top, end), Images: (alt,
+      title)
+- [ ] 3-4 external links
+- [ ] 1-2 sources
+- [ ] 2-4 internal links
+- [ ] Lint!
 
 ### Prepublish
 
 - Engaging: Why will the reader read until the end?
-- Organized: Identify specific things that the reader might be looking
-  for in subsections. How easy are they to find?
+- Organized: Identify specific things that the reader might be looking for in
+  subsections. How easy are they to find?
 - Optimized: Can the Deliverable be provided to the reader in fewer words?
-
