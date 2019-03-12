@@ -8,12 +8,12 @@ tags:
   - draft
 image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
 
-draft: true
+draft: false
 ---
 
 - [ ] Images: Cover image
 
-_Install Julia locally to your $System_
+_Install Julia locally to your \$System_
 
 This article covers the local installation of Julia using packages from the
 [Download Page](https://julialang.org/downloads/). Other options for using Julia
@@ -37,93 +37,96 @@ Choose one and follow the instructins for that target.
    /
    [64-bit](https://julialang-s3.julialang.org/bin/winnt/x64/1.1/julia-1.1.0-win64.exe))
 3. Open the executable with Admin Privileges
-4. _GLOBAL_ | Change the install directory to `%PROGRAMFILES%/Julia`. 
+4. _GLOBAL_ | Change the install directory to `%PROGRAMFILES%/Julia`.
 5. Hit Install > Hit Finish
-6. _GLOBAL_ | Using Powershell with Admin Privileges, add julia permanently to your path
+6. _GLOBAL_ | Using Powershell with Admin Privileges, add julia permanently to
+   your path
 
-    ```powershell
-    $PATH = [Environment]::GetEnvironmentVariable("PATH")
-    $julia_path = "C:\Program Files\Julia"
- 
-    # -DO THIS- For all users on this machine
-    [Environment]::SetEnvironmentVariable("PATH", "$PATH;$julia_path", "Machine")
-    # -OR THIS- For just me
-    [Environment]::SetEnvironmentVariable("PATH", "$PATH;$julia_path")
-	```
+   ```powershell
+   $PATH = [Environment]::GetEnvironmentVariable("PATH")
+   $julia_path = "C:\Program Files\Julia"
 
-7. _USER_ | Add `julia` to profile, change ExecutionPolicy so profile will load
+   # -DO THIS- For all users on this machine
+   [Environment]::SetEnvironmentVariable("PATH", "$PATH;$julia_path", "Machine")
+   # -OR THIS- For just me
+   [Environment]::SetEnvironmentVariable("PATH", "$PATH;$julia_path")
+   ```
 
-    ```powershell
-    $julia_path = $home\AppData\local\Julia-1.1.0\bin\julia 
-    Write-Output "function julia { Invoke-Expression $julia_path }" >> $profile
-    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-	```
+7. _USER_ | Alias `julia` in your \$Profile. If you do not have a profile,
+   [Set one up](/post/setup-a-powershell-profile/).
 
-8. _USER_ | Close all instances of Powershell and then open it
+   ```powershell
+   $julia_path = $home\AppData\local\Julia-1.1.0\bin\julia
+   Add-Content -Path $Profile -Value "function julia { Invoke-Expression $julia_path }"
+   `
+
+   n
+   ```
 
 ### Macos
 
 0. Get [brew](https://brew.sh/) if not installed
 1. _GLOBAL_ | `brew cask install julia`
-2. _USER_ | Download, un/mount dmg, install to ~/Applications, add julia it to PATH
-   
-    ```bash
-    #!/usr/bin/env bash
-    curl https://julialang-s3.julialang.org/bin/mac/x64/1.1/julia-1.1.0-mac64.dmg \
-      -o /tmp/julia-1.1.0.dmg
-    hdiutil attach /tmp/julia-1.1.0.dmg
-    mkdir -p ~/Applications
-    cp -r /Volumes/Julia-1.1.0/Julia-1.1.app ~/Applications/Julia-1.1
-    ln -s ~/Applications/Julia-1.1/Contents/Resources/julia/bin/julia ~/Applications/julia
-    hdiutil detach /Volumes/Julia-1.1.0
+1. _USER_ | Download, un/mount dmg, install to ~/Applications, add julia it to
+   PATH
 
-    if [[ ":$PATH:" != *":$HOME/Applications:"* ]]; then
-    echo "export PATH=$PATH:$HOME/Applications" >> ~/.profile
-      source ~/.profile
-    fi
-	```
+   ```bash
+   #!/usr/bin/env bash
+   curl https://julialang-s3.julialang.org/bin/mac/x64/1.1/julia-1.1.0-mac64.dmg \
+     -o /tmp/julia-1.1.0.dmg
+   hdiutil attach /tmp/julia-1.1.0.dmg
+   mkdir -p ~/Applications
+   cp -r /Volumes/Julia-1.1.0/Julia-1.1.app ~/Applications/Julia-1.1
+   ln -s ~/Applications/Julia-1.1/Contents/Resources/julia/bin/julia ~/Applications/julia
+   hdiutil detach /Volumes/Julia-1.1.0
+
+   if [[ ":$PATH:" != *":$HOME/Applications:"* ]]; then
+   echo "export PATH=$PATH:$HOME/Applications" >> ~/.profile
+     source ~/.profile
+   fi
+   ```
 
 ### Linux
 
 1. Download the binary
 
-    ```bash
-    # -DO THIS- 64-bit
-    curl https://julialang-s3.julialang.org/bin/linux/x64/1.1/julia-1.1.0-linux-x86_64.tar.gz \
-      -o /tmp/julia.tar.gz
-    # -OR THIS- 32-bit
-    curl https://julialang-s3.julialang.org/bin/linux/x86/1.1/julia-1.1.0-linux-i686.tar.gz \
-      -o /tmp/julia.tar.gz
-    ```
-   
+   ```bash
+   # -DO THIS- 64-bit
+   curl https://julialang-s3.julialang.org/bin/linux/x64/1.1/julia-1.1.0-linux-x86_64.tar.gz \
+     -o /tmp/julia.tar.gz
+   # -OR THIS- 32-bit
+   curl https://julialang-s3.julialang.org/bin/linux/x86/1.1/julia-1.1.0-linux-i686.tar.gz \
+     -o /tmp/julia.tar.gz
+   ```
+
 2. _GLOBAL_ | Download, extract, and copy to /opt/local, add to PATH
-   
-    ```bash
-    tar -C /tmp -xzf /tmp/julia.tar.gz
-    cp -r /tmp/julia /opt/local
-   
-    if [[ ":$PATH:" != *":/opt/local:"* ]]; then
-      echo "export PATH=$PATH:/opt/local" >> ~/.profile
-      source ~/.profile
-    fi
-    ```
+
+   ```bash
+   tar -C /tmp -xzf /tmp/julia.tar.gz
+   cp -r /tmp/julia /opt/local
+
+   if [[ ":$PATH:" != *":/opt/local:"* ]]; then
+     echo "export PATH=$PATH:/opt/local" >> ~/.profile
+     source ~/.profile
+   fi
+   ```
 
 3. _USER_ | Download, extract, copy to ~/bin, and add to PATH
 
-    ```bash
-    tar -C /tmp -xzf /tmp/julia.tar.gz
-    mkdir -p ~/bin
-    cp -r /tmp/julia ~/bin
-   
-    if [[ ":$PATH:" != *":~/bin:"* ]]; then
-      echo "export PATH=$PATH:~/bin" >> ~/.profile
-      source ~/.profile
-    fi
-    ```
+   ```bash
+   tar -C /tmp -xzf /tmp/julia.tar.gz
+   mkdir -p ~/bin
+   cp -r /tmp/julia ~/bin
+
+   if [[ ":$PATH:" != *":~/bin:"* ]]; then
+     echo "export PATH=$PATH:~/bin" >> ~/.profile
+     source ~/.profile
+   fi
+   ```
 
 ## Verification
 
-Open a shell and ensure julia==1.1.0 installed correctly
+Open a new shell to make sure julia==1.1.0 is installed correctly
 
 ### Bash
 

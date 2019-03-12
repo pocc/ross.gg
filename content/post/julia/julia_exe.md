@@ -8,17 +8,20 @@ tags:
   - draft1
 image: "https://dl.dropboxusercontent.com/s/i7hlnqfd5lek700/julia_purple_exe.webp"
 
-draft: true
+draft: false
 ---
 
-# Making a Julia Binary
-
-_Compile your Julia project with PackageCompiler for portability and speed._
+_Compile your Julia project with PackageCompiler for portability_
 
 Julia is a JIT language; however, sometimes it might be nice to have an
 executable. There are two ways to interact with PackageCompiler: Using the CLI
 using `juliac` and by adding PackageCompiler as part of your script. This
 article will go over both.
+
+**ASSERTS**
+
+- If you are using powershell, make sure you have
+  [Setup Your Powershell Profile](/post/setup-a-powershell-profile/)
 
 ## Initial Setup
 
@@ -45,7 +48,7 @@ _Use your shell of choice below_
 ```bash
 $ juliac_path='julia -e println(normpath(Base.find_package(\
 	"PackageCompiler"),"..", "..")'
-$ echo "julia ${juliac_path}juliac.jl" >> ~/.bashrc
+$ echo "juliac ${juliac_path}juliac.jl" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
@@ -54,7 +57,7 @@ $ source ~/.bashrc
 ```powershell
 PS> $juliac_dir = julia -e 'println(normpath(Base.find_package(`
 		\"PackageCompiler\"),\"..\",\"..\"))'
-PS> Set-Alias julia "${juliac_dir}juliac.jl"
+PS> Add-Content -Path $profile -Value "function juliac { julia `"${juliac_dir`" }"
 ```
 
 ## Hello World!

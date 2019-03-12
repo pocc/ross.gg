@@ -12,3 +12,7 @@ also like to learn about how to use GTD.
 I think most importantly though, it is importnat to be able to define boundaries
 of how to use a program. A program like Dynalist that is so freeform makes it
 harder to nail down a system that best utilizes it.
+
+There are several key components to [GTD](LINK TO GTD).
+
+- If it's small, do it
