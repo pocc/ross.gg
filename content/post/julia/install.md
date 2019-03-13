@@ -6,14 +6,14 @@ desc: "Install Julia locally to your $System"
 keywords: install
 tags:
   - draft
-image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
+image: https://dl.dropboxusercontent.com/s/8k0asasb2jjzu6a/install_julia.png
 
 draft: false
 ---
 
 - [ ] Images: Cover image
 
-_Install Julia locally to your \$System_
+_Install Julia locally to your $System_
 
 This article covers the local installation of Julia using packages from the
 [Download Page](https://julialang.org/downloads/). Other options for using Julia
@@ -58,9 +58,6 @@ Choose one and follow the instructins for that target.
    ```powershell
    $julia_path = $home\AppData\local\Julia-1.1.0\bin\julia
    Add-Content -Path $Profile -Value "function julia { Invoke-Expression $julia_path }"
-   `
-
-   n
    ```
 
 ### Macos
@@ -88,13 +85,13 @@ Choose one and follow the instructins for that target.
 
 ### Linux
 
-1. Download the binary
+1. Download the binary, depending on your architecture
 
    ```bash
-   # -DO THIS- 64-bit
+   # Download 64-bit
    curl https://julialang-s3.julialang.org/bin/linux/x64/1.1/julia-1.1.0-linux-x86_64.tar.gz \
      -o /tmp/julia.tar.gz
-   # -OR THIS- 32-bit
+   # Or 32-bit
    curl https://julialang-s3.julialang.org/bin/linux/x86/1.1/julia-1.1.0-linux-i686.tar.gz \
      -o /tmp/julia.tar.gz
    ```
@@ -135,7 +132,8 @@ Open a new shell to make sure julia==1.1.0 is installed correctly
     <source type="image/png" srcset="https://dl.dropboxusercontent.com/s/kwkmv93bzky7dze/bash_julia.png">
     <img
 	src="https://dl.dropboxusercontent.com/s/kwkmv93bzky7dze/bash_julia.png"
-	alt="Julia Install on Bash" style="height:80%;width:80%;text-align:left;margins:0px">
+	alt="Julia Install on Bash" style="height:80%;width:80%;text-align:left;margins:0px"
+	Title="Julia Install on Bash">
 </picture>
 
 ### Powershell
@@ -144,7 +142,8 @@ Open a new shell to make sure julia==1.1.0 is installed correctly
     <source type="image/webp" srcset="https://dl.dropboxusercontent.com/s/aw99vi0qst959v9/pwsh_julia.webp">
     <source type="image/png" srcset="https://dl.dropboxusercontent.com/s/9eku6li80jqjftq/pwsh_julia.png">
     <img src="https://dl.dropboxusercontent.com/s/9eku6li80jqjftq/pwsh_julia.png"
-	alt="Julia Install on Powershell" style="height:80%;width:80%;text-align:left;margins:0px">
+	alt="Julia Install on Powershell" style="height:80%;width:80%;text-align:left;margins:0px"
+	Title="Julia Install on Powershell">
 </picture>
 
 ## Next Steps

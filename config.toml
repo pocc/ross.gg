@@ -8,7 +8,7 @@
 baseURL = "/"
 title = "Ross Jacobs"
 subtitle = "Subtitle appears under website title"
-buildDrafts = true
+buildDrafts = false
 enableGitInfo = true
 
 # Current theme (multiple here to test their looks)
