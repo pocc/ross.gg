@@ -26,7 +26,8 @@ you will be adding a dependency to your project.
 In my opinion reducing external dependencies makes for cleaner code.
 This article is aimed at people who are willing to use a clunkier http interface
 (urllib) to reduce dependencies. This article provides examples of urllib and how to
-migrate from requests to urllib.
+migrate from requests to urllib. If you feel yourself wanting to simplify urllib
+or write a wrapper around functionality, just use requests.
 
 [0]: [Asking the community for input](https://github.com/kennethreitz/requests/issues/2424)
 <br>[1]: [Kenneth Reitz on stdlib inclusion](http://docs.python-requests.org/en/master/dev/philosophy/#standard-library)
@@ -37,6 +38,78 @@ migrate from requests to urllib.
 
 ## What reasons are there for sticking with Requsets? 
 (urllib might be behind the times when it comes to ssl)
+
+
+http://docs.python-requests.org/en/master/user/quickstart/
+
+```python
+import requests
+import urllib.request
+import urllib.error
+
+# 
+site = "https://httpbin.org/"
+headers = {'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate'}
+data = {'key': 'value'} 
+
+# GET
+requests_resp = requests.get(site + "get")
+# --- 
+urllib_obj = urllib.request.Request(site + "get")
+urllib_resp = urllib.request.urlopen(urllib_obj)
+
+# POST
+requests_resp = requests.get(site + "post", data=data)
+# --- 
+encoded = urllib.parse.urlencode(data).encode('utf-8') 
+urllib_resp = urllib.request.urlopen(site + "post", encoded)
+
+# PUT
+requests_resp = requests.get(site + "put", data=data)
+# --- 
+encoded = urllib.parse.urlencode(data).encode('utf-8') 
+urllib_obj = urllib.request.Request(site + "put", data=encoded, method="PUT")
+urllib_resp = urllib.request.urlopen(urllib_obj)
+
+# DELETE
+requests_resp = requests.delete(site + "delete")
+# --- 
+urllib_obj = urllib.request.Request(site + "delete", method="DELETE")
+urllib_resp = urllib.request.urlopen(urllib_obj)
+
+# OPTIONS
+requests_resp = requests.options(site + "get")
+print(requests_resp.headers)
+# ---
+urllib_obj = urllib.request.Request(site + "get", method="OPTIONS")
+urllib_resp = urllib.request.urlopen(urllib_obj)
+print(urllib_resp.headers)
+
+
+# Returned object type:
+type(r)   # requests
+type(ur)  # http.lib.HTTPConnection
+```
+
+For this table, assume that obj = response class object
+
+| Property                     | requests                                             | urllib                       |
+|------------------------------|------------------------------------------------------|------------------------------|
+| _response class_             | _requests_                                           | [_http.lib.HTTPResponse_][1] |
+|                              |                                                      |                              |
+| Close the connection         | obj.close()                                          |                              |
+|                              | obj.iter_content(chunk_size=1, decode_unicode=False) |                              |
+| Get underlying socket fileno | -                                                    | obj.fileno()                 |
+|                              |                                                      |                              |
+| server's response headers    |                                                      | obj.msg                      |
+| status code                  | obj.status_code                                      | obj.status                   |
+| status reason                | obj.reason                                           | obj.reason                   |
+| server HTTP version          | -                                                    | obj.version                  |
+| Is stream closed?            | -                                                    | obj.closed                   |
+
+[1]: https://docs.python.org/3/library/http.client.html#httpresponse-objects
+
+
 
 ## Further Reading
 
