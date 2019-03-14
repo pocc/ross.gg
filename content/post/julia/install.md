@@ -5,7 +5,8 @@ author: Ross Jacobs
 desc: "Install Julia locally to your $System"
 keywords: install
 tags:
-  - draft
+  - julia
+  - setup
 image: https://dl.dropboxusercontent.com/s/8k0asasb2jjzu6a/install_julia.png
 
 draft: false

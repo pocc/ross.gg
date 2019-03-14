@@ -3,9 +3,9 @@ title: "Making a Julia Binary"
 date: 2019-03-04T16:20:52Z
 author: Ross Jacobs
 desc: "Make a Julia Binary using PackageCompiler"
-keywords: binary
 tags:
-  - draft1
+  - Julia
+  - Compilation
 image: "https://dl.dropboxusercontent.com/s/i7hlnqfd5lek700/julia_purple_exe.webp"
 
 draft: false

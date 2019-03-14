@@ -1,28 +1,37 @@
 ---
-title: "Coreutils Popularity Contest"
-date: 2019-03-11T19:35:02Z
+title: "Regex"
+date: 2019-03-13T23:22:36Z
 author: Ross Jacobs
-desc: "Popularity of various coreutils"
+desc: "Regular post"
 keywords: draft
-tags:
+tags: 
   - draft
-image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
+image: https://dl.dropboxusercontent.com/s/w39gxdmxtg4nhuh/cthulhu_html.png
 
 draft: true
 ---
 
-_Which coreutils are most used?_
+_What is a Context Free Grammar?_
 
-- [ ] Which utilities have the most commits per the repo?
-- [ ] Top 20 shell projects on github by stars (using this
-      https://github.com/search?l=shell&o=desc&p=3&q=stars%3A%3E1&s=stars&type=Repositories)
-      _ [ ] robbyrussell/oh-my-zsh _ [ ] creationix/nvm _ [ ] open-guides/og-aws
-      _ [ ] nvie/gitflow _ [ ] mathiasbynens/dotfiles _ [ ]
-      StreisandEffect/streisand _ [ ] dokku/dokku _ [ ] powerline/fonts _ [ ]
-      pyenv/pyenv _ [ ] pi-hole/pi-hole _ [ ] charlax/professional-programming _
-      [ ] tj/git-extras _ [ ] fish-shell/fish-shell _ [ ] source-foundry/Hack _
-      [ ] Neilpang/acme.sh _ [ ] rbenv/rbenv _ [ ] facebook/graphql _ [ ] tj/n _
-      [ ] dylanaraps/pure-bash-bible _ [ ] dotnet/core
+<script type="text/javascript">document.write("Now this is Javascript")</script>
+
+<a href="https://stackoverflow.com/questions/1732348#1732454">
+  <picture>
+    <source type="image/webp" srcset="https://dl.dropboxusercontent.com/s/w39gxdmxtg4nhuh/cthulhu_html.png">
+    <source type="image/png" srcset="https://dl.dropboxusercontent.com/s/w39gxdmxtg4nhuh/cthulhu_html.png">
+    <img src="https://dl.dropboxusercontent.com/s/w39gxdmxtg4nhuh/cthulhu_html.png"
+	  alt="Cthulhu wants its regex back" style="height:100%;width:60%;margins:0px"
+	  align="left"
+	  Title="Cthulhu wants its regex back">
+  </picture>
+</a>
+
+[Source of Cthulhu](https://stackoverflow.com/questions/1732348#1732454)
+
+
+**Asserts**
+- Assert 1
+- Assert 2
 
 ## Further Reading
 
