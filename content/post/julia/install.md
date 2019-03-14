@@ -7,6 +7,7 @@ keywords: install
 tags:
   - julia
   - setup
+  - guide
 image: https://dl.dropboxusercontent.com/s/8k0asasb2jjzu6a/install_julia.png
 
 draft: false

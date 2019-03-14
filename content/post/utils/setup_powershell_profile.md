@@ -7,6 +7,7 @@ keywords: draft
 tags:
   - powershell
   - setup
+  - guide
 image: https://www.dl.dropboxusercontent.com/s/nvrhskzzhn1c4tf/ps_profile_setup.png
 
 draft: false
