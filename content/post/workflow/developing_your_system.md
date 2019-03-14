@@ -19,19 +19,16 @@ _Optimize your how_
 - You are willing to spend time regularly to prevent it from going stale
 - You are willing to change your system if it fails
 
+## Define the requirements
+
 Noting that this is mostly a roadmap for myself to maintain a system. There are
 some key things to your system:
 
-- If you keep it fresh, it will
+## Types of systems
+- [PARA method](https://praxis.fortelabs.co/the-p-a-r-a-method-a-universal-system-for-organizing-digital-information-75a9da8bfb37/)
 
-## Define the requirements
-
--
-
-<img
-  src="http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg"
-  alt="FIXME"
-  style="width:100%;height=100%;text-align:left"/>
+## Important 
+-  
 
 ## Further Reading
 
@@ -39,31 +36,6 @@ some key things to your system:
 
 - Question/Exercise
 - Question/Exercise
-
-**Relevant Articles**
-
-- [Article 1]()
-- [Article 2]()
-
-**Sources** [0]() [1]()
-
-## Drafting
-
-### Prewriting
-
-**Audience**
-
-Who is your audience?
-
-**Deliverable**
-
-What is the ONE thing your audience gain from reading this?
-
-**Niche**
-
-What makes this unique compared to existing articles?
-
-### Checklist
 
 ** Basic**
 

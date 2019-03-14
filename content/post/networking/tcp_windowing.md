@@ -34,6 +34,15 @@ scenario. To avoid this scenario, these are things you can do (add content).
 * How does a network card determine how many packets should be sent to send a
   file over FTP?
 
+### Stuff from the RFC (will be organized at some point)
+
+The RFC starts with "Computer communication systems are playing an increasingly
+important role in military, government, and civilian environments." Clearly,
+this was an understatemnet in retrospect.
+
+RFC Def: "TCP is a connection-oriented, end-to-end reliable protocol"
+(got to Section 1.5)
+
 **Asserts**
 
 - You are comfortable using and reading wireshark

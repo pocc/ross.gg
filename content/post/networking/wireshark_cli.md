@@ -1,68 +1,57 @@
 ---
-title: "Wireshark_cli"
+title: "Wireshark CLI"
 date: 2019-03-12T12:44:45Z
 author: Ross Jacobs
-desc: "Regular post"
-keywords: draft
+desc: "Using the Wireshark CLI for Packet Analysis"
 tags:
-  - draft
-image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
+  - networking
+  - wireshark
+image: https://allabouttesting.org/wp-content/uploads/2018/06/tshark-count.jpg
 
 draft: true
 ---
 
-There are many wireshark command line utilities. I plan on going over how to use
-them as part of networking troubleshooting and pcap munging.
+_Packet Analysis, Scripted_
 
-These are the existing builtins (and many date from the early 2000's):
+In line with the Unix philosophy of "Do one thing well", Wireshark has many
+small CLI utilities. I assume that you are reading this article because you know
+how to use Wireshark and want to know how to do X with the CLI. 
 
-- capinfos
-- dumpcap
-- editcap
-- mergecap
-- randpkt
-- rawshark
-- reordercap
-- text2pcap
-- tshark
+## capinfos
+Get info about a packet capture
 
-## Commonalities
+## dumpcap
+Utility that other Wireshark utilities use to capture packets 
 
-There a bunch of things that these
+## editcap
+Edit the attributes of a 
 
-## CLI tools
+## mergecap
+Merge two or more packet captures together
 
-### capinfos
+## randpkt
+Generate packets
 
-### dumpcap
+## rawshark
+Never used it
 
-### editcap
+## reordercap
+Sometimes packets are out of order. Reordercap fixes that.
 
-### mergecap
+## text2pcap
+Convert a hexstring into a packet capture
 
-### randpkt
+This article does not cover tshark for reasons of brevity. Continue the journey
+at the [tshark page]()
 
-### rawshark
+## Closing Thoughts
 
-### reordercap
+Personally, I think that wireshark's CLI needs a better API. For example, git
+has a large amount of functionality, but.
 
-### text2pcap
+One example
 
-### tshark
-
-# A simply scrumptious title
-
-_One sentence that summarizes the article._
-
-**Asserts**
-
-- Assert 1
-- Assert 2
-
-<img
-  src="http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg"
-  alt="FIXME"
-  style="width:100%;height=100%;text-align:left"/>
+The current system works, but is not the most intuitive.
 
 ## Further Reading
 
@@ -77,10 +66,6 @@ _One sentence that summarizes the article._
 - [Article 2]()
 
 **Sources** [0]() [1]()
-
-## Drafting
-
-### Prewriting
 
 **Audience**
 
