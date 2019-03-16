@@ -13,6 +13,8 @@ enableGitInfo = true
 
 # Current theme (multiple here to test their looks)
 theme = "hugo-casper-two"
+# Options can be found here: https://help.farbox.com/pygments.html
+PygmentsStyle = "monokai"
 
 #disablePathToLower = False
 languageCode = "en-US"
