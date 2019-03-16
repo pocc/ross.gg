@@ -1,8 +1,8 @@
 ---
-title: "Using Urllib"
+title: "Using urllib or requests"
 date: 2019-03-14T11:35:30Z
 author: Ross Jacobs
-desc: "Using Urllib"
+desc: "How to use Python's http libraries"
 tags: 
   - python
   - urllib
@@ -11,41 +11,117 @@ image: https://i.stack.imgur.com/wMYZG.png
 draft: true
 ---
 
-_Urllib is a part of the Python Standard Library_
+_What Python http library should you use?_
 
-[Urllib Docs](https://docs.python.org/3/library/urllib.html)
+If you use Python 2, please use [this article](https://docs.python.org/3/howto/pyporting.html) first.
 
-[Requests](http://docs.python-requests.org/en/master/) makes Python web scraping
-easy. It also has an inspiring API, which is recommended reading for Python
-neophytes. However, requests is not in the Python
-standard library, and this will also not change any time soon [0] [1] [2]. I do not
-think this is a bad thing though: Requests is an API around existing Python
-libraries. If you want to use this easy to use API, that is your choice; however
-you will be adding a dependency to your project.
+[`urllib`](https://docs.python.org/3/library/urllib.html) and
+[`requests`](http://docs.python-requests.org/en/master/) are two of many http
+libraries. `urllib` is a part of the Python standard library while requests is
+not. `requests` is an API around other Python libraries and is easier to use.
+In fact, it is so well written, that it is [recommended reading](citation) for
+Python neophytes. However, it is not in the Python standard library, and this
+will also not change any time soon [^githubissue] [^docs] [^lwn]. In this article, I will go over
+how to use each to do the same things and why you should choose one or othe
+other for your project. 
 
-In my opinion reducing external dependencies makes for cleaner code.
-This article is aimed at people who are willing to use a clunkier http interface
-(urllib) to reduce dependencies. This article provides examples of urllib and how to
-migrate from requests to urllib. If you feel yourself wanting to simplify urllib
-or write a wrapper around functionality, just use requests.
+If in doubt, go with requests. 
 
-[0]: [Asking the community for input](https://github.com/kennethreitz/requests/issues/2424)
-<br>[1]: [Kenneth Reitz on stdlib inclusion](http://docs.python-requests.org/en/master/dev/philosophy/#standard-library)
-<br>[2]: [LWN discussion based on [1]](https://lwn.net/Articles/640838/)
+[^githubissue]: [Asking the community for input in Github Issue](https://github.com/kennethreitz/requests/issues/2424)
+[^docs]: [Kenneth Reitz on stdlib inclusion](http://docs.python-requests.org/en/master/dev/philosophy/#standard-library)
+[^lwn]: [LWN discussion based on (2)](https://lwn.net/Articles/640838/)
 
-## Asserts
-- You are a python programmer who interacts with websites 
+## urllib
+`urllib` has these characteristics: 
 
-## What reasons are there for sticking with Requsets? 
-(urllib might be behind the times when it comes to ssl)
+  A) Part of stdlib 
+  B) Inconsistent API that is a pain to use
 
+Reasons to use:
 
-http://docs.python-requests.org/en/master/user/quickstart/
+* Project collaborators do not have pip installed
+* System does not have internet access/pip
+* Desire to minimize project size
+  * You may want to choose a different language
+    if optimization is important
+* Desire to have no project dependencies
+* This is designed for small scripts for yourself
 
-```python
-import requests
-import urllib.request
-import urllib.error
+## requests
+`requests` has these characteristics:
+
+  A) Is not a part of and will not be added to stdlib
+  B) Beuatiful API that is easy to use 
+
+Requests to use:
+
+* It is more readable, so makes code more maintainable
+* If you are a part of a team 
+* If there are more than >3 requests made in project
+* If you feel like you are writing wrappers for urllib's interface
+* If you are new to Python / are prototyping 
+
+## Alike and not
+
+### import
+
+| urllib                              | requests          |
+|-------------------------------------|-------------------|
+| `from urllib import request, error` | `import requests` |
+
+### init vars
+
+_These variables are required for calls below_
+
+| urllib                                                                                                                                                                             | requests                                                                                                                        |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| {{< highlight python3 >}}site = "https://httpbin.org/"<br>data = {'key': 'value'}<br>headers = {'Accept': '*/*',<br>&nbsp;&nbsp;&nbsp;&nbsp;'Accept-Encoding': 'gzip, deflate'<br>}{{< /highlight >}} | {{< highlight python3 >}}site = "https://httpbin.org/"<br>data = {'key': 'value'}<br># headers are en/decoded as gzip by default{{< /highlight >}} |
+
+<table>
+<thead>
+<tr>
+<th>urllib</th>
+<th>requests</th>
+</tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td><h6>Import</h6></td>
+	<td></td>
+  </tr>
+  <tr>
+    <td>
+      {{< highlight python3 >}}
+from urllib import request, error
+import gzip{{< /highlight >}}
+    </td>
+    <td>
+      {{< highlight python3 >}}import requests{{< /highlight >}} 
+    </td>
+  </tr>
+  <tr>
+    <td><h6>Init Vars</h6></td>
+	<td></td>
+  </tr>
+  <tr>
+    <td>
+      {{< highlight python3 >}}
+site = "https://httpbin.org/"
+data = {'key': 'value'}
+headers = {'Accept': '*/*', 
+    'Accept-Encoding': 'gzip, deflate'}{{< /highlight >}} 
+	</td>
+	<td>
+      {{< highlight python3 >}}
+site = "https://httpbin.org/"
+data = {'key': 'value'}
+# default headers ask to use gzip
+# default receive behavior is to decode gzip{{< /highlight >}} 
+	</td>
+  </tr>
+</tbody>
+</table>
 
 # 
 site = "https://httpbin.org/"
@@ -97,6 +173,9 @@ For this table, assume that obj = response class object
 |------------------------------|------------------------------------------------------|------------------------------|
 | _response class_             | _requests_                                           | [_http.lib.HTTPResponse_][1] |
 |                              |                                                      |                              |
+|------------------------------|------------------------------------------------------|------------------------------|
+| Does this work?                                                                                                  |
+|------------------------------|------------------------------------------------------|------------------------------|
 | Close the connection         | obj.close()                                          |                              |
 |                              | obj.iter_content(chunk_size=1, decode_unicode=False) |                              |
 | Get underlying socket fileno | -                                                    | obj.fileno()                 |
