@@ -13,7 +13,6 @@
     <div class="post-feed">
       {{ partial "post-single" . }}
     </div>
-
     <nav class="pagination" role="navigation">
       {{if .NextInSection}}
           <a class="newer-posts" href="{{ .NextInSection.RelPermalink }}">&larr; <span class="hide">Next Post</span></a>
@@ -31,6 +30,40 @@
     {{ partial "disqus" . }}
   </div>
 </main>
+
+<!-- Figure out TOC later
+<div class="container">
+	<div class="row no-hidden">
+		<div class="col-sm-4">
+
+			<div class="toc">
+				<h4><i class="ion ion-ios-list-outline"></i> Table Of Contents</h4>
+				{{.TableOfContents}}
+			</div>
+
+			{{ partial "sidebar.html" . }}
+		</div>
+
+		<div class="col-sm-8">
+			<article class="content">
+
+				{{ .Content }}
+
+				<div class="post_divider"></div>
+
+				{{ partial "suggestion.html" . }}
+
+				{{ partial "social-share.html" . }}
+			</article>
+		</div>
+
+		<div class="content">
+			{{ partial "comments.html" .}}
+		</div>
+
+	</div>
+</div>
+-->
 
 {{if eq .Site.Params.singleViewStyle "casper"}}
 <aside class="read-next outer">
