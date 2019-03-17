@@ -13,8 +13,6 @@ image: https://dl.dropboxusercontent.com/s/8k0asasb2jjzu6a/install_julia.png
 draft: false
 ---
 
-- [ ] Images: Cover image
-
 _Install Julia locally to your $System_
 
 This article covers the local installation of Julia using packages from the

@@ -1,82 +1,51 @@
 ---
-title: "Versions"
+title: "Julia Versions"
 date: 2019-03-11T13:31:09Z
 author: Ross Jacobs
-desc: "Regular post"
-keywords: draft
+desc: "Different Julia versions"
 tags:
-  - draft
-image: http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg
+  - julia
+  - versions
+image: https://www.residentadvisor.net/images/clubs/versions_logo_ra_312x210px.png
 
-draft: true
+draft: false
 ---
 
-# A simply scrumptious title
+_Which version of Julia should you install?_
 
-_One sentence that summarizes the article._
+## Minor Differences
 
-**Asserts**
+If at all possible, you should [install Julia](/post/julia-install) for latest
+versions of Julia.
 
-- Assert 1
-- Assert 2
+### >=1.0.0
 
-<img
-  src="http://www.quickmeme.com/img/92/927d52fd29f08027c5356e5f8bfd78021dcd2351d18d717eb86d393132f7322a.jpg"
-  alt="FIXME"
-  style="width:100%;height=100%;text-align:left"/>
+Julia jumped from v0.6 to v0.7/v1.0.0 on 8 August 2018, which created breaking
+changes. On the upside, there are _significant_ [mathematical
+optimizations](https://discourse.julialang.org/t/fantastic-progress-in-master-branch/6868/2).
+
+### <1.0.0
+
+There are many libraries that depend on older Julia versions. For example,
+[Mocha](https://github.com/pluskid/Mocha.jl) (ML Framework),
+[FemtoCleaner](https://github.com/JuliaComputing/FemtoCleaner.jl) (Upgrades
+deprecated syntax), [ACME](https://github.com/HSU-ANT/ACME.jl) (Circuit
+Modeling), and [Playground](https://github.com/rofinn/Playground.jl) (Julia
+VENVs) are all tied to v0.6. If you are using an affected libraries, you should
+do the following:
+
+1. Try to migrate to different >=v0.7 libraries with the same functionality
+2. Create or add to existing issue on the repo regarding >=0.7 plans
+3. Install a [julia venv](/post/julia-envs) for v0.6 for this project
+
+Keep in mind that projects get upgraded, so it's worthwhile to occasionally
+check back on repos to see if they've fixed it.  
 
 ## Further Reading
 
-**Questions and Exercises**
+* Check out the Julia [roadmap](https://github.com/JuliaLang/julia/milestones)
+  to see what features are planned! 
+* The [project
+  history](https://github.com/JuliaLang/julia/blob/master/HISTORY.md) is good if
+  you want to know more about how releases differ.
 
-- Question/Exercise
-- Question/Exercise
-
-**Relevant Articles**
-
-- [Article 1]()
-- [Article 2]()
-
-**Sources** [0]() [1]()
-
-## Drafting
-
-### Prewriting
-
-**Audience**
-
-Who is your audience?
-
-**Deliverable**
-
-What is the ONE thing your audince gain from reading this?
-
-**Niche**
-
-What makes this unique compared to existing articles?
-
-### Checklist
-
-** Basic**
-
-- [ ] Intro: How WILL they get the deliverable?
-- [ ] 300-600 words
-- [ ] Images: Cover image, Reengage image/table
-- [ ] Conclusion: How DID they get the deliverable?
-- [ ] Questions/Exercises/Call To Action
-
-**Extended**
-
-- [ ] Keywords: Front Matter, Title, Desc, Post: (top, end), Images: (alt,
-      title)
-- [ ] 3-4 external links
-- [ ] 1-2 sources
-- [ ] 2-4 internal links
-- [ ] Lint!
-
-### Prepublish
-
-- Engaging: Why will the reader read until the end?
-- Organized: Identify specific things that the reader might be looking for in
-  subsections. How easy are they to find?
-- Optimized: Can the Deliverable be provided to the reader in fewer words?

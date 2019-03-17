@@ -14,19 +14,20 @@ draft: true
 _The Hitchhiker’s Guide to Julia!_
 
 This guide came about because there is a lack of unifying documentation for
-Julia. The [official docs](https://docs.julialang.org/en/v1/) are good for
-documenting language features, but not so much best practices. I like Kenneth
-Reitz's work on the Hitchhiker's Guide to Python and want to replicate it for
-Julia.
+Julia. Comprehensive [official documentation](https://docs.julialang.org/en/v1/)
+is good, but can make it difficult to find what you're looking for. The official
+docs are good for documenting language features, but not so much best practices.
+I like Kenneth Reitz's work on the Hitchhiker's Guide to Python and want to
+replicate it for Julia.
 
-This is a work in progress (2/23 => 9% done). Articles not written look [like
-this]().
+This is a work in progress (3/23). Articles not written look [like
+this](). Articles in progress look [like this](/path/to/post).
 
 ## Getting Started
 
-* [ ] [Versions]()
+* [X] [Versions](/post/julia-versions)
 * [X] [Install](/post/installing-julia)
-* [ ] [Local julia interpreter and packages]()
+* [ ] [Local julia interpreter and packages](/post/julia-envs)
 * [ ] [Text Editors/IDEs]()
 * [ ] [Interpreter Tools]()
 * [ ] [Other Tools]()
