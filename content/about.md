@@ -20,7 +20,7 @@ where I enjoy solving complex networking problems. I currently live in San
 Francisco and enjoy the foggy climate. In my downtime, I like scripting to
 automate the small stuff.
 
-My philosophy on programming is to plan the requirements and then just do it.
+My philosophy on programming is if it doesn't exist, make it. 
 
 ### Incomplete list of Ross' superpowers
 
