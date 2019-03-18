@@ -40,14 +40,21 @@ want to install `Calculus` and `Polynomials` on `Julia==0.6`.
    develop dir is where libraries are downloaded so that you can look at the
    code locally.  
     
-	{{< highlight julia >}}julia> ENV["JULIA_PKG_DIR"] ="$(pwd())/venv"{{< /highlight >}}
+	{{< highlight julia >}}julia> ENV["JULIA_PKG_DEVDIR"] = "$(pwd())/venv"{{< /highlight >}}
 
 6. Install your libraries locally
 
 	{{< highlight julia >}}
 	deps = ["Calculus", "Polynomials"]
 	julia> Pkg.develop(deps){{< /highlight >}}
-    
+
+7. (Optional) Updating your local env in a later Julia shell. You can use
+   [Package Levels](https://julialang.github.io/Pkg.jl/v1/api/#Pkg.UpgradeLevel)
+   if you have a specific update in mind.
+    {{< highlight julia >}}julia> ENV["JULIA_PKG_DEVDIR"] = "$(pwd())/venv"
+	deps = ["List", "Of", "All", "My", "Libraries"]
+	Pkg.update(deps){{< /highlight >}}
+
 ### Setting up a direnv
 
 * [ ] Talk about https://direnv.net/
@@ -55,6 +62,7 @@ want to install `Calculus` and `Polynomials` on `Julia==0.6`.
 	  https://docs.julialang.org/en/v1/manual/environment-variables/index.html)
 
 ## See Also
+
 * [Playground.jl](https://github.com/rofinn/Playground.jl): A way to create
   Julia venvs, but currently held back at Julia v0.6.
 * [julia-venv](https://github.com/tkf/julia-venv): Julia venvs _inside of Python_.

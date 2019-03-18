@@ -40,6 +40,7 @@ this](). Articles in progress look [like this](/path/to/post).
 * [ ] [Documentation]()
 * [ ] [Testing]()
 * [ ] [Logging]()
+* [ ] [Pre-Commit]() # Include linting
 * [ ] [Common Gotchas]()
 * [ ] [Choosing a License]()
 

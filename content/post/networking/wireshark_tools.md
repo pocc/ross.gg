@@ -15,3 +15,7 @@ library, Python's PyShark and Scapy.
 Things I care about:
 * Speed
 * Capabilities
+
+https://wiki.wireshark.org/Tools
+
+## Scripts 
