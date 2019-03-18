@@ -17,7 +17,7 @@ In line with the Unix philosophy of "Do one thing well", Wireshark has many
 small CLI utilities. If you are reading this article because you want to know
 how to use to do X with the CLI, you've come to the right place.
 
-<!-- Kludgy TOC until I can figure out how to include {{ hugo tags }} in the content -->
+<!-- Kludgy TOC until I can figure out how to include {{ hugo toc }} in the content -->
 ## Table of Contents
 
 * [Info](#info)
@@ -36,28 +36,91 @@ how to use to do X with the CLI, you've come to the right place.
 	* [Piping](#piping) 
 	* [Capturing over ssh](#ssh-capture)
 
-## <a name="info"></a>Info
+# <a name="info"></a>Info
 
-Read a packet capture and print data about it. While it is possible to specify
-the  
-these utilities, I recommend specifying all options and then munging data in
-your $language.
+_Read a packet capture and print data about it._
 
-### <a name="info"></a>capinfos
+## <a name="capinfos"></a>capinfos
 
 capinfos gets metadata about a packet capture. You can be very granular about
-what pieces of data you want displayed and the output format. For example, 
+what pieces of data you want displayed and the output format. 
 
-It's fairly straightforward to parse this into a hashtable in your $language.
-For an example, check out get_capinfos() in my [wsutils gist](https://gist.github.com/pocc/2c89dd92d6a64abca3db2a29a11f1404).
+### List Data
 
-### <a name=rawshark></a>rawshark
+To list the data (the default), use `capinfos <file>`:
+
+```bash
+$ capinfos dhcp.pcap
+
+File name:           dhcp.pcap
+File type:           Wireshark/tcpdump/... - pcap
+File encapsulation:  Ethernet
+File timestamp precision:  microseconds (6)
+Packet size limit:   file hdr: 65535 bytes
+Number of packets:   4
+File size:           1,400 bytes
+Data size:           1,312 bytes
+Capture duration:    0.070345 seconds
+First packet time:   2004-12-05 19:16:24.317453
+Last packet time:    2004-12-05 19:16:24.387798
+Data byte rate:      18 kBps
+Data bit rate:       149 kbps
+Average packet size: 328.00 bytes
+Average packet rate: 56 packets/s
+SHA256:              2471b5420bdac826eecf8f61a2bbb4a3eb20dbfab7c02ff2be502f349f368214
+RIPEMD160:           43f96835c4501ccdbf53dea46f711a3b8c7f4cff
+SHA1:                07583b66a5b12a6b557cef4ed38d7a0c77968f68
+Strict time order:   True
+Number of interfaces in file: 1
+Interface #0 info:
+                     Encapsulation = Ethernet (1 - ether)
+                     Capture length = 65535
+                     Time precision = microseconds (6)
+                     Time ticks per second = 1000000
+                     Number of stat entries = 0
+                     Number of packets = 4
+```
+
+This format is useful for getting _all_ the metadata from a pcap.
+
+### Tabular Data
+
+`capinfos -T dhcp.pcap` provides the same info in a tab-delimited table. 
+
+```bash
+$ capinfos -T dhcp.pcap
+
+File name	File type	File encapsulation	File time precision	Packet size limit	Packet size limit min (inferred)	Packet size limit max (inferred)	Number of packets	File size (bytes)	Data size (bytes)	Capture duration (seconds)	Start time	End time	Data byte rate (bytes/sec)	Data bit rate (bits/sec)	Average packet size (bytes)	Average packet rate (packets/sec)	SHA256	RIPEMD160	SHA1	Strict time order	Capture hardware	Capture oper-sys	Capture application	Capture comment
+dhcp.pcap	Wireshark/tcpdump/... - pcap	Ethernet	microseconds	65535	n/a	n/a	4	1400	1312	0.070345	2004-12-05 19:16:24.317453	2004-12-05 19:16:24.387798	18650.89	149207.13	328.00	56.86	2471b5420bdac826eecf8f61a2bbb4a3eb20dbfab7c02ff2be502f349f368214	43f96835c4501ccdbf53dea46f711a3b8c7f4cff	07583b66a5b12a6b557cef4ed38d7a0c77968f68	True
+```
+
+What better way to present tabular options than a table‽
+
+| option | description                    |
+|--------|--------------------------------|
+| `-r`   | No header                      |
+| `-m`   | comma-delimited                |
+| `-b`   | space-delimited                |
+| `-q`   | quote infos with single quotes |
+| `-Q`   | quote infos with double quotes |
+
+_Note that interface information is stripped in this format._
+
+### Recommendations
+
+You can also use options `-acdDeEFHiIkKlnosStuxyz` (22) to print specific elements. In
+my opinion, this is a waste of time and harder to read. It's fairly
+straightforward to parse `capinfos <file>` into a hashtable in your $language.  For an
+example in Python, check out get_capinfos() in my [wsutils
+gist](https://gist.github.com/pocc/2c89dd92d6a64abca3db2a29a11f1404).
+
+## <a name=rawshark></a>rawshark
 
 rawshark is a utility that takes an input stream and parses it. It is low-level
 and provides options you would expect to see if you were working
 with the source code. 
 
-#### Reasons not to use rawshark
+### Reasons not to use rawshark
 
 ![Not recommended](https://media2.giphy.com/media/d31vYmpaCrKs9Z6w/giphy.gif)
 
@@ -72,21 +135,14 @@ with the source code.
   capture file. 
 - If piping to text-processing tools like awk, needless text cruft is added
   pertaining to the c-style struct of the packets. 
-- `rawshark` has this generic error for any parsing problem:
-   
-    ```bash
-    rawshark: The standard input appears to be damaged or corrupt.
-    (Bad packet length: 693250156
-    )
-    ```
 
-#### Replace with tshark
+### Replace with tshark
 
 But the reason you should avoid using it because tshark can do everything it can
 do, and better. To transition, rawshark's options `-nNrR` are the same as
 tshark's, and all of the others can be discarded.
 
-#### Attempts to use rawshark (skip to [next section](#edit))
+### Attempts to use rawshark (skip to [next section](#edit))
 
 In this example, I am using the
 [`dhcp.pcap`](https://wiki.wireshark.org/SampleCaptures#General_.2F_Unsorted)
@@ -116,6 +172,7 @@ from wireshark's
 	3 1="65535" 0="65535" -
 	4 1="11" 0="33281" -
 	```
+
 3. Finally, by specifying encap type instead of proto, we get useful output.
 
 	```bash
@@ -144,61 +201,61 @@ from wireshark's
 	
 	
 
-## <a name=edit></a>Edit
+# <a name=edit></a>Edit
 
-### <a name=reordercap></a>reordercap
+## <a name=reordercap></a>reordercap
 
 Sometimes packets are out of order. Reordercap fixes that.
 
-### <a name=mergecap></a>mergecap
+## <a name=mergecap></a>mergecap
 
 Merge two or more packet captures together
 
-### <a name=text2pcap></a>text2pcap
+## <a name=text2pcap></a>text2pcap
 Convert a hexstring into a packet capture
 
-### <a name="editcap"></a>editcap
+## <a name="editcap"></a>editcap
 Edit the attributes of a 
 
 _Given an existing pcap, generate a pcap_
 
  
-## <a name=generate></a>Generate
+# <a name=generate></a>Generate
 
-### <a name=randpkt></a>randpkt
+## <a name=randpkt></a>randpkt
 Generate packets
 
-## <a name=capture></a>Capture
+# <a name=capture></a>Capture
 
 Question: In what significant ways do dumpcap and tshark differ?
 
-### <a name="dumpcap"></a>dumpcap
+## <a name="dumpcap"></a>dumpcap
 
 Utility that other Wireshark utilities use to capture packets 
 
-### <a name="tshark"></a>tshark
+## <a name="tshark"></a>tshark
 
 This article does not cover tshark for reasons of brevity. Continue the journey
 at the [tshark page]()
 
-## <a name=additional-topics></a>Additional Topics
+# <a name=additional-topics></a>Additional Topics
 
-### <a name=editing-hex></a>Editing Hex
+## <a name=editing-hex></a>Editing Hex
 
-### <a name=piping></a>Piping 
+## <a name=piping></a>Piping 
 
 Piping is important to using many of these utilities. For example, it is not
 really possible to use rawshark without piping as it expects a FIFO or stream. 
 
-### <a name=ssh-capture></a>Capturing over ssh
+## <a name=ssh-capture></a>Capturing over ssh
 
 Let's say that you have a remote computer and want to monitor it remotely.
 
-## <a name=closing-thoughts></a>Closing Thoughts
+# <a name=closing-thoughts></a>Closing Thoughts
 
 Personally, I think that wireshark's CLI needs a better API. For example, git
 has a large amount of functionality, but.
 
-## Further Reading
+# Further Reading
 
 * [Official Docs](https://www.wireshark.org/docs/man-pages/)
