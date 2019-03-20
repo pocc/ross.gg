@@ -266,54 +266,45 @@ funny-looking broadcast address. In hex, this is `0xffffffff` => `0xff00ff00`.
 
 ### sed
 
-`sed` gives you the ability to use munge filehex. 
+`sed` gives you the ability to munge filehex. 
 
-`sed -Ei 's/([^\xff]{4})\xff{4}([^\xff]{4})/\1\xff\x00\xff\x00\2/g' dhcp.pcap`
+`sed -Ei 's/([^\xff])\xff{4}([^\xff])/\1\xff\x00\xff\x00\2/g' dhcp.pcap`
 
-Breaking this down:
+#### Explanation
 
-- `-i` : Change in place.
-- `-E` : Use extended regular expressions
-- `\x??` : Hex character. E.g. `echo -e '\x41'` => `A`, just like an [ASCII table](http://www.asciitable.com/) suggests.
-- `\1`, `\2` : We cannot use lookaheand/lookbehind with sed, so use capture groups for things we need.
-
+- `sed -i` : Change in place.
+- `sed -E` : Use extended regular expressions
+- `\x??` : Hex byte. E.g. `echo -e '\x41'` => `A`, just like an [ASCII
+  table](http://www.asciitable.com/) would suggest. Note that a hex byte is 8
+  bits and that in `\xff`, each f is 4 bits.  
+- `1st [^\xff]` : We know that the 32 bits before this regex will be the
+  client's IP address, 0.0.0.0 (0x00000000), and the last byte, 0x00, will match. 
+- `2nd [^\xff]` : We know that the 32 bits after this regex are the UDP ports 
+  for DHCP, 67 and 68. `[^\xff]` will math the source udp port 68 (00 in 0x0068).
+- `\xff{4}`: Given that this packet capture is DHCP, the client
+  sends traffic to a MAC address of ffffffffffff. Thus, a
+  [regex](https://regexone.com/) of `\xff{4}` will match the dest MAC as well.
+  Putting it all together, we get `[^\xff]\xff{4}[^\xff]`. 
+- `([^\xff])` Add parentheses (capturing group) to both preceding and trailing
+  byte, so they are included in the result
+- `\1`, `\2` : We cannot use lookaheand/lookbehind with sed, so use capture
+  groups (corresponding to previous) for preceding and trailing bytes
 
 ### perl
 
 Exactly like `sed`, except we can use negative lookaheads and lookbehinds:
 
-`perl -pi -e 's/(?<!\xff{4})\xff{4}(?!\xff{4})/\xff\x00\xff\x00/g' dhcp.pcap`
+`perl -pi -e 's/(?<!\xff)\xff{4}(?!\xff)/\xff\x00\xff\x00/g' dhcp.pcap`
 
-### xxd & sed
+### vim & xxd 
 
-If you are using a *nix system (or WSL), [xxd](https://linux.die.net/man/1/xxd) is built in:
-
-`xxd -p dhcp.pcap | tr -d '\n' | sed 's/[^f]{4}f{8}[^f]{4}/ff00ff00/g' | xxd -p -r > dhcp2.pcap`
-
-- `xxd -p <file> | tr -d '\n'` converts bin to unformatted hex (-p) sans newlines
-- `sed 's/ffffffff/ff00ff00/g'` makes the relevant conversion 
-- `xxd -p -r <file>` converts unformatted hex (-p) back to bin (-r)
-
-### xxd & vim 
-
-[vim](https://www.openvim.com/) can be used in conjunction with xxd to do the same thing.
-Note that you can manually edit in vim instead of using `:%s` if you want to
-change just one byte.
-
-```bash
-$ vi dhcp.pcap
-  # Enter these vim commands to do the same thing as the xed command above
-
-  :%!xxd -p 
-  :%s/\n//g
-  :%s/([^f])f{8}([^f])/\1ff00ff00\2/g
-  :%!xxd -p -r
-  :w! dhcp2.pcap | q!
-  
-# xxd in vim changes file access times in a way that wireshark doesn't like
-# so read and rewrite the pcap with tshark.
-$ tshark -r dhcp2.pcap -w dhcp2.pcap
-```
+If you are using a *nix system (or WSL), [vim](https://www.openvim.com/) and
+[xxd](https://linux.die.net/man/1/xxd) are built in and can be used in
+conjunction to visually change file bytes. You will need to convert the file
+bytes to something readable using `xxd`. `xxd` without options will provide offsets
+and spaces between bytes while `xxd -p` will show you just the bytes, both in 16
+byte lines. `xxd -r` converts ASCII hex back to the hex literals of your file.
+<script id="asciicast-234965" src="https://asciinema.org/a/234965.js" async></script>
 
 ### emacs
 
@@ -323,9 +314,9 @@ is a great OS, if only it had a good text editor". Where vim integrates better
 with unixy tools like xxd, emacs tries to be your everything.
 Case in point: hexl is a builtin that allows for hex literal editing. Open
 with `M-x hexl-find-file` and use `C-M-x` to insert hex:
-<script id="asciicast-234899" src="https://asciinema.org/a/234899.js" async></script>
+<script id="asciicast-234962" src="https://asciinema.org/a/234962.js" async></script>
 
-### Honorable mentions
+### Honorable Mentions
 
 * [hexcurse](https://github.com/arm0th/hexcurse ): curses-based hex editing utility.
 * [wxhexeditor](http://www.wxhexeditor.org/): The only cross-platform GUI hex editor with binaries.
