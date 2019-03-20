@@ -22,10 +22,12 @@ how to use to do X with the CLI, you've come to the right place.
 
 * [Info](#info)
 	* [capinfos](#capinfos)
-	* [rawshark](#capinfos)
+	* [rawshark](#rawshark)
 * [Edit](#edit) 
+	* [editcap](#editpcap)
 	* [mergecap](#mergecap)
 	* [reordercap](#reordercap)
+	* [text2pcap](#text2pcap)
 * [Generate](#generate)
 	* [randpkt](#randpkt) 
 * [Capture](#capture)
@@ -108,10 +110,11 @@ _Note that interface information is stripped in this format._
 
 ### Recommendations
 
-You can also use options `-acdDeEFHiIkKlnosStuxyz` (22) to print specific elements. In
-my opinion, this is a waste of time and harder to read. It's fairly
-straightforward to parse `capinfos <file>` into a hashtable in your $language.  For an
-example in Python, check out get_capinfos() in my [wsutils
+`capinfos` offers 22 options `-acdDeEFHiIkKlnosStuxyz` to print specific
+elements. My perspective is that it is better to use a scripting language to
+convert all of the infos into a reusable format.  It's fairly straightforward to
+parse `capinfos <file>` into a hashtable in your $language. For an example in
+Python, check out get_capinfos() in my [wsutils
 gist](https://gist.github.com/pocc/2c89dd92d6a64abca3db2a29a11f1404).
 
 ## <a name=rawshark></a>rawshark
@@ -120,9 +123,11 @@ rawshark is a utility that takes an input stream and parses it. It is low-level
 and provides options you would expect to see if you were working
 with the source code. 
 
-### Reasons not to use rawshark
+<div>
+<img src="https://media2.giphy.com/media/d31vYmpaCrKs9Z6w/giphy.gif" alt="Not Recommended"><i>&nbsp;&nbsp;What using rawshark feels like</i></img>
+<p></p></div>
 
-![Not recommended](https://media2.giphy.com/media/d31vYmpaCrKs9Z6w/giphy.gif)
+### Reasons not to use rawshark
 
 - You MUST specify the [tcpdump link-layer header
   type](https://www.tcpdump.org/linktypes.html) or protocol name before any
@@ -136,13 +141,13 @@ with the source code.
 - If piping to text-processing tools like awk, needless text cruft is added
   pertaining to the c-style struct of the packets. 
 
-### Replace with tshark
+### You should use tshark instead
 
 But the reason you should avoid using it because tshark can do everything it can
 do, and better. To transition, rawshark's options `-nNrR` are the same as
 tshark's, and all of the others can be discarded.
 
-### Attempts to use rawshark (skip to [next section](#edit))
+### If you must... (skip to [next section](#edit))
 
 In this example, I am using the
 [`dhcp.pcap`](https://wiki.wireshark.org/SampleCaptures#General_.2F_Unsorted)
@@ -199,33 +204,45 @@ from wireshark's
 	
 	tshark has the advantage of being able to read files too: `tshark -r dhcp.pcap`.
 	
-	
-
 # <a name=edit></a>Edit
 
-## <a name=reordercap></a>reordercap
+_Edit packet captures for fun and profit._
 
-Sometimes packets are out of order. Reordercap fixes that.
+## <a name="editcap"></a>editcap
+
+Edit the attributes of a 
 
 ## <a name=mergecap></a>mergecap
 
 Merge two or more packet captures together
 
+## <a name=reordercap></a>reordercap
+
+Sometimes packets are out of order. Reordercap fixes that.
+
 ## <a name=text2pcap></a>text2pcap
 Convert a hexstring into a packet capture
 
-## <a name="editcap"></a>editcap
-Edit the attributes of a 
 
 _Given an existing pcap, generate a pcap_
 
  
 # <a name=generate></a>Generate
 
+_Make traffic that didn't exist before._ 
+
 ## <a name=randpkt></a>randpkt
 Generate packets
 
+## Comparisons with other tools
+* Scapy
+* Ostinato
+
 # <a name=capture></a>Capture
+
+> _Everything comes to us that belongs to us if we create the capacity to receive it._ 
+
+_-Rabindranath Tagore_
 
 Question: In what significant ways do dumpcap and tshark differ?
 
@@ -242,10 +259,96 @@ at the [tshark page]()
 
 ## <a name=editing-hex></a>Editing Hex
 
+There are a couple ways to edit the hex of a packet capture.  For this scenario,
+let's say we want to change all instances of broadcast address 255.255.255.255
+in our dhcp.pcap to something else. Let's choose 255.0.255.0 because it's a
+funny-looking broadcast address. In hex, this is `0xffffffff` => `0xff00ff00`.
+
+### sed
+
+`sed` gives you the ability to use munge filehex. 
+
+`sed -Ei 's/([^\xff]{4})\xff{4}([^\xff]{4})/\1\xff\x00\xff\x00\2/g' dhcp.pcap`
+
+Breaking this down:
+
+- `-i` : Change in place.
+- `-E` : Use extended regular expressions
+- `\x??` : Hex character. E.g. `echo -e '\x41'` => `A`, just like an [ASCII table](http://www.asciitable.com/) suggests.
+- `\1`, `\2` : We cannot use lookaheand/lookbehind with sed, so use capture groups for things we need.
+
+
+### perl
+
+Exactly like `sed`, except we can use negative lookaheads and lookbehinds:
+
+`perl -pi -e 's/(?<!\xff{4})\xff{4}(?!\xff{4})/\xff\x00\xff\x00/g' dhcp.pcap`
+
+### xxd & sed
+
+If you are using a *nix system (or WSL), [xxd](https://linux.die.net/man/1/xxd) is built in:
+
+`xxd -p dhcp.pcap | tr -d '\n' | sed 's/[^f]{4}f{8}[^f]{4}/ff00ff00/g' | xxd -p -r > dhcp2.pcap`
+
+- `xxd -p <file> | tr -d '\n'` converts bin to unformatted hex (-p) sans newlines
+- `sed 's/ffffffff/ff00ff00/g'` makes the relevant conversion 
+- `xxd -p -r <file>` converts unformatted hex (-p) back to bin (-r)
+
+### xxd & vim 
+
+[vim](https://www.openvim.com/) can be used in conjunction with xxd to do the same thing.
+Note that you can manually edit in vim instead of using `:%s` if you want to
+change just one byte.
+
+```bash
+$ vi dhcp.pcap
+  # Enter these vim commands to do the same thing as the xed command above
+
+  :%!xxd -p 
+  :%s/\n//g
+  :%s/([^f])f{8}([^f])/\1ff00ff00\2/g
+  :%!xxd -p -r
+  :w! dhcp2.pcap | q!
+  
+# xxd in vim changes file access times in a way that wireshark doesn't like
+# so read and rewrite the pcap with tshark.
+$ tshark -r dhcp2.pcap -w dhcp2.pcap
+```
+
+### emacs
+
+The joke goes that
+"[emacs](https://www.gnu.org/software/emacs/manual/html_node/emacs/Editing-Binary-Files.html)
+is a great OS, if only it had a good text editor". Where vim integrates better
+with unixy tools like xxd, emacs tries to be your everything.
+Case in point: hexl is a builtin that allows for hex literal editing. Open
+with `M-x hexl-find-file` and use `C-M-x` to insert hex:
+<script id="asciicast-234899" src="https://asciinema.org/a/234899.js" async></script>
+
+### Honorable mentions
+
+* [hexcurse](https://github.com/arm0th/hexcurse ): curses-based hex editing utility.
+* [wxhexeditor](http://www.wxhexeditor.org/): The only cross-platform GUI hex editor with binaries.
+
 ## <a name=piping></a>Piping 
 
 Piping is important to using many of these utilities. For example, it is not
 really possible to use rawshark without piping as it expects a FIFO or stream. 
+
+| Utility        | stdin formats                 | input formats         | stdout formats  | output formats |
+|----------------|-------------------------------|-----------------------|-----------------|----------------|
+| **capinfos**   | -                             | all pcaps<sup>1</sup> | text            |                |
+| **dumpcap**    |                               |                       | all pcaps       |                |
+| **editcap**    |                               |                       | pcap (all?)     |                |
+| **mergecap**   |                               |                       | pcap (all?)     |                |
+| **randpkt**    | -                             |                       | pcap (all?)     |                |
+| **rawshark**   | raw pcap                      |                       | text            |                |
+| **reordercap** |                               |                       | pcap (all?)     |                |
+| **text2pcap**  | formatted hexdump<sup>2</sup> |                       | raw pcap        | pcap, pcapng   |
+| **tshark**     |                               |                       | all pcaps, text |                |
+
+<sup>1</sup> "All pcaps" denotes all pcap types available on the system. You can see them with `tshark -F`.
+<sup>2</sup> Formatted hexdump can be canonically generated by `od -Ax -tx1 -v`. As of Wireshark v3.0.0, `tshark -r <my.pcap> -x` will [usually](https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14639) generate this as well.
 
 ## <a name=ssh-capture></a>Capturing over ssh
 
