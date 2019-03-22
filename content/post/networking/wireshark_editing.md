@@ -13,13 +13,22 @@ draft: true
 
 _Remember to use a spellchecker when you edit your pcaps_
 
-## <a name="editcap"></a>filtering packets
+## <a name="filtering-packets"></a>filtering packets
 
-Editcap allows you to remove packets by several parameters
-* `-r` 
-* `-A <start time>`
-* `-B <stop time>`
-* [packet#-packet#] [packet#]
+### Editcap
+Editcap allows you to filter out packets with -A, -B, packet range selection
+[packet#-packet#] and inverted selection (-r). If this is a one-off, use
+editcap. If you are scripting this, use tshark.
+
+| Editcap filter example   | Use tshark filter instead                      |
+|--------------------------|------------------------------------------------|
+| `-A 2019-01-23 19:01:23` | `-Y "frame.time >= 1548270083"`                |
+| `-B 2019-01-23 19:01:23` | `-Y "frame.time <= 1548270083"`                |
+| `3-5`                    | `-Y "frame.number >= 3 and frame.number <= 5"` |
+| `-r 3-5`                 | `-Y "frame.number < 3 or frame.number > 5`     |
+| `7`                      | `-Y "frame.number == 7"`                       |
+| `-r 7`                   | `-Y "frame.number != 7"`                       |
+
 ### Using tshark to filter by capture/display filter
 
 In order to create a oneliner and pass the filtered file to editcap, you can

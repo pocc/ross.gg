@@ -2,7 +2,7 @@
 title: "Wireshark Setup"
 date: 2019-03-12T12:44:45Z
 author: Ross Jacobs
-desc: "Get info about a packet capture"
+desc: "Install Wireshark"
 tags:
   - networking
   - wireshark
@@ -11,112 +11,86 @@ image: https://allabouttesting.org/wp-content/uploads/2018/06/tshark-count.jpg
 draft: true
 ---
 
-# <a name="info"></a>Info
+_Setup Wireshark 3.0.0 on your $System_
 
-_Read a packet capture and print data about it._
+_All package managers have versions 2.6.6 and prior. If you want this version,
+you can install it with `$PackageManager install wireshark`._
 
-## <a name="capinfos"></a>capinfos
+## Install 3.0.0
 
-capinfos gets metadata about a packet capture. You can be very granular about
-what pieces of data you want displayed and the output format. 
-<script id="asciicast-235423" src="https://asciinema.org/a/235423.js" async></script>
+### Windows
 
-### General Usage
-To see infos a list, use `capinfos <file>`, as list is the default.
-To see infos as a table, use `capinfos -T <file>`. Note that the tabular format
-skips presentation of interface info. These tabular options can
-help with parsing in a scripting language:
+Currently, Chocolatey is stuck on Wireshark 2.6.6. It is likely that 3.0.0 will
+be added soon, in which case you can install with `choco install wireshark`.
 
-### Recommendations
+You can automate the install with Powershell:
 
-`capinfos` offers 22 options `-acdDeEFHiIkKlnosStuxyz` to print specific
-elements. My perspective is that it is better to use a scripting language to
-convert all of the infos (no options) into a reusable format.  It's fairly straightforward to
-parse `capinfos <file>` into a hashtable in your $language. For an example in
-Python, check out get_capinfos() in my [wsutils
-gist](https://gist.github.com/pocc/2c89dd92d6a64abca3db2a29a11f1404).
+```powershell
+$VER_300 = https://1.eu.dl.wireshark.org/win64/Wireshark-win64-3.0.0.exe
+cd $ENV:Localappdata
+Invoke-Webrequest -Uri $VER_300  -Outfile wireshark.exe
+Start-Process .\wireshark.exe /S
+```
 
-## <a name=rawshark></a>rawshark
+### Macos
 
-rawshark is a utility that takes an input stream and parses it. It is low-level
-and provides options you would expect to see if you were working
-with the source code. 
+`brew cask install wireshark`
 
-<div>
-<img src="https://media2.giphy.com/media/d31vYmpaCrKs9Z6w/giphy.gif" alt="Not Recommended"><i>&nbsp;&nbsp;What using rawshark feels like</i></img>
-<p></p></div>
+### Linux
 
-### Reasons not to use rawshark
+You need to install from source at this point. This will get a clean system on Ubuntu
+18.04 to an install:
 
-- You MUST specify the [tcpdump link-layer header
-  type](https://www.tcpdump.org/linktypes.html) or protocol name before any
-  others (and sometimes it isn't clear [which
-  one](https://stackoverflow.com/questions/14092321/rawshark-output-format-for-802-11-and-radiotap-headers)
-  you should use)
-- You MUST send in an input stream because it cannot parse files
-- You MUST send in raw packets without the header. rawshark only knows how to
-  remove a pcap-type header before processing and errors out on any other
-  capture file. 
-- If piping to text-processing tools like awk, needless text cruft is added
-  pertaining to the c-style struct of the packets. 
+```
+wget https://www.wireshark.org/download/src/wireshark-3.0.0.tar.xz -O /tmp/wireshark-3.0.0.tar.xz
+tar -xvf /tmp/wireshark-3.0.0.tar.xz
+cd /tmp/wireshark-3.0.0
 
-### You should use tshark instead
+sudo apt update && sudo apt dist-upgrade
+sudo apt install cmake libglib2.0-dev libgcrypt20-dev flex yacc bison byacc \
+  libpcap-dev qtbase5-dev libssh-dev libsystemd-dev qtmultimedia5-dev \
+  libqt5svg5-dev qttools5-dev
+cmake .
+make 
+sudo make install
+```
 
-But the reason you should avoid using it because tshark can do everything it can
-do, and better. To transition, rawshark's options `-nNrR` are the same as
-tshark's, and all of the others can be discarded.
+If you are on a different system, only the last 3 steps apply (making sure that
+you've satisfied the other dependencies. `cmake` will kindly let you know if you
+haven't).
 
-### If you must... (skip to [next section](#edit))
+## Configuration
 
-1. So rawshark will not take tshark raw output...
+Additional work is usually necessary to make sure all utilities are on the path.
 
-	```bash
-    $ tshark -r dhcp.pcap -w - | rawshark -s -r - -d proto:udp -F udp.port
-	
-    0 FT_UINT16 BASE_PT_UDP - 
-	rawshark: The standard input appears to be damaged or corrupt.
-	(Bad packet length: 673213298
-	)
-	```
-	
-2. You would think that specifying `proto` of udp for DHCP would work, but it
-  shows incorrect output. DHCP uses UDP ports 67 and 68:
+### bash
 
-    ```bash
-	$ cat dhcp.pcap | rawshark -s -r - -d proto:udp -F udp.port
-	
-	0 FT_UINT16 BASE_PT_UDP - 1 FT_UINT16 BASE_PT_UDP - 
-	1 1="65535" 0="65535" -
-	2 1="11" 0="33281" -
-	3 1="65535" 0="65535" -
-	4 1="11" 0="33281" -
-	```
+You can verify whether all are installed with the following:
 
-3. Finally, by specifying encap type instead of proto, we get useful output.
+```bash
+# Loop through wireshark utils to find the ones that the system cannot
+utils=(androiddump capinfos captype ciscodump dftest dumpcap editcap idl2wrs
+  mergecap mmdbresolve randpkt randpktdump reordercap sshdump text2pcap tshark
+  udpdump wireshark pcap-filter wireshark-filter)
 
-	```bash
-	$ cat dhcp.pcap | rawshark -s -r - -d encap:1 -F udp.port
-	
-	FT_UINT16 BASE_PT_UDP - 1 FT_UINT16 BASE_PT_UDP - 
-	1 1="68" 0="67" -
-	2 1="67" 0="68" -
-	3 1="68" 0="67" -
-	4 1="67" 0="68" -
-	```
+for util in ${utils[*]}; do
+  if [[ -z $(which $util) ]]; then 
+    echo $util
+  fi
+done
+```
 
-4. `tshark` is more useful with less work though, even if we pass in as a stream
-	(the supposed purpose of `rawshark`:
-	
-	```bash
-	$ cat dhcp.pcap | tshark -r -
-	
-	1   0.000000      0.0.0.0 → 255.255.255.255 DHCP 314 DHCP Discover - Transaction ID 0x3d1d
-    2   0.000295  192.168.0.1 → 192.168.0.10 DHCP 342 DHCP Offer    - Transaction ID 0x3d1d
-    3   0.070031      0.0.0.0 → 255.255.255.255 DHCP 314 DHCP Request  - Transaction ID 0x3d1e
-    4   0.070345  192.168.0.1 → 192.168.0.10 DHCP 342 DHCP ACK      - Transaction ID 0x3d1e
-	```
-	
-	tshark has the advantage of being able to read files too: `tshark -r dhcp.pcap`.
-	
-	[Next](/post/wireshark-generation.md)
-	
+If a util is installed but not on your $PATH, you can use `find / -name $util 2>/dev/null` 
+to find out where it may be. For example, on Linux for 3.0.0, extcap tools are
+at /usr/lib/x86_64-linux-gnu/wireshark/extcap. To add them to your path, use
+`echo 'export PATH=$PATH:$folder' >> ~/.profile`.
+
+### Powershell on Windows
+
+Currently, extcap utils [need to be
+moved](https://www.wireshark.org/lists/wireshark-dev/201608/msg00161.html) to from Wireshark/extcap => Wireshark
+to be useable. If you have not added your %Program Files% to your $PATH, you can
+do that with an Admin user: 
+
+`[Environment]::SetEnvironmentVariable(`  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`"PATH", "$PATH;$ENV:ProgramFiles", "Machine")`

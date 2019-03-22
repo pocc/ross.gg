@@ -15,14 +15,20 @@ _Packet Analysis, Scripted_
 
 In line with the Unix philosophy of "Do one thing well", Wireshark has many
 small CLI utilities. If you are reading this article because you want to know
-how to use to do X with the CLI, you've come to the right place.
+how to use to do X with the CLI, you've come to the right place. As a
+contributor to Wireshark and daily user, this will be a comprehensive treatment.
+
+This guide will help you to capture traffic, edit it, clean it, and send it. The
+scenario being that you are reporting on a network problem and want to use
+wireshark to provide a packet capture you can then send on to
+colleagues/customers.
 
 <!-- Kludgy TOC until I can figure out how to include {{ hugo toc }} in the content -->
 ## Table of Contents
 
-* [ ] [Getting Started]() 
+* [X] [Getting Started](/post/wireshark-setup) 
   <!-- [[wireshark_setup]] -->
-	* [ ] Installing 3.0.0
+	* [X] Installing 3.0.0](/post/wireshark-setup/#install)
 * [ ] [Capture](/post/wireshark-capturing#capture) 
   <!-- [[wireshark_capturing]] --> 
 	* [ ] [dumpcap](/post/wireshark-capturing#dumpcap) 
@@ -40,11 +46,16 @@ how to use to do X with the CLI, you've come to the right place.
   <!-- [[wireshark_info]] -->
 	* [X] [capinfos](/post/wireshark-info#capinfos)  
 	* [X] [rawshark](/post/wireshark-info#rawshark)
-* [.] [Additional Topics](/post/wireshark-bonus-topics#additional-topics)  
+* [o] [Additional Topics](/post/wireshark-bonus-topics#additional-topics)  
   <!--[[wireshark_bonus]] -->
 	* [X] [Editing Hex](/post/wireshark-bonus-topics#editing-hex)
-	* [ ] [Piping](/post/wireshark-bonus-topics#piping) 
-	* [ ] [Capturing over ssh](/post/wireshark-bonus-topics#ssh-capture)
+	* [X] [Piping](/post/wireshark-bonus-topics#piping) 
+	* [ ] [extcap utils](/post/wireshark-bonus-topics#ssh-capture)
+
+## <a name=closing-thoughts></a>Closing Thoughts
+
+Personally, I think that wireshark's CLI needs a better API. For example, git
+has a large amount of functionality, but.
 
 ## Further Reading
 

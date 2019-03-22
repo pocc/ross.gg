@@ -25,15 +25,20 @@ we are only concerned about `$Profile`, which aliases to
 
 1. Open powershell and add a profile file if it does not exist
 
-   `New-Item -Path $Profile -ItemType "file" *> NUL`
+    `New-Item -Path $Profile -ItemType "file" *> NUL`
 
 2. (Required only on Windows) Set your
    [ExecutionPolicy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)
    to allow local scripts.
 
-   `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force`
+    `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force`
 
-3. (Optional) Edit your profile with `Start notepad $Profile` on Windows /
+3. (Recommended if Admin) Add %Program Files% to $PATH  
+   
+    `[Environment]::SetEnvironmentVariable(`  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`"PATH", "$PATH;$ENV:ProgramFiles", "Machine")`
+
+4. (Optional) Edit your profile with `Start notepad $Profile` on Windows /
    `nano $Profile` on *nix. Some people like to add
    [Useful Functions](https://blog.dantup.com/2013/10/useful-powershell-profile-snippets/)
    while others like tricking out their consoles with
