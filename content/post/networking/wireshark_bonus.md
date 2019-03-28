@@ -6,6 +6,7 @@ desc: "Wireshark Bonus Topics"
 tags:
   - networking
   - wireshark
+  - draft1
 image: https://allabouttesting.org/wp-content/uploads/2018/06/tshark-count.jpg
 
 draft: true
@@ -95,7 +96,7 @@ really possible to use rawshark without piping as it expects a FIFO or stream.
 | **text2pcap**  | hexdump<sup>4</sup>  | -                  | -                         | pcap, pcapng   |
 | **tshark**     | raw pcap             | *pcaps             | report, raw pcap, hexdump | *pcaps         |
 
-1. __*pcaps__  
+1. __*pcaps__ 
   All pcap types available on the system (use `tshark -F` to list).
 2. __report__   
   Tabular or "machine-readable" data about a file.
@@ -122,9 +123,4 @@ tempfile=$(mktemp)
 tshark -r dhcp.pcap -Y "dhcp.type == 1" -w $tempfile 
 editcap $tempfile dhcp2.pcap -a 1:"Cool story bro!"
 ```
-
-## Extcap utilities
-## <a name=ssh-capture></a>Capturing over ssh
-
-Let's say that you have a remote computer and want to monitor it remotely.
 
