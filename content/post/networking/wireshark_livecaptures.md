@@ -215,5 +215,8 @@ own, these options are required for capture to function:
 
 If you are trying to figure out where to start with your extcap project,
 [`extcap_example.py`](https://github.com/wireshark/wireshark/blob/master/doc/extcap_example.py)
-written by Robert Knall is worth looking at. Below is an example of usage:
+written by Robert Knall is worth looking at. Below is an example of how to use
+this example utility.
+
+<script id="asciicast-nt1WaIPrYEyrO1uxmnlnBbpvX" src="https://asciinema.org/a/nt1WaIPrYEyrO1uxmnlnBbpvX.js" async></script>
 
