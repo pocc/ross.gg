@@ -33,6 +33,16 @@ colleagues/customers.
   <!-- [[wireshark_capturing]] --> 
 	* [ ] [dumpcap](/post/wireshark-capturing#dumpcap) 
 	* [ ] [tshark](/post/wireshark-capturing#tshark)
+* [o] [Analyze](/post/wireshark-info#info) 
+  <!-- [[wireshark_info]] -->
+	* [ ] [Syntax]
+		* [ ] What is BPF
+		* [ ] How does Wireshark syntaxt work?
+		* [ ] Testing your filter: dftest
+	* [X] [capinfos](/post/wireshark-info#capinfos)  
+	* [ ] [captype]
+	* [ ] tshark -G
+	* [X] [rawshark](/post/wireshark-info#rawshark)
 * [X] [Generate](/post/wireshark-generation#generate) 
   <!-- [[wireshark_generation]] -->
 	* [X] [randpkt](/post/wireshark-generation#randpkt) 
@@ -42,15 +52,22 @@ colleagues/customers.
 	* [ ] [mergecap](#mergecap)
 	* [ ] [reordercap](#reordercap)
 	* [ ] [text2pcap](#text2pcap)
-* [X] [Info](/post/wireshark-info#info) 
-  <!-- [[wireshark_info]] -->
-	* [X] [capinfos](/post/wireshark-info#capinfos)  
-	* [X] [rawshark](/post/wireshark-info#rawshark)
 * [o] [Additional Topics](/post/wireshark-bonus-topics#additional-topics)  
   <!--[[wireshark_bonus]] -->
 	* [X] [Editing Hex](/post/wireshark-bonus-topics#editing-hex)
 	* [X] [Piping](/post/wireshark-bonus-topics#piping) 
-	* [ ] [extcap utils](/post/wireshark-bonus-topics#ssh-capture)
+* [ ] [Unusual Interfaces and Where to Find Them]  
+  <!--[[wireshark_livecaptures]] -->
+	* [ ] Add Gif of chrome download live capture
+	* [ ] Add Scapy gif of live capture
+* [ ] [extcap: Make your own interface]  
+  <!--[[wireshark_extcap]] -->
+	* [ ] randpkt 1
+	* [ ] randpkt 2
+	* [ ] randpkt 3
+	* [ ] randpkt 4
+	* [ ] <using randpkt gif (upload from desktop as gif/webp)>
+	* [ ] Wireshark extcap_example.py with GUI and screen recording
 
 ## <a name=closing-thoughts></a>Closing Thoughts
 
