@@ -16,7 +16,8 @@ _Packet Analysis, Scripted_
 In line with the Unix philosophy of "Do one thing well", Wireshark has many
 small CLI utilities. If you are reading this article because you want to know
 how to use to do X with the CLI, you've come to the right place. As a
-contributor to Wireshark and daily user, this will be a comprehensive treatment.
+contributor to \*shark and daily user, I am writing this as an unofficial
+tshark guide.
 
 This guide will help you to capture traffic, edit it, clean it, and send it. The
 scenario being that you are reporting on a network problem and want to use
@@ -54,6 +55,7 @@ colleagues/customers.
 	* [ ] [text2pcap](#text2pcap)
 * [o] [Additional Topics](/post/wireshark-bonus-topics#additional-topics)  
   <!--[[wireshark_bonus]] -->
+	* [ ] [Export Object](/post/wireshark-export-object)
 	* [X] [Editing Hex](/post/wireshark-bonus-topics#editing-hex)
 	* [X] [Piping](/post/wireshark-bonus-topics#piping) 
 * [ ] [Unusual Interfaces and Where to Find Them]  
