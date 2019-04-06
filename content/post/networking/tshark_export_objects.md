@@ -1,83 +1,58 @@
 ---
-title: "Tshark, Colorized"
+title: "Tshark Export Objects"
 date: 2019-03-12T12:44:45Z
 author: Ross Jacobs
-desc: "Wireshark Bonus Topics"
+desc: "Exporting files from packet captures"
 tags:
   - networking
   - tshark
-  - commandfu
 image: https://allabouttesting.org/wp-content/uploads/2018/06/tshark-count.jpg
 
 draft: true
 ---
 
 <!-- draft until
-* [ ] BSD testing of what terminals work
-* [ ] Images of tshark --color on 4 OSes in square (logo of each OS in middle 4
-	  corners)
-* [ ] Windows demonstration gif at bottom 
+* [ ] Type existing written version 
+* [ ] Come back after Apr 5 and review
 -->
 
-> _"With color one obtains an energy that seems to stem from witchcraft."  
--- Henri Matisse_
+# --export-object
 
-Part of the allure of Wireshark is the ability to identify networking problems
-with the use of color. Relatively recently, tshark has gained this ability too
-with the `--color` flag. This article goes over how to set it up on your system.
+## Available protocols
 
-## Using a compatible terminal
+- **dicom**: medical image
+- **http**: web document
+- **imf**: email contents
+- **smb**: Windows network share file
+- **tftp**: Unsecured file
 
-Support for terminal colors depends on whether "truecolor" 24-bit colors are
-implemented. One way to check for it is to query the `$COLORTERM` environment
-variable. If supported, `echo $COLORTERM` will return `truecolor` or `24bit`. 
+When you have a capture containing a transferred file, sometimes you only care
+about extracting the file. To do this in tshark, use `tshark -r ${file} --export-object ${protocol},${path}`
 
-[This repo](https://github.com/termstandard/colors) keeps track whether
-${TERMINAL} supports truecolor as well as general truecolor info.
+The supported protocols are shown above. As an example, let's take a packet
+capture on an http website. Looking at the top 50 in the US, espn.com is the
+only website that does not use http (and thus is great for extracting files
+transferred as part of website load). We will also be using firefox because
+Chrome encapsulates traffic in GQUIC, so no http export. If you would like to
+extract files from a TLS-encrypted capture, make sure to [decrypt it]() so
+that tshark can export the http objects.
 
-`alias tshark='tshark --color'`
+```bash
+# Define these for yourself
+dest_dir="/tmp/exports"
+pcap_name="`pwd`/espn.pcapng"
+protocol="http"
 
-I have tested truecolor and `tshark --color` compatability across multiple terminals.  
-These are my recommendations:
+# Export files from generated espn http traffic.
+mkdir -p $dest_dir
+tshark -Q -w $pcap_name & tspid=$!
+firefox --headless espn.com & ffpid=$!
+sleep 10 && kill -9 $ffpid $tspid
+tshark -r $pcap_name --export-object $protocol,$dest_dir
+```
 
-| Platform | Recommendations                                                                                          |
-|----------|----------------------------------------------------------------------------------------------------------|
-| Windows  | [Mobaxterm](https://mobaxterm.mobatek.net/), [WSL](http://wsl-guide.org/en/latest/installation.html) [1] |
-| Macos    | [upterm](https://github.com/railsware/upterm), [iTerm2](https://www.iterm2.com/)                         |
-| Linux    | [upterm](https://github.com/railsware/upterm), Any terminal using `libvte`                               |
-| BSD      |                                                                                                          |
-
-
-[1]: Note that you can call Powershell from Mobaxterm or WSL, but given that
-Powershell does not support truecolor, you are limited to using bash
-pseudo-terminals on Windows to get truecolor. 
-
-## Windows Considerations
-
-_As with most things terminal, using on Windows is harder_
-
-### The problem
-
-- The Windows version of tshark will print 16 colors, instead of 24bit
-  "truecolor". 
-- The Linux version of tshark usable by WSL and Mobaxterm can print in
-  truecolor
-- The Linux version of tshark (like tcpdump on WSL) is not able to capture
-  packets. This is because sockets (SOCK_RAW/SOCK_PACKET) are [not yet
-  implemented](https://github.com/Microsoft/WSL/issues/1515) in WSL.
-
-### The hack
-
-I created a hack that will allow you to use `tshark --color` while capturing on
-Windows by using both Windows and Linux tsharks.
-
-1. [Install Wireshark](/post/wireshark-setup) # Link to the Windows section
-2. [Install WSL](http://wsl-guide.org/en/latest/installation.html)
-3. Install tshark on WSL with `sudo apt install tshark`
-4. Add this [bash function](https://gist.github.com/pocc/b2017eeb2609f80a38d8db811d1c6cb8) to your `~/.bashrc`:
-5. `source ~/.bashrc`
-6. Test by live capturing with the `tshark` command with no options:
-
-<img
-src="https://dl.dropboxusercontent.com/s/lofz8vta3nsyb8o/tshark_on_windows.png"
-style="width:100%"></img>
+Here we create a destination folder if it doesn't exist. Here, `-Q` is used
+so that tshark doesn't print to stdout, interfering with further typing.
+Headless firefox can grab the files we care about (using wget/curl will not
+get all of the same files). Ten seconds should be sufficient to download all
+files before killing the processes.
