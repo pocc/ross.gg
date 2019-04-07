@@ -13,8 +13,7 @@ draft: true
 ---
 
 <!-- Draft Until
-* [ ] Asciinema of TLS 1.2 Decryption
-* [ ] tshark Usage of WPA2-PSK decryption
+* [ ] TLS 1.2 Decryption Asciinema
 * [ ] WPA2-PSK Asciinema
 -->
 
@@ -30,6 +29,8 @@ to generate a keytab file.
 `tshark -r /path/to/file -K /path/to/keytab`.
 
 ## TLS 1.2 Decryption
+
+[_Wireshark Equivalent_](https://redflagsecurity.net/2019/03/10/decrypting-tls-wireshark/)
 
 It is possible to decrypt the data on the client side if SSL logging is
 enabled. Chrome and firefox will check whether the $SSLKEYLOGFILE
@@ -91,6 +92,49 @@ files (and other small files) get decrypted, but no html or css files.
 
 ## WPA2 Decryption
 
-_Note that WPA3 decryption is [still in development](https://seclists.org/wireshark/2019/Mar/79)._
+[_Wireshark Equivalent_](https://mrncciew.com/2014/08/16/decrypt-wpa2-psk-using-wireshark/)
 
-Use [Rasika Nayanajith's guide] for WPA2-PSK decryption.
+### 1. Get your capture
+
+```bash
+# Get a sample.pcap
+pcap_url="https://mrncciew.files.wordpress.com/2014/08/wpa2-psk-final.zip"
+curl $pcap_url | tar -xzv
+```
+
+### 2. Decrypt
+
+Set the values of vars to whatever they are in your case.
+
+```bash
+infile="WPA2-PSK-Final.cap"
+outfile="decrypted.pcap"
+ssid='TEST1'
+psk='Cisco123Cisco123'
+
+tshark -r $infile -w $outfile \
+       -o wlan.enable_decryption:TRUE \
+       -o "uat:80211_keys:\"wpa-pwd\",\"${psk}:${ssid}\""
+```
+
+We can now send the result to a colleage who will not need to know the SSID/PSK.
+
+### 3. Analyze
+
+Let's pretend we care about TCP resets in the decrypted traffic. We can check
+for it with `tcp.connection.rst` with output that should look something like:
+
+```sh
+bash-5.0$ tshark -r decrypted.pcap -Y "tcp.connection.rst"
+  487  38.407227 192.168.140.1 → 192.168.140.100 TCP 112 2000 → 1091 [RST, ACK] 
+    Seq=1 Ack=1 Win=0 Len=0
+  626  41.687352 192.168.140.1 → 192.168.140.100 TCP 112 2000 → 1092 [RST, ACK] 
+    Seq=1 Ack=1 Win=0 Len=0
+  1226  52.758103 192.168.140.1 → 192.168.140.100 TCP 112 2000 → 1093 [RST, ACK
+    Seq=1 Ack=1 Win=0 Len=0
+```
+
+### WPA3 Decryption
+
+WPA3 decryption support in Wireshark is
+[still in development](https://seclists.org/wireshark/2019/Mar/79).
