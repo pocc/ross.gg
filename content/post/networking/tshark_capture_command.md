@@ -11,7 +11,14 @@ image: https://allabouttesting.org/wp-content/uploads/2018/06/tshark-count.jpg
 draft: true
 ---
 
-# 1. Determine your interface 
+<!-- Draft Until
+* [ ] Bug 2874
+* [ ] Filtering ASCIINEMA
+* [ ] Name resolution questions
+* [ ] Link to or create ASCIINEMAs for -K: Decrypt using Kerberos Key, => External links for SSL decryption, => decrypt SMB, => decrypt 802.11 
+-->
+
+# 1. Determine your interface
 
 If you run `ping 8.8.8.8 >/dev/null & tshark`, you should start seeing
 numbered packets. If you don't, you should find out what interfaces you have
@@ -135,8 +142,6 @@ en/disable protocols/heuristics can do the same thing.
 
 ??? What is a heuristic vis-a-vis wireshark vs protocol ???
 
-## 5C. Decryption
--K: Decrypt using Kerberos Key
-=> External links for SSL decryption. 
-  => decrypt SMB
-  => decrypt 802.11
+## Usage for already-captured files
+
+- Use Tshark to [Decrypt Kerberos, TLS, or 802.11](/post/tshark-decryption)
