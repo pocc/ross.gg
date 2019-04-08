@@ -25,14 +25,15 @@ wireshark to provide a packet capture you can then send on to
 colleagues/customers.
 
 <!-- Kludgy TOC until I can figure out how to include {{ hugo toc }} in the content -->
-## Table of Contents
 
-* [X] [Getting Started](/post/wireshark-setup) 
+# Table of Contents
+
+* [X] [Getting Started](/post/wireshark-setup)
   <!-- [[wireshark_setup]] -->
-	* [X] Installing 3.0.0](/post/wireshark-setup/#install)
-* [ ] [Capture](/post/wireshark-capturing#capture) 
+	* [X] [Installing 3.0.0](/post/wireshark-setup/#install)
+* [ ] [Capture](/post/wireshark-capturing#capture)
   <!-- [[wireshark_capturing]] --> 
-	* [ ] [dumpcap](/post/wireshark-capturing#dumpcap) 
+	* [ ] [dumpcap](/post/wireshark-capturing#dumpcap)
 	* [ ] [tshark](/post/wireshark-capturing#tshark)
 * [o] [Analyze](/post/wireshark-info#info) 
   <!-- [[wireshark_info]] -->
@@ -44,10 +45,10 @@ colleagues/customers.
 	* [ ] [captype]
 	* [ ] tshark -G
 	* [X] [rawshark](/post/wireshark-info#rawshark)
-* [X] [Generate](/post/wireshark-generation#generate) 
+* [X] [Generate](/post/wireshark-generation#generate)
   <!-- [[wireshark_generation]] -->
-	* [X] [randpkt](/post/wireshark-generation#randpkt) 
-* [ ] [Edit](/post/wireshark-editing#edit) 
+	* [X] [randpkt](/post/wireshark-generation#randpkt)
+* [ ] [Edit](/post/wireshark-editing#edit)
   <!-- [[wireshark_editing]] -->
 	* [ ] [editcap](#editcap)
 	* [ ] [mergecap](#mergecap)
@@ -57,7 +58,7 @@ colleagues/customers.
   <!--[[wireshark_bonus]] -->
 	* [ ] [Export Object](/post/wireshark-export-object)
 	* [X] [Editing Hex](/post/wireshark-bonus-topics#editing-hex)
-	* [X] [Piping](/post/wireshark-bonus-topics#piping) 
+	* [X] [Piping](/post/wireshark-bonus-topics#piping)
 * [ ] [Unusual Interfaces and Where to Find Them]  
   <!--[[wireshark_livecaptures]] -->
 	* [ ] Add Gif of chrome download live capture
