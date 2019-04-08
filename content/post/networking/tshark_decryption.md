@@ -12,11 +12,6 @@ image: https://allabouttesting.org/wp-content/uploads/2018/06/tshark-count.jpg
 draft: true
 ---
 
-<!-- Draft Until
-* [ ] TLS 1.2 Decryption Asciinema
-* [ ] WPA2-PSK Asciinema
--->
-
 # Decryption
 
 There are many protocols that can be decrypted in Wireshark:
@@ -29,8 +24,6 @@ to generate a keytab file.
 `tshark -r /path/to/file -K /path/to/keytab`.
 
 ## TLS 1.2 Decryption
-
-[_Wireshark Equivalent_](https://redflagsecurity.net/2019/03/10/decrypting-tls-wireshark/)
 
 It is possible to decrypt the data on the client side if SSL logging is
 enabled. Chrome and firefox will check whether the $SSLKEYLOGFILE
@@ -81,6 +74,12 @@ firefox --browser obj/nc.html
 If all is well, your local version of nc's manpage looks exactly the same
 as ss64's version.
 
+### In Summary
+
+<script id="asciicast-239566" src="https://asciinema.org/a/239566.js" async></script>
+
+[_Wireshark Equivalent_](https://redflagsecurity.net/2019/03/10/decrypting-tls-wireshark/)
+
 ## TLS 1.3 Decryption
 
 TLS 1.3 is the next iteration after industry standard 1.2, with 1.3 adopted
@@ -91,8 +90,6 @@ certificate message spans multiple records. In my testing, some javascript
 files (and other small files) get decrypted, but no html or css files.
 
 ## WPA2 Decryption
-
-[_Wireshark Equivalent_](https://mrncciew.com/2014/08/16/decrypt-wpa2-psk-using-wireshark/)
 
 ### 1. Get your capture
 
@@ -134,7 +131,13 @@ bash-5.0$ tshark -r decrypted.pcap -Y "tcp.connection.rst"
     Seq=1 Ack=1 Win=0 Len=0
 ```
 
-### WPA3 Decryption
+### In Summary
+
+<script id="asciicast-239577" src="https://asciinema.org/a/239577.js" async></script>
+
+[_Wireshark Equivalent_](https://mrncciew.com/2014/08/16/decrypt-wpa2-psk-using-wireshark/)
+
+## WPA3 Decryption
 
 WPA3 decryption support in Wireshark is
 [still in development](https://seclists.org/wireshark/2019/Mar/79).
