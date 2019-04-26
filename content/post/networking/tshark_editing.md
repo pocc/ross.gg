@@ -60,4 +60,3 @@ Merge two or more packet captures together
 
 ## <a name=text2pcap></a>text2pcap
 Convert a hexstring into a packet capture
-

@@ -11,7 +11,7 @@ image: https://allabouttesting.org/wp-content/uploads/2018/06/tshark-count.jpg
 draft: true
 ---
 
-_Make traffic that didn't exist before._ 
+_Make traffic that didn't exist before._
 
 __Note for Windows users__: _By default, `randpkt`, `androiddump`, `sshdump`,
 `udpdump`, and `randpktdump` are not installed during a Windows installation. If

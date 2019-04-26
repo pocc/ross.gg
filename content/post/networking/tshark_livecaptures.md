@@ -90,4 +90,3 @@ wireshark. The important components are Scapy's `PcapWriter` class to send
 packet hex without buffering and `tail -f -n +1 $file` to read all data from the
 pcap (including headers) to send to wireshark.  
 <script id="asciicast-237460" src="https://asciinema.org/a/237460.js" async></script>
-

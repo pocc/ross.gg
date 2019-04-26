@@ -14,6 +14,7 @@ draft: true
 <!-- draft until
 * [ ] Type existing written version 
 * [ ] Come back after Apr 5 and review
+* [ ] Discuss 3 or 4 files
 -->
 
 # --export-object
@@ -56,3 +57,5 @@ so that tshark doesn't print to stdout, interfering with further typing.
 Headless firefox can grab the files we care about (using wget/curl will not
 get all of the same files). Ten seconds should be sufficient to download all
 files before killing the processes.
+
+<discuss 3 or 4 files here. Include screenshot of firefox loading the same files using developer tools. While its cool to look at he trasnferred files in the abstract, we can also watch all of them download them in realtime with developer tools. This will also show us ALL of the files downloaded, including ones we may have missed with firefox headless. As we can see, <X>, <Y>, and <Z> files are the same, but we're missing files A, B, & C.>

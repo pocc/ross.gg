@@ -1,6 +1,6 @@
 ---
 title: "Tshark Decryption"
-date: 2019-03-12T12:44:45Z
+date: 2019-04-08T12:44:45Z
 author: Ross Jacobs
 desc: "Tshark Decryption for Kerberos, TLS, and 802.11"
 tags:
@@ -9,7 +9,7 @@ tags:
   - cryptography
 image: https://allabouttesting.org/wp-content/uploads/2018/06/tshark-count.jpg
 
-draft: true
+draft: false
 ---
 
 # Decryption
