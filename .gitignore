@@ -9,13 +9,3 @@
 _gen/
 _build/
 
-# Other git repos
-# Add the screen.css file that has edits
-/themes/*
-!/themes/hugo-casper-two/
-/themes/hugo-casper-two/*
-!/themes/hugo-casper-two/static/
-/themes/hugo-casper-two/static/*
-!/themes/hugo-casper-two/static/built/
-/themes/hugo-casper-two/static/built/*
-!/themes/hugo-casper-two/static/built/screen.css
