@@ -1,11 +1,7 @@
 # Hugo config.toml that controls variables for this website.
 # For more info, see https://gohugo.io/getting-started/configuration/
-# 
-# Defaults:
-#   Max chars per code line: 95
-#
 
-baseURL = "/"
+baseURL = "https://swit.sh"
 title = "Ross Jacobs"
 subtitle = "Subtitle appears under website title"
 buildDrafts = false
@@ -35,14 +31,6 @@ paginatedsections = ["post"]
 paginate = 6
 
 [menu]
-  # Commenting out while >_ svg links to /
-  #[[menu.main]]
-  #  identifier = "post"
-  #  name = "blog"
-  #  pre = "<i class='fas fa-newspaper'></i>"
-  #  post = "<span class='alert'>New!</span>"
-  #  url = "/post/"
-  #  weight = 100
   [[menu.main]]
     identifier = "about"
     name = "about"
@@ -106,12 +94,7 @@ paginate = 6
   #continueReadingText = "Would you like to know more? &rarr;"
 
   # Google analytics code - remove if you do not have/want Google Analytics - needs JavaScript
-  #googleAnalytics = "UA-XXXXX-X"
-
-  # Optional piwik tracking
-  #[params.analytics.piwik]
-  #  URL = "https://stats.example.com"
-  #  ID = "42"
+  googleAnalytics = "UA-143876903-1"
 
   # Switch to true to enable RSS icon link
   #rss = true
@@ -121,7 +104,7 @@ paginate = 6
   #textrss = false
 
   # Website's default description
-  description = "Ross Jacobs' blog"
+  description = "Ross Jacobs' Online Home"
 
   # Populate with your search keywords - these will appear in meta tags
   # defaultKeywords = ["keyword1" , "keyword2" , "keyword3" , "keyword4"]
