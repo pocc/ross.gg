@@ -1,15 +1,9 @@
 ---
-title: "Making a Julia Binary"
+title: "Go Concurrency"
 date: 2019-03-04T16:20:52Z
 author: Ross Jacobs
-desc: "Make a Julia Binary using PackageCompiler"
-tags:
-  - Julia
-  - Compilation
-  - Guide
-image: "https://dl.dropboxusercontent.com/s/i7hlnqfd5lek700/julia_purple_exe.webp"
-
-draft: false
+desc: "Is it overused?"
+draft: true
 ---
 
 (Look at and INTEGRATE the sieve of eratosthenes files in same folder)
