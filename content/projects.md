@@ -6,11 +6,10 @@ author: Ross Jacobs
 draft: false
 ---
 
-|         | Merlink        | PcapGraph  |
-| ------- | -------------- | ---------- |
-| Status  | Alpha          | Alpha      |
-| Install | PyPI, binaries | PyPI       |
-| License | Apache 2.0     | Apache 2.0 |
+|           | Status     | Install        | License    |
+| --------- | ---------- | -------------- | ---------- |
+| Merlink   | Alpha      | PyPI, binaries | Apache 2.0 |
+| PcapGraph | Alpha      | PyPI           | Apache 2.0 |
 
 ## [Merlink](https://github.com/pocc/merlink)
 
