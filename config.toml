@@ -43,11 +43,6 @@ paginate = 6
     url = "/projects/"
     weight = 40
   [[menu.main]]
-    identifier = "open_source"
-    name = "open source"
-    url = "/open_source/"
-    weight = 20
-  [[menu.main]]
     identifier = "tshark_dev"
     name = "tshark.dev"
     url = "/tshark_dev"

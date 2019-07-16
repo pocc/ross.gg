@@ -20,7 +20,21 @@ where I enjoy solving complex networking problems. I currently live in San
 Francisco and enjoy the foggy climate. In my downtime, I like scripting to
 automate the small stuff.
 
-My philosophy on programming is if it doesn't exist, make it. 
+My philosophy on programming is if it doesn't exist, make it.
+
+## Open Source
+
+I like contributing back to my tools. Among others, I have contributed to these projects:
+[Wireshark](https://wireshark.org), [Termshark](https://termshark.io/), [tutorialedge.net](https://tutorialedge.net),
+and [termstandard/colors](https://github.com/termstandard/colors). If you see something amiss in a project, say something.
+
+<img
+src="https://dl.dropboxusercontent.com/s/kdiz1lnamjstrgd/sync_crc6_checker.webp"
+alt="SYNC CRC6 checker functioning properly."
+style="width:100%;height=100%;text-align:left"/>
+_CR6 bug I fixed in Wireshark. CRC6 is used for MBMS SYNC, which is a multicast LTE SYNC protocol._
+
+I am also the author of [tshark.dev](https://tshark.dev), a website dedicated to the Pcap Lifecycle.
 
 ### Incomplete list of Ross' superpowers
 
