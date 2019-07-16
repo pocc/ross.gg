@@ -13,20 +13,16 @@ Networking, Python, and Linux. Expect to find posts on these types of topics.
 
 ## About me
 
-I am a networking and programming enthusiast who enjoys learning new things. I
-graduated in 2016 from Sonoma State University with a degree in Math and
-Computer Science. Since 2017, I have been a Network Engineer at Cisco Meraki
-where I enjoy solving complex networking problems. I currently live in San
-Francisco and enjoy the foggy climate. In my downtime, I like scripting to
-automate the small stuff.
-
-My philosophy on programming is if it doesn't exist, make it.
+I am a Network Engineer at Cisco Meraki
+where I enjoy solving networking problems. I currently live in San
+Francisco and enjoy the foggy climate. In my downtime, I like working
+on programming side-projects.
 
 ## Open Source
 
 I like contributing back to my tools. Among others, I have contributed to these projects:
 [Wireshark](https://wireshark.org), [Termshark](https://termshark.io/), [tutorialedge.net](https://tutorialedge.net),
-and [termstandard/colors](https://github.com/termstandard/colors). If you see something amiss in a project, say something.
+and [termstandard/colors](https://github.com/termstandard/colors).
 
 <img
 src="https://dl.dropboxusercontent.com/s/kdiz1lnamjstrgd/sync_crc6_checker.webp"

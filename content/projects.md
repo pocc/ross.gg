@@ -6,11 +6,11 @@ author: Ross Jacobs
 draft: false
 ---
 
-|         | Merlink        | PcapGraph  | MAD CodeGen |
-| ------- | -------------- | ---------- | ----------- |
-| Status  | Alpha          | Alpha      | Alpha       |
-| Install | PyPI, binaries | PyPI       | -           |
-| License | Apache 2.0     | Apache 2.0 | Apache 2.0  |
+|         | Merlink        | PcapGraph  |
+| ------- | -------------- | ---------- |
+| Status  | Alpha          | Alpha      |
+| Install | PyPI, binaries | PyPI       |
+| License | Apache 2.0     | Apache 2.0 |
 
 ## [Merlink](https://github.com/pocc/merlink)
 
@@ -33,17 +33,7 @@ _Analyze multiple Packet Captures_
 
 Assists with flow-based troubleshooting where there are at least 2 pcaps. It can
 create a horizontal bar graph to visualize when pcaps were taken to verify that
-packet captures taken across multiple interfaces or devices are contemporaneuos.
+packet captures taken across multiple interfaces or devices are contemporaneous.
 Set operations can also be performed on packet captures where packets are
 elements. This can be useful when trying to establish whether there is any
 traffic across packet captures that is **EXACTLY** the same.
-
-## [Merakygen](https://github.com/pocc/mad-codegen)
-
-_API Clients generated from Meraki API Docs_
-
-The Meraki Engineering team is continuously releasing new API endoints. Client
-libraries are maintained by open source contributors, but often have troule
-keeping up. The Meraki API docs contain enough information to automate the
-creation of these client libraries. MAD CodeGen will generate an API Client in
-your \$language based upon the most recent release of the API docs.
