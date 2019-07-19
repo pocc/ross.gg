@@ -1,9 +1,8 @@
 ---
 title: "Setup A Powershell Profile"
-date: 2019-03-12T14:13:07Z
+date: 2019-03-01T14:13:07Z
 author: Ross Jacobs
 desc: "Regular post"
-keywords: draft
 tags:
   - powershell
   - setup
@@ -20,12 +19,15 @@ Like `~/.bashrc` for bash, a
 allows you to load aliases or functions when you open a new terminal. While
 there are technically
 [6 Powershell profiles](https://devblogs.microsoft.com/scripting/understanding-and-using-powershell-profiles/),
-we are only concerned about `$Profile`, which aliases to
+we are only concerned with `$Profile`, which aliases to
 `$Profile.CurrentUserCurrentHost`.
 
-1. Open powershell and add a profile file if it does not exist
+1. Open powershell and create a profile file if it does not exist.
 
-    `New-Item -Path $Profile -ItemType "file" *> NUL`
+    ```powershell
+    # New-Item = bash's touch
+    New-Item -Path $Profile -ItemType "file"
+    ```
 
 2. (Required only on Windows) Set your
    [ExecutionPolicy](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)
@@ -34,7 +36,7 @@ we are only concerned about `$Profile`, which aliases to
     `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force`
 
 3. (Recommended if Admin) Add %Program Files% to $PATH  
-   
+
     `[Environment]::SetEnvironmentVariable(`  
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`"PATH", "$PATH;$ENV:ProgramFiles", "Machine")`
 
@@ -54,7 +56,7 @@ we are only concerned about `$Profile`, which aliases to
     <source type="image/webp" srcset="https://dl.dropboxusercontent.com/s/yerrw9utxavdju4/ps_screenfetch.webp">
     <source type="image/png" srcset="https://dl.dropboxusercontent.com/s/jxndwak4o1n0on9/ps_screenfetch.png">
     <img src="https://dl.dropboxusercontent.com/s/jxndwak4o1n0on9/ps_screenfetch.png"
-	alt="Setting up Powershell Profiles with Screenfetch"
-	style="height:100%;width:100%;margin:0px"
-	title="Screenfetch can take a while to load...">
+    alt="Setting up Powershell Profiles with Screenfetch"
+    style="height:100%;width:100%;margin:0px"
+    title="Screenfetch can take a while to load...">
 </picture>

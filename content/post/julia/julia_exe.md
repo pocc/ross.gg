@@ -1,6 +1,6 @@
 ---
 title: "Making a Julia Binary"
-date: 2019-03-04T16:20:52Z
+date: 2019-03-15T16:20:52Z
 author: Ross Jacobs
 desc: "Make a Julia Binary using PackageCompiler"
 tags:
@@ -32,8 +32,8 @@ article will go over both.
 ```julia
 # ArgParse is required for PackageCompiler
 julia -e 'using Pkg;
-		  Pkg.add("ArgParse");
-		  Pkg.add("PackageCompiler")'
+      Pkg.add("ArgParse");
+      Pkg.add("PackageCompiler")'
 ```
 
 ### Alias PackageCompiler to `juliac`
@@ -42,13 +42,13 @@ The full command to compile is `julia /variable/path/to/juliac.jl`. The path to
 this file is dependent on where PackageCompiler is stored and different on every
 system. We are going to save time by using an alias.
 
-_Use your shell of choice below_
+Use your shell of choice below.
 
 #### bash
 
 ```bash
 $ juliac_path='julia -e println(normpath(Base.find_package(\
-	"PackageCompiler"),"..", "..")'
+  "PackageCompiler"),"..", "..")'
 $ echo "juliac ${juliac_path}juliac.jl" >> ~/.bashrc
 $ source ~/.bashrc
 ```
@@ -57,7 +57,7 @@ $ source ~/.bashrc
 
 ```powershell
 PS> $juliac_dir = julia -e 'println(normpath(Base.find_package(`
-		\"PackageCompiler\"),\"..\",\"..\"))'
+    \"PackageCompiler\"),\"..\",\"..\"))'
 PS> Add-Content -Path $profile -Value "function juliac { julia `"${juliac_dir`" }"
 ```
 
@@ -124,4 +124,3 @@ In this article, we constructed a Julia binary.
 
 - [PackageCompiler](https://github.com/JuliaLang/PackageCompiler.jl)
 - Other, similar articles
-
