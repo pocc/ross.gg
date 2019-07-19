@@ -15,7 +15,7 @@ _Which version of Julia should you install?_
 
 ## Minor Differences
 
-If at all possible, you should [install Julia](/post/julia-install) for latest
+If at all possible, you should [install Julia](/post/installing-julia) for latest
 versions of Julia.
 
 ### >=1.0.0
@@ -36,7 +36,7 @@ do the following:
 
 1. Try to migrate to different >=v0.7 libraries with the same functionality
 2. Create or add to existing issue on the repo regarding >=0.7 plans
-3. Install a [julia venv](/post/julia-envs) for v0.6 for this project
+3. Install a Julia Venv <!-- Link Me when done /post/julia-envs --> for v0.6 for this project
 
 Keep in mind that projects get upgraded, so it's worthwhile to occasionally
 check back on repos to see if they've fixed it.  

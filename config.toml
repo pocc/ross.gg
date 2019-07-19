@@ -1,7 +1,7 @@
 # Hugo config.toml that controls variables for this website.
 # For more info, see https://gohugo.io/getting-started/configuration/
 
-baseURL = "https://swit.sh"
+baseURL = "https://swit.sh/"
 title = "Ross Jacobs"
 subtitle = "Subtitle appears under website title"
 buildDrafts = false

@@ -116,9 +116,7 @@ To end result shoud be approximately 26MB, regardless of system.
 
 ## Conclusion
 
-In this article, we constructed a Julia binary In my [second article](/tbd) on
-the topic, I explore how to encapsulate Julia's Calculus library into a CLI
-utility.
+In this article, we constructed a Julia binary.
 
 ## See Also
 
