@@ -8,7 +8,7 @@ buildDrafts = false
 enableGitInfo = true
 
 # Current theme (multiple here to test their looks)
-theme = "hugo-casper-two"
+theme = "hugo-coder"
 # Options can be found here: https://help.farbox.com/pygments.html
 PygmentsStyle = "monokai"
 
@@ -43,9 +43,9 @@ paginate = 6
     url = "/projects/"
     weight = 40
   [[menu.main]]
-    identifier = "tshark_dev"
-    name = "tshark.dev"
-    url = "/tshark_dev"
+    identifier = "blog"
+    name = "blog"
+    url = "/post"
     weight = 10
 
 [permalinks]
