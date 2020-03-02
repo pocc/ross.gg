@@ -124,3 +124,6 @@ paginate = 6
   # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
   showSupport = true
 
+# Required for inline html
+[markup.goldmark.renderer]
+unsafe= true
