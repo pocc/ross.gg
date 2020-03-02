@@ -38,11 +38,6 @@ paginate = 6
     url = "/about/"
     weight = 50
   [[menu.main]]
-    identifier = "projects"
-    name = "projects"
-    url = "/projects/"
-    weight = 40
-  [[menu.main]]
     identifier = "tshark_dev"
     name = "tshark.dev"
     url = "/tshark_dev"
