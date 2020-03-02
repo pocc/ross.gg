@@ -82,6 +82,7 @@ paginate = 6
   #fbName = ""
   githubName = "pocc"
   linkedinName = "rossbjacobs"
+  stackoverflowId = "1596750"
   emailName = "rj@swit.sh"
 
   # Text of the "Continue Reading" label. Supports markdown and inline HTML.
