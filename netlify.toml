@@ -29,3 +29,9 @@ HUGO_VERSION = "0.55.6"
 
 [context.next.environment]
 HUGO_ENABLEGITINFO = "true"
+
+[[redirects]]
+  from = "/resume"
+  to = "/resume.pdf"
+  status = 301
+  force = true

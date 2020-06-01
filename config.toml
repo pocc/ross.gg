@@ -42,6 +42,11 @@ paginate = 6
     name = "tshark.dev"
     url = "/tshark_dev"
     weight = 10
+  [[menu.main]]
+    identifier = "resume"
+    name = "Résumé"
+    url = "/resume.pdf"
+    weight = 5
 
 [permalinks]
   post = "/post/:slug/"
