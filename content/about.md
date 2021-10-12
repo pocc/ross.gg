@@ -13,10 +13,13 @@ Networking, Python, and Linux. Expect to find posts on these types of topics.
 
 ## About me
 
-I am a Network Engineer at Cisco Meraki
-where I enjoy solving networking problems. I currently live in San
+I am currently looking for work as a
+I currently live in San
 Francisco and enjoy the foggy climate. In my downtime, I like working
 on programming side-projects.
+
+Formerly, I was a Network Engineer at Cisco Meraki
+where I enjoyed solving networking problems. 
 
 ## Open Source
 

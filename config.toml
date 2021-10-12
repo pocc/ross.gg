@@ -1,130 +1,110 @@
 # Hugo config.toml that controls variables for this website.
 # For more info, see https://gohugo.io/getting-started/configuration/
-
 baseURL = "https://swit.sh/"
 title = "Ross Jacobs"
-subtitle = "Subtitle appears under website title"
-buildDrafts = false
-enableGitInfo = true
-
-# Current theme (multiple here to test their looks)
-theme = "hugo-casper-two"
-# Options can be found here: https://help.farbox.com/pygments.html
-PygmentsStyle = "monokai"
-
-#disablePathToLower = False
+subtitle = "Herder of 1s and 0s"
 languageCode = "en-US"
 DefaultContentLanguage = "en"
+enableRobotsTXT = true
+enableEmoji = true
+theme = "even"
+
+# Hugo
+buildDrafts = false
+enableGitInfo = true    # show
 postNavigation = true
+paginate = 5                                              
+paginatedsections = ["post"]    # Number of blog posts in each pagination page
 
-# Disqus shortcode
-# Disable comments for any individual post by adding "comments: false" in its frontmatter
-disqusShortname = "Your disqus shortname"
+# Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
+pygmentsOptions = "linenos=table"
+pygmentsCodefences = true
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
 
-# Setting a value will load highlight.js and enable syntax highlighting using the style selected.
-# See https://github.com/isagalaev/highlight.js/tree/master/src/styles for available styles
-# A preview of above styles can be viewed at https://highlightjs.org/static/demo/
-hjsStyle = "default"
+disqusShortname = ""      # disqus_shortname
+googleAnalytics = "UA-143876903-1"
 
-# Number of blog posts in each pagination page
-paginatedsections = ["post"]
-paginate = 6
+[sitemap]                 # essential                   
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
 
-[menu]
-  [[menu.main]]
-    identifier = "about"
-    name = "about"
-    pre = "<i class='fas fa-user-circle'></i>"
-    url = "/about/"
-    weight = 50
-  [[menu.main]]
-    identifier = "tshark_dev"
-    name = "tshark.dev"
-    url = "/tshark_dev"
-    weight = 10
-  [[menu.main]]
-    identifier = "resume"
-    name = "Résumé"
-    url = "/resume.pdf"
-    weight = 5
-
-[permalinks]
-  post = "/post/:slug/"
+[[menu.main]]             # config your menu           
+  name = "About"
+  weight = 10
+  identifier = "about"
+  url = "/about"
+[[menu.main]]
+  identifier = "projects"
+  name = "Projects"
+  url = "/projects"
+  weight = 15
+[[menu.main]]
+  name = "Archives"
+  weight = 20
+  identifier = "archives"
+  url = "/post/"
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
 
 [params]
-  # If false, all contents of posts will appear on the front page and in pagination
-  truncate = true
-   
-  # Org data
-  orgName = "Ross Jacobs © 2019, all rights reserved"
-  orgWebsite = "https://swit.sh"
-  orgDescription = "Me, myself, and I"
+  version = "4.x"           # Used to give a friendly message when you have an incompatible update
 
-  # Author's name (appears in meta tags and under posts)
+  since = "2019"            # Site creation time          
+  # use public git repo url to link lastmod git commit, enableGitInfo should be true.
+  gitRepo = "https://github.com/pocc/swit.sh"
   author = "Ross Jacobs"
-  authorAvatar = "favicon.ico"
-  authorLocation = "San Francisco, US" 
-  authorWebsite = "https://swit.sh"
-  authorDescription = "Herder of 1s and 0s"
-  copyright = "© 2019 Ross Jacobs, all rights reserved."
 
-  # cover image on front page
-  #(source) cover = "http://q8iphone.me/wp-content/uploads/file-name-digital-background-5bd288a46a19b.png"
-  cover = "https://dl.dropboxusercontent.com/s/wyk6n1bvrd02dpa/cover_image.webp"
-  logo = "favicon.ico"
+  # site info (optional)                                
+  logoTitle = "Ross Jacobs"        # default: the title value 
+  #keywords = ["Hugo", "theme","even"]
+  description = "Ross Jacobs' personal website"
 
-  # This text appears in site header under website title
-  title = "Ross Jacobs"
-  subtitle = "Herder of 1s and 0s"
+  # paginate of archives, tags and categories             
+  archivePaginate = 50
 
-  # Search engine URL
-  searchEngineURL = "https://www.google.com/search"
+  # show 'xx Posts In Total' in archive page ?            
+  showArchiveCount = false
 
-  #casper or caspertwo
-  singleViewStyle = "casper"
+  # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
+  dateFormatToUse = "2006-01-02"
 
-  #twitterName = ""
-  #fbName = ""
-  githubName = "pocc"
-  linkedinName = "rossbjacobs"
-  stackoverflowId = "1596750"
-  emailName = "rj@swit.sh"
+  # show word count and read time ?                       
+  moreMeta = true
 
-  # Text of the "Continue Reading" label. Supports markdown and inline HTML.
-  # For example, &rarr; == right arrow.
-  #continueReadingText = "Would you like to know more? &rarr;"
+  # Syntax highlighting by highlight.js
+  highlightInClient = false
 
-  # Google analytics code - remove if you do not have/want Google Analytics - needs JavaScript
-  googleAnalytics = "UA-143876903-1"
+  # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
+  toc = true                                                                            
+  autoCollapseToc = false   # Auto expand and collapse toc                              
+  fancybox = true           # see https://github.com/fancyapps/fancybox                 
 
-  # Switch to true to enable RSS icon link
-  #rss = true
+  postMetaInFooter = true   # contain author, lastMod, markdown link, license           
+  linkToMarkDown = false    # Only effective when hugo will output .md files.           
+  contentCopyright = '(C) Ross Jacobs'     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
 
-  # Set to true to use a text label for RSS instead of an icon
-  # This is overwritten by the "rss" setting
-  #textrss = false
+  [params.social]                                    
+    a-email = "mailto:rj@swit.sh"
+    b-stack-overflow = "1596750"
+    e-linkedin = "rossbjacobs"
+    g-github = "http://github.com/pocc"
 
-  # Website's default description
-  description = "Ross Jacobs' Online Home"
+# See https://gohugo.io/about/hugo-and-gdpr/
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true      # 12.214.31.144 -> 12.214.31.0
+  [privacy.youtube]
+    privacyEnhanced = true
 
-  # Populate with your search keywords - these will appear in meta tags
-  # defaultKeywords = ["keyword1" , "keyword2" , "keyword3" , "keyword4"]
+# see https://gohugo.io/getting-started/configuration-markup
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+  [markup.goldmark.renderer]
+    unsafe = true
 
-  # Set to true to hide ReadingTime on posts
-  disableReadingTime = false
-
-  # Set to true to disable downloading of remote Google fonts
-  #disableGoogleFonts = false
-
-  # Remove or set to false to use local fonts
-  #remoteFonts = false
-
-  # Remove or set to false to use FontAwesome CDN, otherwise, the theme uses ForkAwesome local fonts.
-  # fontAwesome = false
-
-  # set true if you are not proud of using Hugo (true will hide the footer note "Proudly published with HUGO.....")
-  showSupport = true
-
-# Required for inline html
-[markup.goldmark.renderer]
-unsafe= true

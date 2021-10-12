@@ -1,15 +1,3 @@
-[submodule "themes/hyde-hyde"]
-	path = themes/hyde-hyde
-	url = https://github.com/htr3n/hyde-hyde.git
-[submodule "themes/bilberry-hugo-theme"]
-	path = themes/bilberry-hugo-theme
-	url = https://github.com/Lednerb/bilberry-hugo-theme.git
-[submodule "themes/Hugo-Octopress"]
-	path = themes/Hugo-Octopress
-	url = https://github.com/parsiya/Hugo-Octopress
-[submodule "themes/hugo-coder"]
-	path = themes/hugo-coder
-	url = https://github.com/luizdepra/hugo-coder/
-[submodule "themes/hugo-theme-casper"]
-	path = themes/hugo-theme-casper
-	url = https://github.com/vjeantet/hugo-theme-casper
+[submodule "themes/even"]
+	path = themes/even
+	url = https://github.com/olOwOlo/hugo-theme-even
