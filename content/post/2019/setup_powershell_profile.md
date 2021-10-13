@@ -12,7 +12,7 @@ image: https://www.dl.dropboxusercontent.com/s/nvrhskzzhn1c4tf/ps_profile_setup.
 draft: false
 ---
 
-_Create a $Profile without Admin Privileges_
+## Create a $Profile without Admin Privileges
 
 Like `~/.bashrc` for bash, a
 [Powershell profile](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-6)
@@ -52,11 +52,4 @@ we are only concerned with `$Profile`, which aliases to
    [Windows-Screenfetch](https://github.com/JulianChow94/Windows-screenFetch)
    (Add `Screenfetch 2> $Null` to your `$Profile`)
 
-<picture>
-    <source type="image/webp" srcset="https://dl.dropboxusercontent.com/s/yerrw9utxavdju4/ps_screenfetch.webp">
-    <source type="image/png" srcset="https://dl.dropboxusercontent.com/s/jxndwak4o1n0on9/ps_screenfetch.png">
-    <img src="https://dl.dropboxusercontent.com/s/jxndwak4o1n0on9/ps_screenfetch.png"
-    alt="Setting up Powershell Profiles with Screenfetch"
-    style="height:100%;width:100%;margin:0px"
-    title="Screenfetch can take a while to load...">
-</picture>
+![PS Screenfetch](https://dl.dropboxusercontent.com/s/yerrw9utxavdju4/ps_screenfetch.webp)

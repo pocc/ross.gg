@@ -84,8 +84,6 @@ googleAnalytics = "UA-143876903-1"
   autoCollapseToc = false   # Auto expand and collapse toc                              
   fancybox = true           # see https://github.com/fancyapps/fancybox                 
 
-  postMetaInFooter = true   # contain author, lastMod, markdown link, license           
-  linkToMarkDown = false    # Only effective when hugo will output .md files.           
   contentCopyright = '(C) Ross Jacobs'     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
 
   [params.social]                                    
