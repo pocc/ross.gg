@@ -6,17 +6,9 @@ date: "2019-02-28"
 draft: false
 ---
 
-## About this blog
-
-This blog has articles on things that interest me. I have experience with Math,
-Networking, Python, and Linux. Expect to find posts on these types of topics.
-
 ## About me
 
-I am currently looking for work as a
-I currently live in San
-Francisco and enjoy the foggy climate. In my downtime, I like working
-on programming side-projects.
+I work fulltime for Cloudflare as a Technical Support Engineer.
 
 Formerly, I was a Network Engineer at Cisco Meraki
 where I enjoyed solving networking problems. 
@@ -28,7 +20,7 @@ I like contributing back to my tools. Among others, I have contributed to these 
 and [termstandard/colors](https://github.com/termstandard/colors).
 
 <img
-src="https://dl.dropboxusercontent.com/s/kdiz1lnamjstrgd/sync_crc6_checker.webp"
+src="/img/wireshark/sync_crc6_checker.webp"
 alt="SYNC CRC6 checker functioning properly."
 style="width:100%;height=100%;text-align:left"/>
 _CR6 bug I fixed in Wireshark. CRC6 is used for MBMS SYNC, which is a multicast LTE SYNC protocol._
@@ -39,5 +31,5 @@ I am also the author of [tshark.dev](https://tshark.dev), a website dedicated to
 
 - Pretending to know things
 - Troubleshooting the network stack from 802.11 to IPSEC
-- Languages: Python, Bash, Powershell, C/C++, Ruby, Mathematica, Julia
+- Languages: Typescript, Golang, Javascript, Python, Bash, Powershell, C/C++
 - Frameworks: SQL, OpenAPI, Hugo, PyQt5

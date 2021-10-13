@@ -1,6 +1,6 @@
 # Hugo config.toml that controls variables for this website.
 # For more info, see https://gohugo.io/getting-started/configuration/
-baseURL = "https://swit.sh/"
+baseURL = "https://ross.gg/"
 title = "Ross Jacobs"
 subtitle = "Herder of 1s and 0s"
 languageCode = "en-US"
