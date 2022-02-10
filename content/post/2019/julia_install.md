@@ -8,10 +8,11 @@ tags:
   - julia
   - setup
   - guide
-image: https://dl.dropboxusercontent.com/s/8k0asasb2jjzu6a/install_julia.png
 
 draft: false
 ---
+
+![](/img/julia/install/install_julia.png)
 
 _Install Julia locally to your $System_
 
@@ -128,10 +129,10 @@ Open a new shell to make sure julia==1.1.0 is installed correctly
 ### Bash
 
 <picture>
-    <source type="image/webp" srcset="https://dl.dropboxusercontent.com/s/k4hjgm4wpt3v3vd/bash_julia.webp">
-    <source type="image/png" srcset="https://dl.dropboxusercontent.com/s/kwkmv93bzky7dze/bash_julia.png">
+    <source type="image/webp" srcset="/img/julia/install/bash_julia.webp">
+    <source type="image/png" srcset="/img/julia/install/kwkmv93bzky7dze/bash_julia.png">
     <img
-	src="https://dl.dropboxusercontent.com/s/kwkmv93bzky7dze/bash_julia.png"
+	src="/img/julia/install/bash_julia.png"
 	alt="Julia Install on Bash" style="height:80%;width:80%;text-align:left;margins:0px"
 	Title="Julia Install on Bash">
 </picture>
@@ -139,9 +140,9 @@ Open a new shell to make sure julia==1.1.0 is installed correctly
 ### Powershell
 
 <picture>
-    <source type="image/webp" srcset="https://dl.dropboxusercontent.com/s/aw99vi0qst959v9/pwsh_julia.webp">
-    <source type="image/png" srcset="https://dl.dropboxusercontent.com/s/9eku6li80jqjftq/pwsh_julia.png">
-    <img src="https://dl.dropboxusercontent.com/s/9eku6li80jqjftq/pwsh_julia.png"
+    <source type="image/webp" srcset="/img/julia/install/pwsh_julia.webp">
+    <source type="image/png" srcset="/img/julia/install/pwsh_julia.png">
+    <img src="/img/julia/install/pwsh_julia.png"
 	alt="Julia Install on Powershell" style="height:80%;width:80%;text-align:left;margins:0px"
 	Title="Julia Install on Powershell">
 </picture>

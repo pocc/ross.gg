@@ -7,10 +7,11 @@ tags:
   - powershell
   - setup
   - guide
-image: https://www.dl.dropboxusercontent.com/s/nvrhskzzhn1c4tf/ps_profile_setup.png
 
 draft: false
 ---
+
+![](/img/powershell/ps_profile_setup.png)
 
 ## Create a $Profile without Admin Privileges
 
@@ -52,4 +53,4 @@ we are only concerned with `$Profile`, which aliases to
    [Windows-Screenfetch](https://github.com/JulianChow94/Windows-screenFetch)
    (Add `Screenfetch 2> $Null` to your `$Profile`)
 
-![PS Screenfetch](https://dl.dropboxusercontent.com/s/yerrw9utxavdju4/ps_screenfetch.webp)
+![PS Screenfetch](/img/powershell/ps_screenfetch.webp)

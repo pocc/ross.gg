@@ -6,10 +6,11 @@ desc: "Different Julia versions"
 tags:
   - julia
   - versions
-image: https://www.residentadvisor.net/images/clubs/versions_logo_ra_312x210px.png
 
 draft: false
 ---
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNhzU9HvWy9QzkIvCp__g2x1wcyHryl2N_Gg&usqp=CAU)
 
 _Which version of Julia should you install?_
 

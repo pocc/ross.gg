@@ -7,10 +7,11 @@ tags:
   - Julia
   - Compilation
   - Guide
-image: "https://dl.dropboxusercontent.com/s/i7hlnqfd5lek700/julia_purple_exe.webp"
 
 draft: false
 ---
+
+![](/img/julia/julia_purple_exe.webp)
 
 _Compile your Julia project with PackageCompiler for portability_
 
