@@ -10,11 +10,9 @@ draft: false
 
 <img src="/img/profile_pic_eff.jpg" alt="Profile pic EFF" style="float:right; margin-left:20px; display:block;width:35%;"/>
 
-I work at Cloudflare helping customers make their websites more performant. 
-In my free time, I like building things with code. See [/projects](/projects) for showcases and 
-[github](https://github.com/pocc) for all the things I've built. I have most experience with bash, python, golang, typescript, but it's best to use the right tool for the job. 
+I work at Cloudflare helping customers make their websites more performant. I understand L3, L4, and L7 deeply. In my free time, I like building things with code. See [/projects](/projects) for showcases and [github](https://github.com/pocc) for all the things I've built.
 
-I like finding the optimal path, which is why I like to play board games. Given a set of starting conditions, there will always be a best move. Just like tech, you have to play the game to get a handle on the universe of moves.
+I love to look at hexdumps because flags and options are bits and bytes that constitute the various layers. I like to read RFCs, because they hold the ultimate truth on how protocols should work. Always focus on the root problem. PCAPs or it didn't happen.
 
 [Résumé](/resume.pdf) for those who want it.
 

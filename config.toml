@@ -64,6 +64,8 @@ googleAnalytics = "UA-143876903-1"
   #keywords = ["Hugo", "theme","even"]
   description = "Ross Jacobs' personal website"
 
+  favicon = "/favicon.ico"
+
   # paginate of archives, tags and categories             
   archivePaginate = 50
 
