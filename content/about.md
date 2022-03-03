@@ -12,7 +12,7 @@ draft: false
 
 I work at Cloudflare helping customers make their websites more performant. I understand L3, L4, and L7 deeply. In my free time, I like building things with code. See [/projects](/projects) for showcases and [github](https://github.com/pocc) for all the things I've built.
 
-I love to look at hexdumps because flags and options are bits and bytes that constitute the various layers. I like to read RFCs, because they hold the ultimate truth on how protocols should work. Always focus on the root problem. PCAPs or it didn't happen.
+I love to look at hexdumps because flags and options are bits and bytes that constitute the various layers. I like to read RFCs, because they hold the ultimate truth on how protocols should work. Always focus on the root problem. PCAPs or it didn't happe1n.
 
 [Résumé](/resume.pdf) for those who want it.
 

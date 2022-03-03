@@ -90,8 +90,8 @@ googleAnalytics = "UA-143876903-1"
 
   [params.social]                                    
     a-email = "mailto:rj@swit.sh"
-    b-stack-overflow = "1596750"
-    e-linkedin = "rossbjacobs"
+    b-stack-overflow = "https://stackoverflow.com/users/1596750/ross-jacobs"
+    e-linkedin = "https://www.linkedin.com/in/rossbjacobs/"
     g-github = "http://github.com/pocc"
 
 # See https://gohugo.io/about/hugo-and-gdpr/
