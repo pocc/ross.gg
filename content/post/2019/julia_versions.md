@@ -16,7 +16,7 @@ _Which version of Julia should you install?_
 
 ## Minor Differences
 
-If at all possible, you should [install Julia](/post/installing-julia) for latest
+If at all possible, you should [install Julia](/post/2019/julia_install/) for latest
 versions of Julia.
 
 ### >=1.0.0

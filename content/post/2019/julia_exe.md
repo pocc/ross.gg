@@ -23,7 +23,7 @@ article will go over both.
 **ASSERTS**
 
 - If you are using powershell, make sure you have
-  [Setup Your Powershell Profile](/post/setup-a-powershell-profile/)
+  [Setup Your Powershell Profile](/post/2019/setup_powershell_profile/)
 
 ## Initial Setup
 
