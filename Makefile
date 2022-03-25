@@ -4,4 +4,4 @@ build:
 	hugo --theme=even -D
 
 deploy: build
-	mv public/* /var/www/html
+	sudo cp -r public/* /var/www/html
