@@ -36,9 +36,9 @@ googleAnalytics = "UA-143876903-1"
   identifier = "about"
   url = "/about"
 [[menu.main]]
-  identifier = "projects"
-  name = "Projects"
-  url = "/projects"
+  identifier = "tools"
+  name = "Tools"
+  url = "https://tools.ross.gg/"
   weight = 15
 [[menu.main]]
   name = "Archives"
