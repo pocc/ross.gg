@@ -1,0 +1,22 @@
+name = "ross-gg"
+main = "src/worker.ts"
+compatibility_date = "2025-01-01"
+
+[build]
+command = "hugo --minify"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# KV namespace for caching and status storage.
+# Create with: npx wrangler kv namespace create ROSS_KV
+# Then uncomment and fill in the id:
+#
+# [[kv_namespaces]]
+# binding = "KV"
+# id = "<your-kv-namespace-id>"
+
+# Secrets (set after first deploy):
+#   npx wrangler secret put BUTTONDOWN_API_KEY
+#   npx wrangler secret put STATUS_AUTH_TOKEN

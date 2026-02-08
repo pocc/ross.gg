@@ -1,0 +1,64 @@
+<!-- Client-side hydration for Worker API data -->
+<script>
+(function () {
+  // --- /api/status ---
+  var statusEl = document.getElementById('live-status');
+  if (statusEl) {
+    fetch('/api/status')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.status) {
+          statusEl.textContent = d.status;
+          if (d.location) statusEl.textContent += ' · ' + d.location;
+        }
+      })
+      .catch(function () {});
+  }
+
+  // --- /api/github ---
+  var ghEl = document.getElementById('github-activity');
+  if (ghEl) {
+    fetch('/api/github')
+      .then(function (r) { return r.json(); })
+      .then(function (events) {
+        if (!Array.isArray(events) || events.length === 0) return;
+        var html = '';
+        events.forEach(function (e) {
+          var repo = e.repo.replace(/^pocc\//, '');
+          var d = new Date(e.date);
+          var ago = Math.floor((Date.now() - d.getTime()) / 86400000);
+          var when = ago === 0 ? 'today' : ago === 1 ? 'yesterday' : ago + 'd ago';
+          html += '<div class="text-sm mb-1" style="color: var(--fg-muted);">'
+            + '<span style="color: var(--fg);">' + e.type + '</span> '
+            + repo + ' <span style="color: var(--fg-faint);">' + when + '</span></div>';
+        });
+        html += '<a href="https://github.com/pocc" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">@pocc &rarr;</a>';
+        ghEl.innerHTML = html;
+      })
+      .catch(function () {});
+  }
+
+  // --- /api/stackoverflow ---
+  var soEl = document.getElementById('so-rep');
+  if (soEl) {
+    fetch('/api/stackoverflow')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.reputation) return;
+        var rep = d.reputation.toLocaleString();
+        var html = '<div class="text-2xl font-bold mb-1" style="color: var(--fg);">' + rep + '</div>'
+          + '<div class="text-sm mb-2" style="color: var(--fg-muted);">reputation</div>';
+        if (d.badges) {
+          html += '<div class="flex gap-3 text-xs mb-2">'
+            + '<span style="color: #FFD700;">&#9679; ' + d.badges.gold + '</span>'
+            + '<span style="color: #C0C0C0;">&#9679; ' + d.badges.silver + '</span>'
+            + '<span style="color: #CD7F32;">&#9679; ' + d.badges.bronze + '</span>'
+            + '</div>';
+        }
+        html += '<a href="https://stackoverflow.com/users/1596750" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">View profile &rarr;</a>';
+        soEl.innerHTML = html;
+      })
+      .catch(function () {});
+  }
+})();
+</script>

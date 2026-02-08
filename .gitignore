@@ -15,3 +15,7 @@ public/
 # Node
 node_modules/
 package-lock.json
+
+# Wrangler
+.wrangler/
+.dev.vars
