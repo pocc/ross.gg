@@ -1,0 +1,17 @@
+- name: "Tie Guan Yin"
+  origin: "Anxi, Fujian province"
+  type: "Oolong"
+  notes: "Floral and buttery. Best at 95C with 5-second first steep."
+  brewing: "Gongfu — 7g in 120ml gaiwan, 95C water"
+
+- name: "Da Hong Pao"
+  origin: "Wuyi Mountains, Fujian"
+  type: "Oolong (Rock Tea)"
+  notes: "Roasted, mineral, long-lasting aftertaste. The original rock tea."
+  brewing: "Gongfu — 8g in 120ml gaiwan, 100C water"
+
+- name: "Dong Ding"
+  origin: "Nantou, Taiwan"
+  type: "Oolong"
+  notes: "Medium roast, creamy body, hints of stone fruit."
+  brewing: "Gongfu — 6g in 120ml gaiwan, 93C water"

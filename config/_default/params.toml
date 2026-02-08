@@ -1,0 +1,11 @@
+subtitle = "Customer Solutions Engineer · Digital Gardener"
+description = "Ross Jacobs — networking, protocols, board games, tea, and building things with code."
+author = "Ross Jacobs"
+since = "2019"
+favicon = "/favicon.ico"
+
+[social]
+  email = "mailto:rj@swit.sh"
+  github = "https://github.com/pocc"
+  linkedin = "https://www.linkedin.com/in/rossbjacobs/"
+  stackoverflow = "https://stackoverflow.com/users/1596750/ross-jacobs"

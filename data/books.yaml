@@ -1,0 +1,29 @@
+- title: "Designing Data-Intensive Applications"
+  author: "Martin Kleppmann"
+  status: "reading"
+  rating: 10
+  category: "technical"
+  started: "2026-01-10"
+  notes: "The networking chapters are especially relevant to my work at Cloudflare."
+
+- title: "The Classic of Tea"
+  author: "Lu Yu (trans. Francis Ross Carpenter)"
+  status: "reading"
+  rating: 8
+  category: "personal"
+  started: "2026-01-20"
+  notes: "The original tea manual from 760 CE. Surprisingly practical."
+
+- title: "TCP/IP Illustrated, Vol. 1"
+  author: "W. Richard Stevens"
+  status: "finished"
+  rating: 10
+  category: "technical"
+  notes: "The definitive reference. I've read it cover to cover twice."
+
+- title: "The Art of Strategy"
+  author: "Avinash K. Dixit, Barry J. Nalebuff"
+  status: "want-to-read"
+  rating: null
+  category: "personal"
+  notes: "Game theory applied to real-world decisions."

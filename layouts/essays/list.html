@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+  <header class="mb-10">
+    <h1 class="font-display text-4xl font-bold mb-4" style="letter-spacing: -0.02em;">{{ .Title }}</h1>
+    {{ with .Description }}
+    <p class="text-lg" style="color: var(--fg-muted);">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <div class="space-y-8">
+    {{ range .Pages.ByDate.Reverse }}
+    <article>
+      <div class="flex items-baseline gap-4">
+        <time class="text-sm font-mono whitespace-nowrap" style="color: var(--fg-faint);" datetime="{{ .Date.Format "2006-01-02" }}">
+          {{ .Date.Format "2006-01-02" }}
+        </time>
+        <div>
+          <h2 class="font-display text-2xl font-bold">
+            <a href="{{ .RelPermalink }}" class="hover:opacity-80 transition-opacity" style="text-decoration: none;">{{ .Title }}</a>
+          </h2>
+          {{ with .Description }}
+          <p class="mt-1" style="color: var(--fg-muted);">{{ . }}</p>
+          {{ end }}
+          {{ with .Params.tags }}
+          <div class="mt-2 flex flex-wrap gap-1">
+            {{ range . }}
+            <span class="text-xs px-2 py-0.5 rounded-full" style="background: var(--card-bg); border: 1px solid var(--card-border);">{{ . }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

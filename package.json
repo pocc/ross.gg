@@ -1,0 +1,15 @@
+{
+  "name": "ross.gg",
+  "private": true,
+  "scripts": {
+    "dev": "hugo server --buildDrafts --environment development",
+    "build": "hugo --minify --environment production"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4",
+    "@tailwindcss/typography": "^0.5",
+    "postcss": "^8.4",
+    "postcss-cli": "^11",
+    "autoprefixer": "^10"
+  }
+}

@@ -1,7 +1,10 @@
-.PHONY: build
+.PHONY: build dev clean
 
 build:
-	hugo --theme=even -D
+	hugo --minify
 
-deploy: build
-	sudo cp -r public/* /var/www/html
+dev:
+	hugo server --buildDrafts
+
+clean:
+	rm -rf public/ resources/

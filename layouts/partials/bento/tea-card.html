@@ -1,0 +1,14 @@
+<!-- Tea of the Week -->
+{{ with (index .Site.Data.tea 0) }}
+<article class="bento-card">
+  <span class="card-label">Drinking</span>
+  <h3 class="font-display text-lg font-bold mb-1">{{ .name }}</h3>
+  <p class="text-xs mb-2" style="color: var(--fg-faint);">{{ .origin }}</p>
+  <p class="text-sm" style="color: var(--fg-muted);">{{ .notes }}</p>
+</article>
+{{ else }}
+<article class="bento-card">
+  <span class="card-label">Drinking</span>
+  <p class="text-sm" style="color: var(--fg-muted);">Tea recommendations coming soon.</p>
+</article>
+{{ end }}

@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+  <header class="mb-10">
+    <h1 class="font-display text-4xl font-bold mb-4" style="letter-spacing: -0.02em;">{{ .Title }}</h1>
+    {{ with .Description }}
+    <p class="text-lg" style="color: var(--fg-muted);">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <!-- Stage legend -->
+  <div class="flex flex-wrap gap-4 mb-8 text-sm" style="color: var(--fg-muted);">
+    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: #6ec46e;"></span> Seedling</span>
+    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: #e0a458;"></span> Budding</span>
+    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: #4a90d9;"></span> Evergreen</span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {{ range .Pages.ByLastmod.Reverse }}
+    <article class="bento-card">
+      <div class="flex items-center gap-2 mb-2">
+        {{ with .Params.stage }}
+        <span class="inline-block w-2 h-2 rounded-full"
+              style="background: {{ cond (eq . "seedling") "#6ec46e" (cond (eq . "budding") "#e0a458" "#4a90d9") }};"></span>
+        {{ end }}
+        <time class="text-xs" style="color: var(--fg-faint);">{{ .Lastmod.Format "Jan 2" }}</time>
+      </div>
+      <h2 class="font-display text-lg font-bold mb-1">
+        <a href="{{ .RelPermalink }}" class="hover:opacity-80 transition-opacity">{{ .Title }}</a>
+      </h2>
+      {{ with .Description }}
+      <p class="text-sm" style="color: var(--fg-muted);">{{ . }}</p>
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

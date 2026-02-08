@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+    {{ partial "bento/hero.html" . }}
+    {{ partial "bento/essay-card.html" . }}
+    {{ partial "bento/now-card.html" . }}
+    {{ partial "bento/github-card.html" . }}
+    {{ partial "bento/tea-card.html" . }}
+    {{ partial "bento/note-card.html" . }}
+    {{ partial "bento/game-card.html" . }}
+    {{ partial "bento/notes-card.html" . }}
+    {{ partial "bento/newsletter-card.html" . }}
+    {{ partial "bento/so-card.html" . }}
+    {{ partial "bento/reading-card.html" . }}
+
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,17 @@
+<!-- Currently Reading -->
+{{ $reading := where .Site.Data.books "status" "reading" }}
+{{ with index $reading 0 }}
+<article class="bento-card">
+  <span class="card-label">Reading</span>
+  <h3 class="font-display text-lg font-bold mb-1">{{ .title }}</h3>
+  <p class="text-sm mb-2" style="color: var(--fg-muted);">{{ .author }}</p>
+  {{ with .notes }}
+  <p class="text-xs" style="color: var(--fg-faint);">{{ . | truncate 80 }}</p>
+  {{ end }}
+</article>
+{{ else }}
+<article class="bento-card">
+  <span class="card-label">Reading</span>
+  <p class="text-sm" style="color: var(--fg-muted);">Reading list coming soon.</p>
+</article>
+{{ end }}

@@ -1,0 +1,25 @@
+<!-- Featured Note -->
+{{ $featured := where (where .Site.RegularPages "Section" "notes") ".Params.featured" true }}
+{{ $note := index $featured 0 }}
+{{ if not $note }}
+  {{ $notes := where .Site.RegularPages "Section" "notes" }}
+  {{ with index ($notes.ByDate.Reverse) 0 }}
+    {{ $note = . }}
+  {{ end }}
+{{ end }}
+{{ with $note }}
+<article class="bento-card">
+  <span class="card-label">{{ .Params.stage | default "note" }}</span>
+  <h3 class="font-display text-lg font-bold mb-1">
+    <a href="{{ .RelPermalink }}" class="hover:opacity-80 transition-opacity">{{ .Title }}</a>
+  </h3>
+  {{ with .Description }}
+  <p class="text-sm" style="color: var(--fg-muted);">{{ . | truncate 80 }}</p>
+  {{ end }}
+</article>
+{{ else }}
+<article class="bento-card">
+  <span class="card-label">Note</span>
+  <p class="text-sm" style="color: var(--fg-muted);">Notes coming soon.</p>
+</article>
+{{ end }}

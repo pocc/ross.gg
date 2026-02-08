@@ -1,0 +1,20 @@
+<!-- Hero: spans 2 cols and 2 rows on desktop -->
+<article class="bento-card md:col-span-2 md:row-span-2 flex flex-col justify-between">
+  <div>
+    <h1 class="font-display text-5xl font-bold mb-3" style="letter-spacing: -0.02em;">
+      Ross Jacobs
+    </h1>
+    <p class="text-lg mb-6" style="color: var(--fg-muted);">
+      {{ .Site.Params.subtitle }}
+    </p>
+    <div id="live-status" class="text-sm mb-6 px-3 py-2 rounded-lg inline-block" style="background: rgba(224,164,88,0.1); color: var(--accent);">
+      Building things at Cloudflare
+    </div>
+  </div>
+  <nav class="flex flex-wrap gap-3">
+    <a href="/about/" class="text-sm font-medium px-4 py-2 rounded-lg transition-all hover:opacity-90" style="background: var(--accent); color: #fff;">About</a>
+    <a href="/essays/" class="text-sm font-medium px-4 py-2 rounded-lg transition-all hover:opacity-80" style="border: 1px solid var(--card-border);">Essays</a>
+    <a href="/notes/" class="text-sm font-medium px-4 py-2 rounded-lg transition-all hover:opacity-80" style="border: 1px solid var(--card-border);">Garden</a>
+    <a href="/now/" class="text-sm font-medium px-4 py-2 rounded-lg transition-all hover:opacity-80" style="border: 1px solid var(--card-border);">Now</a>
+  </nav>
+</article>

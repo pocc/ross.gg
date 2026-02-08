@@ -1,0 +1,22 @@
+<div>
+  <h3 class="font-display text-xl font-bold mb-2">Occasional dispatches</h3>
+  <p class="text-sm mb-4" style="color: var(--fg-muted);">
+    Technical notes on networking, protocols, and building things. No spam.
+  </p>
+  <form action="/api/subscribe" method="POST" class="flex gap-2">
+    <input
+      type="email"
+      name="email"
+      placeholder="you@example.com"
+      required
+      autocomplete="email"
+      class="flex-1 px-4 py-2 rounded-lg text-sm bg-transparent border focus:outline-none focus:ring-2"
+      style="border-color: var(--card-border); color: var(--fg);"
+    >
+    <button type="submit"
+            class="px-4 py-2 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90"
+            style="background: var(--accent);">
+      Subscribe
+    </button>
+  </form>
+</div>

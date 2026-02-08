@@ -1,0 +1,26 @@
+baseURL = "https://ross.gg/"
+title = "Ross Jacobs"
+languageCode = "en-US"
+DefaultContentLanguage = "en"
+enableRobotsTXT = true
+enableEmoji = true
+enableGitInfo = true
+buildDrafts = false
+[pagination]
+  pagerSize = 10
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    style = "dracula"
+    lineNos = true
+    guessSyntax = true

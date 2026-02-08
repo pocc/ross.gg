@@ -1,0 +1,21 @@
+<!-- Latest Essay -->
+{{ $essays := where .Site.RegularPages "Section" "essays" }}
+{{ with index ($essays.ByDate.Reverse) 0 }}
+<article class="bento-card flex flex-col justify-between">
+  <div>
+    <span class="card-label">Latest Essay</span>
+    <h3 class="font-display text-xl font-bold mb-2">
+      <a href="{{ .RelPermalink }}" class="hover:opacity-80 transition-opacity">{{ .Title }}</a>
+    </h3>
+    {{ with .Description }}
+    <p class="text-sm" style="color: var(--fg-muted);">{{ . | truncate 100 }}</p>
+    {{ end }}
+  </div>
+  <time class="text-xs mt-3" style="color: var(--fg-faint);">{{ .Date.Format "Jan 2, 2006" }}</time>
+</article>
+{{ else }}
+<article class="bento-card">
+  <span class="card-label">Latest Essay</span>
+  <p class="text-sm" style="color: var(--fg-muted);">Essays coming soon.</p>
+</article>
+{{ end }}

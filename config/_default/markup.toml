@@ -1,0 +1,19 @@
+[tableOfContents]
+  startLevel = 2
+  endLevel = 4
+  ordered = false
+
+[goldmark]
+  [goldmark.renderer]
+    unsafe = true
+  [goldmark.extensions]
+    footnote = true
+    strikethrough = true
+    table = true
+    taskList = true
+
+[highlight]
+  style = "dracula"
+  lineNos = true
+  lineNumbersInTable = true
+  guessSyntax = true

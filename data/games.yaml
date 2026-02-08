@@ -1,0 +1,35 @@
+- title: "Brass: Birmingham"
+  designer: "Gavan Brown, Matt Tolman, Martin Wallace"
+  bgg_id: 224517
+  status: "currently-playing"
+  rating: 9.5
+  plays: 23
+  notes: "Best economic game ever made. Canal era strategy is underrated."
+  tags: ["economic", "heavy", "2-4 players"]
+
+- title: "Hive Pocket"
+  designer: "John Yianni"
+  bgg_id: 154597
+  status: "currently-playing"
+  rating: 8
+  plays: 100
+  notes: "Chess-like depth in a bag. Perfect travel game."
+  tags: ["abstract", "2-player", "portable"]
+
+- title: "Spirit Island"
+  designer: "R. Eric Reuss"
+  bgg_id: 162886
+  status: "on-shelf"
+  rating: 9
+  plays: 15
+  notes: "Cooperative anti-colonial tower defense. Incredible theming."
+  tags: ["cooperative", "heavy", "1-4 players"]
+
+- title: "Twilight Struggle"
+  designer: "Ananda Gupta, Jason Matthews"
+  bgg_id: 12333
+  status: "on-shelf"
+  rating: 8.5
+  plays: 12
+  notes: "Cold War card-driven tug of war. Every card is a painful decision."
+  tags: ["card-driven", "2-player", "historical"]

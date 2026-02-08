@@ -1,0 +1,28 @@
+{{ $currentPage := . }}
+{{ $backlinks := slice }}
+{{ range where .Site.RegularPages "Section" "notes" }}
+  {{ if and (ne .Permalink $currentPage.Permalink) (findRE $currentPage.RelPermalink .RawContent) }}
+    {{ $backlinks = $backlinks | append . }}
+  {{ end }}
+{{ end }}
+{{ range where .Site.RegularPages "Section" "essays" }}
+  {{ if and (ne .Permalink $currentPage.Permalink) (findRE $currentPage.RelPermalink .RawContent) }}
+    {{ $backlinks = $backlinks | append . }}
+  {{ end }}
+{{ end }}
+
+{{ if gt (len $backlinks) 0 }}
+<aside class="backlinks">
+  <h3>Pages that link here</h3>
+  <ul>
+    {{ range $backlinks }}
+    <li class="flex items-center gap-2">
+      {{ with .Params.stage }}
+      <span class="stage-badge stage-{{ . }}">{{ . }}</span>
+      {{ end }}
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</aside>
+{{ end }}

@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --fg: #0a0a0b;
+    --fg-muted: #78716c;
+    --fg-faint: #a8a29e;
+    --card-bg: #f5f5f4;
+    --card-border: #e7e5e4;
+    --accent: #e0a458;
+  }
+
+  .dark {
+    --fg: #e8e6e3;
+    --fg-muted: #a0a0a8;
+    --fg-faint: #6a6a72;
+    --card-bg: #1f1f23;
+    --card-border: #2a2a30;
+    --accent: #f0c078;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--fg);
+    background-color: #fafaf9;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .dark body {
+    background-color: #111113;
+  }
+}
+
+@layer components {
+  /* Bento card base */
+  .bento-card {
+    @apply rounded-card p-6 transition-all duration-200;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+  }
+
+  .bento-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .dark .bento-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Card label */
+  .card-label {
+    @apply text-xs font-medium uppercase tracking-wider inline-block mb-3;
+    color: var(--accent);
+  }
+
+  /* Stage badges */
+  .stage-badge {
+    @apply text-xs font-medium px-2 py-0.5 rounded-full;
+  }
+
+  .stage-seedling {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .dark .stage-seedling {
+    background: rgba(110, 196, 110, 0.15);
+    color: #6ec46e;
+  }
+
+  .stage-budding {
+    background: rgba(224, 164, 88, 0.15);
+    color: #c08030;
+  }
+
+  .dark .stage-budding {
+    color: #e0a458;
+  }
+
+  .stage-evergreen {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .dark .stage-evergreen {
+    background: rgba(74, 144, 217, 0.15);
+    color: #4a90d9;
+  }
+
+  /* Reading progress bar */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 9999;
+    background: transparent;
+  }
+
+  .reading-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    transition: width 50ms linear;
+  }
+
+  /* Prose overrides for articles */
+  .prose pre {
+    @apply rounded-card;
+  }
+
+  .prose img {
+    @apply rounded-card;
+  }
+
+  /* Backlinks section */
+  .backlinks {
+    @apply mt-12 pt-8;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .backlinks h3 {
+    @apply text-sm font-medium uppercase tracking-wider mb-4;
+    color: var(--fg-muted);
+  }
+
+  .backlinks ul {
+    @apply space-y-2;
+  }
+
+  .backlinks a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(224, 164, 88, 0.3);
+  }
+
+  .backlinks a:hover {
+    text-decoration-color: var(--accent);
+  }
+}

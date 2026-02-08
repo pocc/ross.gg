@@ -1,0 +1,11 @@
+{{ $url := .Destination }}
+
+{{/* Resolve relative note links */}}
+{{ if and (not (hasPrefix $url "http")) (not (hasPrefix $url "/")) (not (hasPrefix $url "#")) (not (hasPrefix $url "mailto:")) }}
+  {{ $page := .Page.GetPage $url }}
+  {{ if $page }}
+    {{ $url = $page.RelPermalink }}
+  {{ end }}
+{{ end }}
+
+<a href="{{ $url | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if hasPrefix $url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text }}</a>

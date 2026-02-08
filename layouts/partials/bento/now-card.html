@@ -1,0 +1,13 @@
+<!-- /now snippet -->
+{{ with .Site.GetPage "/now" }}
+<article class="bento-card flex flex-col justify-between">
+  <div>
+    <span class="card-label">/now</span>
+    <p class="text-sm mb-3" style="color: var(--fg-muted);">{{ .Summary | plainify | truncate 120 }}</p>
+  </div>
+  <div class="flex items-center justify-between">
+    <a href="/now/" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">What I'm up to &rarr;</a>
+    <time class="text-xs" style="color: var(--fg-faint);">{{ .Lastmod.Format "Jan 2" }}</time>
+  </div>
+</article>
+{{ end }}
