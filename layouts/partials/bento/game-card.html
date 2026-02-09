@@ -1,5 +1,6 @@
 <!-- Board Game of the Month -->
 {{ $playing := where .Site.Data.games "status" "currently-playing" }}
+{{ if gt (len $playing) 0 }}
 {{ with index $playing 0 }}
 <article class="bento-card">
   <span class="card-label">Playing</span>
@@ -11,6 +12,7 @@
     <span>{{ .rating }}/10</span>
   </div>
 </article>
+{{ end }}
 {{ else }}
 <article class="bento-card">
   <span class="card-label">Playing</span>

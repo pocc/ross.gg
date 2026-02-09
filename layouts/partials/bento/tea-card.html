@@ -1,4 +1,5 @@
 <!-- Tea of the Week -->
+{{ if gt (len .Site.Data.tea) 0 }}
 {{ with (index .Site.Data.tea 0) }}
 <article class="bento-card">
   <span class="card-label">Drinking</span>
@@ -6,6 +7,7 @@
   <p class="text-xs mb-2" style="color: var(--fg-faint);">{{ .origin }}</p>
   <p class="text-sm" style="color: var(--fg-muted);">{{ .notes }}</p>
 </article>
+{{ end }}
 {{ else }}
 <article class="bento-card">
   <span class="card-label">Drinking</span>

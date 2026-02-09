@@ -13,8 +13,9 @@
   </script>
 </head>
 <body class="min-h-screen flex flex-col font-body text-base">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:text-sm focus:font-medium" style="background: var(--accent); color: #1a1207;">Skip to content</a>
   {{ partial "header.html" . }}
-  <main class="flex-1">
+  <main id="main" class="flex-1">
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}

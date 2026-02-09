@@ -1,5 +1,6 @@
 <!-- Currently Reading -->
 {{ $reading := where .Site.Data.books "status" "reading" }}
+{{ if gt (len $reading) 0 }}
 {{ with index $reading 0 }}
 <article class="bento-card">
   <span class="card-label">Reading</span>
@@ -9,6 +10,7 @@
   <p class="text-xs" style="color: var(--fg-faint);">{{ . | truncate 80 }}</p>
   {{ end }}
 </article>
+{{ end }}
 {{ else }}
 <article class="bento-card">
   <span class="card-label">Reading</span>

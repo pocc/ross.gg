@@ -43,7 +43,7 @@
           frag.appendChild(row);
         });
         var link = el('a', 'text-sm font-medium hover:opacity-80 transition-opacity', 'color: var(--accent);');
-        link.href = {{ .Site.Params.social.github | jsonify }};
+        link.href = '{{ .Site.Params.social.github | safeJS }}';
         link.textContent = '@pocc \u2192';
         frag.appendChild(link);
         ghEl.textContent = '';
@@ -70,7 +70,7 @@
           frag.appendChild(badges);
         }
         var link = el('a', 'text-sm font-medium hover:opacity-80 transition-opacity', 'color: var(--accent);');
-        link.href = {{ .Site.Params.social.stackoverflow | jsonify }};
+        link.href = '{{ .Site.Params.social.stackoverflow | safeJS }}';
         link.textContent = 'View profile \u2192';
         frag.appendChild(link);
         soEl.textContent = '';

@@ -98,15 +98,22 @@ async function handleStatusUpdate(request: Request, env: Env): Promise<Response>
     return json({ error: 'Unauthorized' }, 401);
   }
 
-  const body = await request.json() as { status?: string; location?: string };
-
-  if (env.KV) {
-    const writes: Promise<void>[] = [];
-    if (body.status) writes.push(env.KV.put('current-status', body.status));
-    if (body.location) writes.push(env.KV.put('current-location', body.location));
-    writes.push(env.KV.put('status-updated-at', new Date().toISOString()));
-    await Promise.all(writes);
+  if (!env.KV) {
+    return json({ error: 'Storage unavailable' }, 503, 0, 'https://ross.gg');
   }
+
+  let body: { status?: string; location?: string };
+  try {
+    body = await request.json() as { status?: string; location?: string };
+  } catch {
+    return json({ error: 'Invalid JSON' }, 400, 0, 'https://ross.gg');
+  }
+
+  const writes: Promise<void>[] = [];
+  if (body.status) writes.push(env.KV.put('current-status', body.status));
+  if (body.location) writes.push(env.KV.put('current-location', body.location));
+  writes.push(env.KV.put('status-updated-at', new Date().toISOString()));
+  await Promise.all(writes);
 
   return json({ success: true }, 200, 0, 'https://ross.gg');
 }
@@ -140,6 +147,8 @@ async function handleSubscribe(request: Request, env: Env): Promise<Response> {
     }
   } else if (env.KV) {
     await env.KV.put(`subscriber:${email}`, new Date().toISOString());
+  } else {
+    return Response.redirect('https://ross.gg/subscribe/error/', 303);
   }
 
   return Response.redirect('https://ross.gg/subscribe/thanks/', 303);

@@ -1,5 +1,6 @@
 <!-- Latest Essay -->
 {{ $essays := where .Site.RegularPages "Section" "essays" }}
+{{ if gt (len $essays) 0 }}
 {{ with index ($essays.ByDate.Reverse) 0 }}
 <article class="bento-card flex flex-col justify-between">
   <div>
@@ -13,6 +14,7 @@
   </div>
   <time class="text-xs mt-3" style="color: var(--fg-faint);">{{ .Date.Format "Jan 2, 2006" }}</time>
 </article>
+{{ end }}
 {{ else }}
 <article class="bento-card">
   <span class="card-label">Latest Essay</span>
