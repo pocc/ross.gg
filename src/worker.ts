@@ -128,7 +128,7 @@ async function handleSubscribe(request: Request, env: Env): Promise<Response> {
   const formData = await request.formData();
   const email = formData.get('email')?.toString().trim().toLowerCase();
 
-  if (!email || !email.includes('@')) {
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return Response.redirect('https://ross.gg/subscribe/error/', 303);
   }
 

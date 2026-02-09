@@ -8,4 +8,4 @@
   {{ end }}
 {{ end }}
 
-<a href="{{ $url | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if hasPrefix $url "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text }}</a>
+<a href="{{ $url | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if hasPrefix $url "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text }}</a>
