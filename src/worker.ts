@@ -19,12 +19,12 @@ export default {
 
 // --- Helpers ---
 
-function json(data: unknown, status = 200, cacheSeconds = 0): Response {
+function json(data: unknown, status = 200, cacheSeconds = 0, origin = '*'): Response {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': origin,
       'Cache-Control': cacheSeconds > 0 ? `public, max-age=${cacheSeconds}` : 'no-store',
     },
   });
@@ -33,7 +33,7 @@ function json(data: unknown, status = 200, cacheSeconds = 0): Response {
 function corsPreflightResponse(): Response {
   return new Response(null, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'https://ross.gg',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     },
@@ -108,7 +108,7 @@ async function handleStatusUpdate(request: Request, env: Env): Promise<Response>
     await Promise.all(writes);
   }
 
-  return json({ success: true });
+  return json({ success: true }, 200, 0, 'https://ross.gg');
 }
 
 // --- /api/subscribe ---

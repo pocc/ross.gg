@@ -1,10 +1,12 @@
 <!-- Featured Note -->
 {{ $featured := where (where .Site.RegularPages "Section" "notes") ".Params.featured" true }}
-{{ $note := index $featured 0 }}
-{{ if not $note }}
+{{ $note := false }}
+{{ if gt (len $featured) 0 }}
+  {{ $note = index $featured 0 }}
+{{ else }}
   {{ $notes := where .Site.RegularPages "Section" "notes" }}
-  {{ with index ($notes.ByDate.Reverse) 0 }}
-    {{ $note = . }}
+  {{ if gt (len $notes) 0 }}
+    {{ $note = index ($notes.ByDate.Reverse) 0 }}
   {{ end }}
 {{ end }}
 {{ with $note }}

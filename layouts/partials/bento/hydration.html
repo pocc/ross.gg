@@ -1,6 +1,14 @@
 <!-- Client-side hydration for Worker API data -->
 <script>
 (function () {
+  function el(tag, classes, style, text) {
+    var node = document.createElement(tag);
+    if (classes) node.className = classes;
+    if (style) node.setAttribute('style', style);
+    if (text) node.textContent = text;
+    return node;
+  }
+
   // --- /api/status ---
   var statusEl = document.getElementById('live-status');
   if (statusEl) {
@@ -9,7 +17,7 @@
       .then(function (d) {
         if (d.status) {
           statusEl.textContent = d.status;
-          if (d.location) statusEl.textContent += ' · ' + d.location;
+          if (d.location) statusEl.textContent += ' \u00b7 ' + d.location;
         }
       })
       .catch(function () {});
@@ -22,18 +30,24 @@
       .then(function (r) { return r.json(); })
       .then(function (events) {
         if (!Array.isArray(events) || events.length === 0) return;
-        var html = '';
+        var frag = document.createDocumentFragment();
         events.forEach(function (e) {
           var repo = e.repo.replace(/^pocc\//, '');
           var d = new Date(e.date);
           var ago = Math.floor((Date.now() - d.getTime()) / 86400000);
           var when = ago === 0 ? 'today' : ago === 1 ? 'yesterday' : ago + 'd ago';
-          html += '<div class="text-sm mb-1" style="color: var(--fg-muted);">'
-            + '<span style="color: var(--fg);">' + e.type + '</span> '
-            + repo + ' <span style="color: var(--fg-faint);">' + when + '</span></div>';
+          var row = el('div', 'text-sm mb-1', 'color: var(--fg-muted);');
+          row.appendChild(el('span', null, 'color: var(--fg);', e.type));
+          row.appendChild(document.createTextNode(' ' + repo + ' '));
+          row.appendChild(el('span', null, 'color: var(--fg-faint);', when));
+          frag.appendChild(row);
         });
-        html += '<a href="https://github.com/pocc" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">@pocc &rarr;</a>';
-        ghEl.innerHTML = html;
+        var link = el('a', 'text-sm font-medium hover:opacity-80 transition-opacity', 'color: var(--accent);');
+        link.href = {{ .Site.Params.social.github | jsonify }};
+        link.textContent = '@pocc \u2192';
+        frag.appendChild(link);
+        ghEl.textContent = '';
+        ghEl.appendChild(frag);
       })
       .catch(function () {});
   }
@@ -45,18 +59,22 @@
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (!d.reputation) return;
-        var rep = d.reputation.toLocaleString();
-        var html = '<div class="text-2xl font-bold mb-1" style="color: var(--fg);">' + rep + '</div>'
-          + '<div class="text-sm mb-2" style="color: var(--fg-muted);">reputation</div>';
+        var frag = document.createDocumentFragment();
+        frag.appendChild(el('div', 'text-2xl font-bold mb-1', 'color: var(--fg);', d.reputation.toLocaleString()));
+        frag.appendChild(el('div', 'text-sm mb-2', 'color: var(--fg-muted);', 'reputation'));
         if (d.badges) {
-          html += '<div class="flex gap-3 text-xs mb-2">'
-            + '<span style="color: #FFD700;">&#9679; ' + d.badges.gold + '</span>'
-            + '<span style="color: #C0C0C0;">&#9679; ' + d.badges.silver + '</span>'
-            + '<span style="color: #CD7F32;">&#9679; ' + d.badges.bronze + '</span>'
-            + '</div>';
+          var badges = el('div', 'flex gap-3 text-xs mb-2');
+          badges.appendChild(el('span', null, 'color: #FFD700;', '\u25cf ' + d.badges.gold));
+          badges.appendChild(el('span', null, 'color: #C0C0C0;', '\u25cf ' + d.badges.silver));
+          badges.appendChild(el('span', null, 'color: #CD7F32;', '\u25cf ' + d.badges.bronze));
+          frag.appendChild(badges);
         }
-        html += '<a href="https://stackoverflow.com/users/1596750" class="text-sm font-medium hover:opacity-80 transition-opacity" style="color: var(--accent);">View profile &rarr;</a>';
-        soEl.innerHTML = html;
+        var link = el('a', 'text-sm font-medium hover:opacity-80 transition-opacity', 'color: var(--accent);');
+        link.href = {{ .Site.Params.social.stackoverflow | jsonify }};
+        link.textContent = 'View profile \u2192';
+        frag.appendChild(link);
+        soEl.textContent = '';
+        soEl.appendChild(frag);
       })
       .catch(function () {});
   }
