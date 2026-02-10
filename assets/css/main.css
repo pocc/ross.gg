@@ -73,16 +73,19 @@
   }
 
   .stage-seedling {
+    background: rgba(110, 196, 110, 0.15);
     background: color-mix(in srgb, var(--stage-seedling) 15%, transparent);
     color: var(--stage-seedling);
   }
 
   .stage-budding {
+    background: rgba(224, 164, 88, 0.15);
     background: color-mix(in srgb, var(--stage-budding) 15%, transparent);
     color: var(--stage-budding);
   }
 
   .stage-evergreen {
+    background: rgba(74, 144, 217, 0.15);
     background: color-mix(in srgb, var(--stage-evergreen) 15%, transparent);
     color: var(--stage-evergreen);
   }
