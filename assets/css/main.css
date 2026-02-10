@@ -10,6 +10,9 @@
     --card-bg: #f5f5f4;
     --card-border: #e7e5e4;
     --accent: #e0a458;
+    --stage-seedling: #6ec46e;
+    --stage-budding: #e0a458;
+    --stage-evergreen: #4a90d9;
   }
 
   .dark {
@@ -19,6 +22,9 @@
     --card-bg: #1f1f23;
     --card-border: #2a2a30;
     --accent: #f0c078;
+    --stage-seedling: #6ec46e;
+    --stage-budding: #e0a458;
+    --stage-evergreen: #4a90d9;
   }
 
   html {
@@ -67,30 +73,18 @@
   }
 
   .stage-seedling {
-    @apply bg-green-100 text-green-800;
-  }
-
-  .dark .stage-seedling {
-    background: rgba(110, 196, 110, 0.15);
-    color: #6ec46e;
+    background: color-mix(in srgb, var(--stage-seedling) 15%, transparent);
+    color: var(--stage-seedling);
   }
 
   .stage-budding {
-    background: rgba(224, 164, 88, 0.15);
-    color: #c08030;
-  }
-
-  .dark .stage-budding {
-    color: #e0a458;
+    background: color-mix(in srgb, var(--stage-budding) 15%, transparent);
+    color: var(--stage-budding);
   }
 
   .stage-evergreen {
-    @apply bg-blue-100 text-blue-800;
-  }
-
-  .dark .stage-evergreen {
-    background: rgba(74, 144, 217, 0.15);
-    color: #4a90d9;
+    background: color-mix(in srgb, var(--stage-evergreen) 15%, transparent);
+    color: var(--stage-evergreen);
   }
 
   /* Reading progress bar */

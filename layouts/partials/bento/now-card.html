@@ -10,4 +10,9 @@
     <time class="text-xs" style="color: var(--fg-faint);">{{ .Lastmod.Format "Jan 2" }}</time>
   </div>
 </article>
+{{ else }}
+<article class="bento-card">
+  <span class="card-label">/now</span>
+  <p class="text-sm" style="color: var(--fg-muted);">Updates coming soon.</p>
+</article>
 {{ end }}

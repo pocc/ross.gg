@@ -11,7 +11,7 @@
     {{ range .Pages.ByDate.Reverse }}
     <article>
       <div class="flex items-baseline gap-4">
-        <time class="text-sm font-mono whitespace-nowrap" style="color: var(--fg-faint);" datetime="{{ .Date.Format "2006-01-02" }}">
+        <time class="text-sm font-mono whitespace-nowrap flex-shrink-0" style="color: var(--fg-faint);" datetime="{{ .Date.Format "2006-01-02" }}">
           {{ .Date.Format "2006-01-02" }}
         </time>
         <div>

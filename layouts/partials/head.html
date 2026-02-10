@@ -9,7 +9,16 @@
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-
+{{ with .Params.cover }}<meta property="og:image" content="{{ . | absURL }}">
+{{ else }}{{ with .Site.Params.og_image }}<meta property="og:image" content="{{ . | absURL }}">
+{{ end }}{{ end }}
+<!-- Twitter Card -->
+<meta name="twitter:card" content="{{ if or .Params.cover .Site.Params.og_image }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ .Title | default .Site.Title }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+{{ with .Params.cover }}<meta name="twitter:image" content="{{ . | absURL }}">
+{{ else }}{{ with .Site.Params.og_image }}<meta name="twitter:image" content="{{ . | absURL }}">
+{{ end }}{{ end }}
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

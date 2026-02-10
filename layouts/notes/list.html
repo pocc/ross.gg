@@ -9,9 +9,9 @@
 
   <!-- Stage legend -->
   <div class="flex flex-wrap gap-4 mb-8 text-sm" style="color: var(--fg-muted);">
-    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: #6ec46e;"></span> Seedling</span>
-    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: #e0a458;"></span> Budding</span>
-    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: #4a90d9;"></span> Evergreen</span>
+    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: var(--stage-seedling);"></span> Seedling</span>
+    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: var(--stage-budding);"></span> Budding</span>
+    <span class="flex items-center gap-1"><span class="inline-block w-2 h-2 rounded-full" style="background: var(--stage-evergreen);"></span> Evergreen</span>
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -20,7 +20,7 @@
       <div class="flex items-center gap-2 mb-2">
         {{ with .Params.stage }}
         <span class="inline-block w-2 h-2 rounded-full"
-              style="background: {{ cond (eq . "seedling") "#6ec46e" (cond (eq . "budding") "#e0a458" "#4a90d9") }};"></span>
+              style="background: var(--stage-{{ . }});"></span>
         {{ end }}
         <time class="text-xs" style="color: var(--fg-faint);">{{ .Lastmod.Format "Jan 2" }}</time>
       </div>
