@@ -1,6 +1,12 @@
 name = "ross-gg"
 main = "src/worker.ts"
 compatibility_date = "2025-01-01"
+preview_urls = false
+workers_dev = false
+
+[[routes]]
+pattern = "ross.gg"
+custom_domain = true
 
 [build]
 command = "hugo --minify"
