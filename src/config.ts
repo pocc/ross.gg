@@ -1,0 +1,23 @@
+export const SITE = {
+  website: "https://ross.gg/",
+  author: "Ross Jacobs",
+  profile: "https://ross.gg/",
+  desc: "Ross Jacobs — networking, protocols, board games, tea, and building things with code.",
+  title: "Ross Jacobs",
+  ogImage: "",
+  lightAndDarkMode: true,
+  postPerIndex: 4,
+  postPerPage: 10,
+  scheduledPostMargin: 15 * 60 * 1000,
+  showArchives: true,
+  showBackButton: true,
+  editPost: {
+    enabled: false,
+    text: "Edit page",
+    url: "https://github.com/pocc/ross.gg/edit/master/",
+  },
+  dynamicOgImage: true,
+  dir: "ltr",
+  lang: "en",
+  timezone: "America/Los_Angeles",
+} as const;

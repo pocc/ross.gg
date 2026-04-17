@@ -1,5 +1,5 @@
 name = "ross-gg"
-main = "src/worker.ts"
+main = "worker/index.ts"
 compatibility_date = "2025-01-01"
 preview_urls = false
 workers_dev = false
@@ -8,11 +8,8 @@ workers_dev = false
 pattern = "ross.gg"
 custom_domain = true
 
-[build]
-command = "hugo --minify"
-
 [assets]
-directory = "./public"
+directory = "./dist"
 binding = "ASSETS"
 
 # KV namespace for caching and status storage.
