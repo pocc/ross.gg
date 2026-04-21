@@ -44,7 +44,7 @@
     }
 
     img {
-      @apply mx-auto border border-border;
+      @apply border border-border;
     }
 
     figcaption {
@@ -52,6 +52,16 @@
     }
 
     table {
+      /* Break out of the prose column the same way images do. Tables ignore
+         max-width when display:table, so switch to display:block with
+         horizontal scroll — standard pattern for wide tables on mobile. */
+      display: block;
+      overflow-x: auto;
+      max-width: min(100vw - 2rem, 1200px) !important;
+      width: max-content;
+      margin-left: 50%;
+      translate: -50% 0;
+
       th,
       td {
         @apply border border-border p-2;
