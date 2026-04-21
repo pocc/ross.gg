@@ -6,6 +6,7 @@ description: "An exploration of British Dependent Territories"
 tags:
   - tld
   - taxes
+wideTables: true
 ---
 
 While writing a [travel blog](/posts/visiting-bermuda) about Bermuda, I became fascinated with why TLDs exist for parts of countries. I've asked about [TLDs vs effective TLDs](https://stackoverflow.com/questions/69418561/is-gov-uk-a-tld-or-a-domain) because DNS and TLD delegations are fascinating. We have TLDs like `.pr` for Puerto Rico and `.bm` for Bermuda even though they are a part of the US and UK respectively. The TLDs `.us` and `.uk` would make more sense. Most of the TLDs of the AI era, .ai, .sh, .io, and .ms, are actually TLDs for British subnational territories. Why is there a TLD for every dependent territory? 

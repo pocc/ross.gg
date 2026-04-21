@@ -1,5 +1,5 @@
 ---
-title: "TCP Pings From 143 Cloudflare Colos"
+title: "TCP Pings From ~62 Cloudflare Colos"
 draft: false
 pubDatetime: 2026-04-21T00:00:00Z
 description: "Test Global Cloudflare TCP/TLS/HTTP connectivity to your origin server"
@@ -10,6 +10,8 @@ tags:
 ---
 
 I built [healthchecks.ross.gg](https://healthchecks.ross.gg) as an vibecoding experiment to test the TCP capabilities of Cloudflare workers. It sends a TCP SYN ping to every colo that I have access to in my personal account. https://ping.pe/ is useful for troubleshooting with ICMP globally, and this tool complements ping.pe with TCP pings from "all" Cloudflare colos. It's possible that this could help you identify regional outages with more granularity. Source is on GitHub as [global-healthchecks](https://github.com/pocc/global-healthchecks).
+
+> **Warning:** Targets must be **outside Cloudflare's network** (AS13335). Connections to Cloudflare-proxied hosts are blocked, and the test button will be disabled. If your hostname resolves to a proxied DNS record (orange-cloud), supply the **origin IP** or **un-proxied CNAME target** directly instead of the proxied hostname. Otherwise the worker would get an [Error 1014](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1014/).
 
 ## Table of contents
 
@@ -25,7 +27,7 @@ I built [healthchecks.ross.gg](https://healthchecks.ross.gg) as an vibecoding ex
 
 ## How It Works
 
-The tool performs [TCP pings](https://www.cloudflare.com/learning/network-layer/what-is-a-computer-port/) from **143 Cloudflare Worker endpoints** deployed across the globe. Each endpoint opens a raw [TCP socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) to your target host:port and measures the round-trip latency from that location. Unlike ICMP ping, a TCP ping completes the three-way handshake (SYN → SYN-ACK → ACK) to verify the port is actually accepting connections. Results show which data center handled the request and how long the connection took.
+The tool performs [TCP pings](https://www.cloudflare.com/learning/network-layer/what-is-a-computer-port/) from **143 Cloudflare Worker placements** deployed across the globe, but those 143 placements only land on roughly **~62 unique Cloudflare colos**. Many cloud regions share the same nearest Cloudflare data center: AWS Ireland, AWS London, Azure London, and Azure Cardiff all egress through LHR. AWS Bahrain, AWS UAE, GCP Doha, GCP Dammam, GCP/Azure Mumbai, and GCP Tel Aviv all egress through BOM. Each placement opens a raw [TCP socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) to your target host:port and measures the round-trip latency from that location. Unlike ICMP ping, a TCP ping completes the three-way handshake (SYN → SYN-ACK → ACK) to verify the port is actually accepting connections. Results show which data center handled the request and how long the connection took.
 
 ## Two Placement Strategies
 
@@ -46,10 +48,10 @@ The tool supports two testing modes. **TCP Only** opens a raw socket at the Tran
 
 | Action | OSI Layer | Analogy | Measured |
 | --- | --- | --- | --- |
-| TCP three-way handshake | Layer 4 — Transport | *Dialing the phone* | TCP ms |
-| TLS handshake & session establishment | Layer 5 — Session | *Starting the meeting, agreeing on terms* | TLS ms |
-| Cipher selection & encryption | Layer 6 — Presentation | *Choosing the translator* | TLS ms |
-| HTTP request & time to first byte | Layer 7 — Application | *Having the conversation* | TTFB |
+| TCP three-way handshake | Layer 4: Transport | *Dialing the phone* | TCP ms |
+| TLS handshake & session establishment | Layer 5: Session | *Starting the meeting, agreeing on terms* | TLS ms |
+| Cipher selection & encryption | Layer 6: Presentation | *Choosing the translator* | TLS ms |
+| HTTP request & time to first byte | Layer 7: Application | *Having the conversation* | TTFB |
 
 In a typical browser or `curl` request, TLS session setup happens automatically inside the networking stack, and the caller never touches Layer 5 or 6 directly. This tool is different: the Worker uses [node:tls](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) to act as a *Session Manager*, explicitly controlling the TLS handshake parameters (min/max version, cipher suites, SNI) that normally live below the application's reach. Because you're choosing *which* ciphers to offer and measuring handshake latency and protocol compatibility, **you** operate at **Layer 5-6**, managing the dialogue between client and server, not just consuming it.
 
