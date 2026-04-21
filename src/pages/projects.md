@@ -5,6 +5,14 @@ title: "Projects"
 
 Open source projects and utilities I've built.
 
+## 2026
+
+### [Global Healthchecks](https://healthchecks.ross.gg)
+
+[![Global Healthchecks](@/assets/images/projects/healthchecks.webp)](https://healthchecks.ross.gg)
+
+Test TCP/TLS/HTTP connectivity to your origin from 143 Cloudflare Worker endpoints worldwide. Per-phase timing for handshake, cipher negotiation, and TTFB. Source is on GitHub:  [global-healthchecks](https://github.com/pocc/global-healthchecks).
+
 ## 2023
 
 ### [HAR To HTML](https://tools.ross.gg/har2html.html)
