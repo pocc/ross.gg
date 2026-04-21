@@ -5,7 +5,6 @@ pubDatetime: 2026-04-01T12:00:00Z
 description: "Travel log of a day in Bermuda"
 tags:
   - travel
-  - cruising
 ---
 
 I want to write more, and a vacation is the perfect place to start. I recently visited Bermuda, took some pictures, and learned some interesting things about the island.

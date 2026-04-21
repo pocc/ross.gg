@@ -14,6 +14,8 @@ Words here are my own.
 
 ## Table of Contents
 
+# British Dependent Territories
+
 My hotel, Inverurie, like many businesses in Bermuda, proudly advertises its `.bm` domain. Despite being an island of 65,000 people, it gets its own TLD, just like other [British Overseas Territories](https://en.wikipedia.org/wiki/British_Overseas_Territories). 
 
 I also venture into how these various British dependent territories have historically been tax havens as a tangent. **Independent, geographically distinct jurisdictions based on British Common Law are great tax havens prior to OECD pillars AND meet ISO 3166 standards for two-letter country codes.** Regardless, below, I take a look into the tax regimes and TLDs of various British Overseas Territories and Crown Dependencies.
