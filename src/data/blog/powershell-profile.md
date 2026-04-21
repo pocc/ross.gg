@@ -7,7 +7,7 @@ tags:
   - setup
 ---
 
-![](/img/powershell/ps_profile_setup.png)
+![](@/assets/images/powershell-profile/ps_profile_setup.webp)
 
 Like `~/.bashrc` for bash, a [Powershell profile](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-6) allows you to load aliases or functions when you open a new terminal.
 
@@ -27,6 +27,8 @@ New-Item -Path $Profile -ItemType "file"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 ```
 
-3. (Optional) Edit your profile with `Start notepad $Profile` and add your customizations.
+3. (Optional) Edit your profile with `Start notepad $Profile` and add your customizations. For example, display system info or ASCII art on launch:
 
-![PS Screenfetch](/img/powershell/ps_screenfetch.webp)
+![PS Screenfetch](@/assets/images/powershell-profile/ps_screenfetch.webp)
+
+![PS Profile Alien](@/assets/images/powershell-profile/ps_profile_alien.webp)

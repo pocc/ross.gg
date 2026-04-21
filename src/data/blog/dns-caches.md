@@ -25,7 +25,7 @@ Check browser DNS cache --miss--> Check OS DNS cache --miss--> Recursive resolve
 
 Firefox's DNS cache `about:networking#dns` can be flushed with a button and lists entries.
 
-![firefox dns cache](/img/dns_caches/firefox_dns_cache.png)
+![firefox dns cache](@/assets/images/dns-caches/firefox_dns_cache.webp)
 
 ## Chrome DNS Cache
 
@@ -40,7 +40,7 @@ To list entries in Chrome:
 5. Import your `chrome-net-export-log.json` file with [https://netlog-viewer.appspot.com/#import](https://netlog-viewer.appspot.com/#import)
 6. Go to the [DNS section](https://netlog-viewer.appspot.com/#dns)
 
-![chrome dns cache](/img/dns_caches/chrome_dns_cache.png)
+![chrome dns cache](@/assets/images/dns-caches/chrome_dns_cache.webp)
 
 ## Windows
 

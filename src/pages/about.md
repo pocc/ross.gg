@@ -3,7 +3,11 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-<img src="/img/profile_pic_eff.jpg" alt="Ross Jacobs" style="float:right; margin-left:20px; display:block; width:35%; border-radius:1rem;"/>
+<div style="float:right; margin-left:20px; width:35%; border-radius:1rem; overflow:hidden;">
+
+![Ross Jacobs](@/assets/images/about/profile_pic_eff.webp)
+
+</div>
 
 I'm a Customer Solutions Engineer at Cloudflare, where I help customers make their websites more performant and secure. I understand L3, L4, and L7 deeply — from 802.11 frames to TLS handshakes to HTTP caching strategies.
 
@@ -21,7 +25,7 @@ I like contributing back to my tools. Among others, I have contributed to
 [Wireshark](https://wireshark.org), [Termshark](https://termshark.io/), [tutorialedge.net](https://tutorialedge.net),
 and [termstandard/colors](https://github.com/termstandard/colors).
 
-<img src="/img/wireshark/sync_crc6_checker.webp" alt="SYNC CRC6 checker functioning properly." style="width:100%;"/>
+![SYNC CRC6 checker functioning properly.](@/assets/images/about/sync_crc6_checker.webp)
 
 _CRC6 bug I fixed in Wireshark. CRC6 is used for MBMS SYNC, which is a multicast LTE SYNC protocol._
 

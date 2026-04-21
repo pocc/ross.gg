@@ -7,7 +7,7 @@ tags:
   - setup
 ---
 
-![](/img/julia/install/install_julia.png)
+![](@/assets/images/installing-julia/install_julia.webp)
 
 _Install Julia locally to your system_
 
@@ -50,7 +50,6 @@ sudo cp -r /tmp/julia /opt/local   # GLOBAL
 
 ## Verification
 
-<picture>
-    <source type="image/webp" srcset="/img/julia/install/bash_julia.webp">
-    <img src="/img/julia/install/bash_julia.png" alt="Julia Install on Bash" style="height:80%;width:80%">
-</picture>
+![Julia Install on Bash](@/assets/images/installing-julia/bash_julia.webp)
+
+![Julia Install on PowerShell](@/assets/images/installing-julia/pwsh_julia.webp)

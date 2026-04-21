@@ -7,7 +7,7 @@ tags:
   - compilation
 ---
 
-![](/img/julia/julia_purple_exe.webp)
+![](@/assets/images/julia-binary/julia_purple_exe.webp)
 
 _Compile your Julia project with PackageCompiler for portability_
 

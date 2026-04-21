@@ -17,7 +17,11 @@ Julia jumped from v0.6 to v0.7/v1.0.0 on 8 August 2018, which created breaking c
 
 ## <1.0.0
 
-There are many libraries that depend on older Julia versions. If you are using an affected library:
+There are many libraries that depend on older Julia versions. Attempting to install one that hasn't been updated past v0.6 results in an "unsatisfiable requirements" error:
+
+![Pkg.add failing due to Julia version incompatibility](@/assets/images/julia-versions/error_adding_playgrounds.webp)
+
+If you are using an affected library:
 
 1. Try to migrate to different >=v0.7 libraries with the same functionality
 2. Create or add to existing issue on the repo regarding >=0.7 plans
