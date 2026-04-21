@@ -1,5 +1,5 @@
 ---
-title: "Healthchecks"
+title: "TCP Pings From 143 Cloudflare Colos"
 draft: false
 pubDatetime: 2026-04-21T00:00:00Z
 description: "Test Global Cloudflare TCP/TLS/HTTP connectivity to your origin server"
