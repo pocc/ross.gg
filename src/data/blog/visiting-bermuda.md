@@ -1,7 +1,7 @@
 ---
 title: "Visiting Bermuda"
 draft: false
-pubDatetime: 2026-05-02T12:00:00Z
+pubDatetime: 2026-04-01T12:00:00Z
 description: "Travel log of a day in Bermuda"
 tags:
   - travel

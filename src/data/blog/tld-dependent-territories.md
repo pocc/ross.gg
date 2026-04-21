@@ -1,7 +1,7 @@
 ---
 title: "Why British dependent territories get cool things"
 draft: false
-pubDatetime: 2026-05-03T12:00:00Z
+pubDatetime: 2026-04-02T12:00:00Z
 description: "An exploration of British Dependent Territories"
 tags:
   - tld
